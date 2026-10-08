@@ -13,7 +13,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; background: var(--ink); }
-body { margin: 0; background: var(--ink); color: var(--ivory); font-family: Arial, "Noto Sans Thai", sans-serif; }
+body { margin: 0; background: var(--ink); color: var(--ivory); font-family: "Noto Sans Thai", Arial, "Microsoft YaHei", sans-serif; }
 button, input, select { font: inherit; }
 a { color: inherit; text-decoration: none; }
 
@@ -31,9 +31,14 @@ a { color: inherit; text-decoration: none; }
 .desktop-nav a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -10px; height: 1px; background: var(--gold); transition: right .25s ease; }
 .desktop-nav a:hover::after, .desktop-nav a:focus-visible::after { right: 0; }
 .header-call { justify-self: end; display: flex; gap: 8px; align-items: center; padding: 10px 16px; border: 1px solid rgba(200,165,100,.55); border-radius: 999px; color: var(--gold-bright); font-size: 12px; letter-spacing: .09em; }
+.header-actions { justify-self: end; display: flex; align-items: center; gap: 18px; }
+.language-switch { display: flex; align-items: center; padding: 3px; border: 1px solid rgba(255,255,255,.16); border-radius: 999px; background: rgba(0,0,0,.35); }
+.language-switch button, .mobile-language-switch button { min-width: 38px; border: 0; border-radius: 999px; padding: 7px 9px; color: #918d86; background: transparent; font-size: 10px; cursor: pointer; }
+.language-switch button.active, .mobile-language-switch button.active { color: #17130e; background: var(--gold-bright); }
 .menu-toggle { display: none; justify-self: end; background: transparent; color: var(--ivory); border: 0; padding: 8px; }
 .mobile-menu { position: absolute; top: 78px; left: 0; right: 0; display: grid; gap: 0; padding: 8px 22px 22px; background: rgba(8,8,8,.98); border-bottom: 1px solid var(--line); }
 .mobile-menu a { padding: 17px 2px; border-bottom: 1px solid var(--line); font-size: 15px; }
+.mobile-language-switch { display: flex; gap: 7px; padding: 12px 0 8px; }
 
 .hero { position: relative; min-height: 100svh; display: flex; align-items: center; overflow: hidden; background: #050505; }
 .hero-image { position: absolute; inset: 0; background-image: url('/hero-aurelia.png'); background-size: cover; background-position: center center; animation: hero-breathe 16s ease-in-out infinite alternate; }
@@ -42,6 +47,8 @@ a { color: inherit; text-decoration: none; }
 .eyebrow { margin: 0 0 24px; color: var(--gold-bright); font-size: 10px; font-weight: 700; letter-spacing: .32em; }
 .hero h1 { margin: 0; max-width: 680px; font-family: "Arial Narrow", Arial, sans-serif; font-size: clamp(64px, 8.5vw, 136px); font-weight: 300; line-height: .82; letter-spacing: -.055em; }
 .hero h1 span { display: block; margin-left: .38em; color: var(--gold-bright); font-family: Georgia, serif; font-style: italic; font-weight: 400; }
+.hero-title-th, .hero-title-zh { max-width: 600px; font-family: "Noto Sans Thai", Arial, "Microsoft YaHei", sans-serif !important; font-size: clamp(54px, 6.7vw, 104px) !important; font-weight: 300 !important; line-height: 1.08 !important; letter-spacing: -.045em !important; }
+.hero-title-th span, .hero-title-zh span { margin: .12em 0 0 !important; font-family: inherit !important; font-style: normal !important; }
 .hero-thai { margin: 34px 0 0; color: #cbc5ba; font-size: clamp(16px, 1.35vw, 20px); line-height: 1.8; }
 .hero-actions { display: flex; align-items: center; gap: 28px; margin-top: 32px; }
 .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 0 24px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; transition: transform .2s ease, background .2s ease; }
@@ -56,21 +63,26 @@ a { color: inherit; text-decoration: none; }
 
 .availability-wrap { position: relative; z-index: 4; max-width: 1320px; margin: -2px auto 0; padding: 0 clamp(18px, 4vw, 56px); transform: translateY(-1px); }
 .availability-bar { display: grid; grid-template-columns: 1.15fr repeat(3, 1fr) 1.25fr; min-height: 110px; border: 1px solid rgba(200,165,100,.3); background: #111; box-shadow: 0 20px 70px rgba(0,0,0,.5); }
-.availability-intro, .availability-bar label { padding: 22px 24px; border-right: 1px solid var(--line); }
+.availability-intro, .booking-field { padding: 22px 24px; border: 0; border-right: 1px solid var(--line); text-align: left; background: transparent; }
 .availability-intro { display: flex; align-items: center; gap: 14px; }
 .gold-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 18px var(--gold); }
-.availability-intro div, .availability-bar label { display: flex; flex-direction: column; justify-content: center; gap: 8px; }
-.availability-intro small, .availability-bar label > span { color: #88847d; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; }
+.availability-intro div, .booking-field { display: flex; flex-direction: column; justify-content: center; gap: 9px; }
+.availability-intro small, .booking-field > span { color: #9c978f; font-size: 9px; letter-spacing: .13em; text-transform: uppercase; }
 .availability-intro strong { font-family: Georgia, serif; font-size: 20px; font-weight: 400; }
-.availability-bar label > span { display: flex; align-items: center; gap: 7px; }
-.availability-bar input, .availability-bar select { width: 100%; color: var(--ivory); border: 0; outline: 0; background: transparent; color-scheme: dark; font-size: 13px; }
+.booking-field > span { display: flex; align-items: center; gap: 7px; }
+.booking-field strong { color: var(--ivory); font-size: 13px; font-weight: 500; }
+.booking-field select { width: 100%; color: var(--ivory); border: 0; outline: 0; background: #111; color-scheme: dark; font-size: 13px; }
+.booking-field select option { color: #f4f0e8; background: #171717; }
 .availability-submit { border: 0; color: #111; background: var(--gold-bright); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; }
 
 .section-pad { max-width: 1320px; margin: auto; padding: 130px clamp(26px, 6vw, 96px); }
 .statement { border-bottom: 1px solid var(--line); }
-.statement-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 10vw; align-items: end; }
+.statement-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(340px, .85fr); gap: clamp(56px, 8vw, 120px); align-items: center; }
 .statement h2, .section-heading h2, .concierge-section h2 { margin: 0; font-family: Georgia, "Noto Serif Thai", serif; font-weight: 400; }
-.statement h2 { font-size: clamp(38px, 5.2vw, 76px); line-height: 1.34; }
+.statement h2 { font-size: clamp(38px, 4.4vw, 64px); line-height: 1.18; }
+.statement-title { font-family: "Noto Sans Thai", Arial, "Microsoft YaHei", sans-serif !important; font-weight: 350 !important; letter-spacing: -.025em; }
+.statement-title span { display: block; max-width: 760px; margin-top: .32em; color: #c8c1b6; font-size: .7em; line-height: 1.35; }
+.statement-title-en { font-family: Georgia, serif !important; letter-spacing: -.025em; }
 .statement-copy > p { margin: 0 0 48px; color: #b4afa6; font-size: 17px; line-height: 1.9; }
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; padding-top: 26px; border-top: 1px solid var(--line); }
 .stats div { display: flex; flex-direction: column; gap: 8px; }
@@ -126,7 +138,7 @@ footer { max-width: 1440px; margin: auto; padding: 44px clamp(26px, 7vw, 112px);
 
 @media (max-width: 900px) {
   .site-header { grid-template-columns: 1fr auto; height: 70px; }
-  .desktop-nav, .header-call { display: none; }
+  .desktop-nav, .header-actions { display: none; }
   .menu-toggle { display: block; }
   .hero { min-height: 92svh; align-items: end; }
   .hero-image { background-position: 62% center; }
@@ -141,8 +153,8 @@ footer { max-width: 1440px; margin: auto; padding: 44px clamp(26px, 7vw, 112px);
   .availability-wrap { padding: 0; }
   .availability-bar { grid-template-columns: 1fr 1fr; }
   .availability-intro { grid-column: 1 / -1; }
-  .availability-bar label:nth-of-type(3) { grid-column: 1 / -1; }
-  .availability-intro, .availability-bar label { border-bottom: 1px solid var(--line); }
+  .booking-field-location { grid-column: 1 / -1; }
+  .availability-intro, .booking-field { border-bottom: 1px solid var(--line); }
   .availability-submit { grid-column: 1 / -1; min-height: 58px; }
   .statement-grid { grid-template-columns: 1fr; gap: 54px; }
   .fleet-grid { grid-template-columns: 1fr; }
