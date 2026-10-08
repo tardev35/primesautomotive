@@ -1,13 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { CalendarDays, ChevronDown, Clock3, Gauge, MapPin, Menu, MessageCircle, Phone, ShieldCheck, Sparkles, X } from "lucide-react";
-
-const cars = [
-  { name: "Velarion GT", category: "Ultra-Luxury", usage: "Chauffeur", price: "฿38,000", power: "612 hp", sprint: "3.8 sec", note: "Rear-cabin comfort, refined for long evenings." },
-  { name: "Nocturne S", category: "Supercar", usage: "Self-Drive", price: "฿45,000", power: "710 hp", sprint: "2.9 sec", note: "A dramatic grand tourer with effortless pace." },
-  { name: "Aether Sport", category: "Sports", usage: "Event", price: "฿28,000", power: "503 hp", sprint: "3.6 sec", note: "Balanced performance for city and coastal roads." },
-];
+import { CalendarDays, ChevronDown, Clock3, MapPin, Menu, MessageCircle, Phone, ShieldCheck, Sparkles, X } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import cars from "@/data/cars.json";
 
 type Language = "th" | "en" | "zh";
 
@@ -39,7 +36,7 @@ const copy = {
     check: "Check availability", explore: "Explore the collection", meta: ["100% owned fleet", "15-minute confirmation", "Delivered to you"], scroll: "Scroll to discover",
     live: "Live concierge", find: "Find your car", pickup: "Pick-up date", return: "Return date", delivery: "Delivery location", dates: ["12 Oct 2026", "14 Oct 2026"], places: ["Bangkok", "Suvarnabhumi Airport", "Don Mueang Airport", "Hotel delivery"], viewAvailable: "View 12 available cars",
     statementEyebrow: "OWNED · CURATED · IMPECCABLY KEPT", statementTitle: ["More than a rental", "A journey cared for from end to end"], statementBody: "Every vehicle is owned and cared for directly by us. No brokers, and no hand-off of your experience to another provider.", stats: ["Owned fleet", "Private concierge", "Delivery zones"],
-    reserve: "THE RESERVE", choose: "Choose your presence", chooseBody: "Choose for the occasion and the way you want to travel—not simply for the badge.", filters: ["All", "Sports", "Supercar", "Ultra-Luxury"], available: "Available", perDay: "/day", viewCar: "View this car", carNotes: cars.map((car) => car.note),
+    reserve: "THE RESERVE", choose: "Choose your presence", chooseBody: "Choose for the occasion and the way you want to travel—not simply for the badge.", filters: ["All", "Sports", "Supercar", "Ultra-Luxury"], available: "Available", perDay: "/day", viewCar: "View this car", carNotes: [],
     processEyebrow: "EFFORTLESS BY DESIGN", processTitle: "Three quiet steps", processBody: "A dedicated concierge guides every step—no long forms required.", processHeads: ["Select", "Verify", "Receive"], processNotes: ["Choose the car that suits your occasion and journey.", "Verify your identity with your concierge, usually within 15 minutes.", "Receive the car at your home, hotel or airport at the agreed time."],
     contactEyebrow: "YOUR JOURNEY BEGINS HERE", contactTitle: ["One conversation", "Everything arranged"], line: "LINE Concierge", call: "Call now", hours: "Available daily · 08:00–24:00 ICT", demo: "Concept fleet and pricing shown for demonstration.",
     footerIntro: "Private access to luxury and performance cars, guided by one concierge from selection to return.", footerHeads: ["Collection", "Services", "Service areas"], footerRent: ["Supercars", "Ultra-luxury", "Sports cars", "Chauffeured sedans"], footerServices: ["Self-drive", "With chauffeur", "Airport delivery", "Weddings & events"], footerPlaces: ["Bangkok", "Suvarnabhumi", "Phuket", "Koh Samui", "Chiang Mai"], footerContact: ["Concierge", "WhatsApp", "LINE"], footerLegal: ["Terms", "Privacy", "Rental policy"], footerCopyright: "© 2026 Aurelia Private Motor Reserve · Design concept content",
@@ -57,13 +54,24 @@ const copy = {
   },
 } as const;
 
-const filterValues = ["All", "Sports", "Supercar", "Ultra-Luxury"];
+const filterValues = ["All", "Sports", "Supercar", "Ultra-Luxury", "SUV"] as const;
+const fleetCopy = {
+  th: { filters: ["ทั้งหมด", "สปอร์ต", "ซูเปอร์คาร์", "อัลตร้าลักชัวรี", "SUV"], browse: "ชมรถทั้งหมด", count: "รุ่นในคอลเลกชัน", note: "คอลเลกชันตัวอย่างพร้อมภาพประกอบรุ่นรถ ราคาและคิวว่างยังไม่ได้เชื่อมกับระบบของร้าน", quote: "สอบถามราคาและคิวว่าง", detail: "ข้อมูลรุ่นรถ", close: "ปิด", credit: "เครดิตภาพ", dateError: "กรุณาเลือกวันคืนรถหลังวันรับรถ", dateSummary: "ช่วงวันที่เลือก", dateNote: "วันที่นี้ใช้สำหรับเตรียมสอบถามเท่านั้น ยังไม่ใช่ผลยืนยันรถว่าง" },
+  en: { filters: ["All", "Sports", "Supercar", "Ultra-Luxury", "SUV"], browse: "Browse the collection", count: "models in the collection", note: "Illustrative model collection. Live pricing and availability are not connected to the rental operator yet.", quote: "Pricing & availability on request", detail: "Model information", close: "Close", credit: "Photo credit", dateError: "Please choose a return date after the pick-up date.", dateSummary: "Selected dates", dateNote: "These dates prepare your enquiry only; vehicle availability has not been confirmed." },
+  zh: { filters: ["全部", "跑车", "超级跑车", "超豪华", "SUV"], browse: "浏览全部车型", count: "款精选车型", note: "此处为车型展示及示意照片，尚未接入租车公司的实时价格与车辆档期。", quote: "价格与档期请咨询", detail: "车型信息", close: "关闭", credit: "图片来源", dateError: "请选择晚于取车日期的还车日期。", dateSummary: "所选日期", dateNote: "所选日期仅用于准备咨询，不代表车辆档期已确认。" },
+} as const;
 
 export function LuxurySite() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState("All");
   const [language, setLanguage] = useState<Language>("th");
+  const [pickup, setPickup] = useState("");
+  const [returnDate, setReturnDate] = useState("");
+  const [delivery, setDelivery] = useState("0");
+  const [dateError, setDateError] = useState(false);
+  const [enquiryDates, setEnquiryDates] = useState<{ pickup: string; returnDate: string; delivery: string } | null>(null);
   const t = copy[language];
+  const ft = fleetCopy[language];
   const filteredCars = useMemo(() => activeFilter === "All" ? cars : cars.filter((car) => car.category === activeFilter), [activeFilter]);
 
   useEffect(() => {
@@ -116,13 +124,21 @@ export function LuxurySite() {
         </section>
 
         <section className="availability-wrap" id="availability" aria-label="Check vehicle availability">
-          <div className="availability-bar">
+          <form className="availability-bar" onSubmit={(event) => {
+            event.preventDefault();
+            if (returnDate <= pickup) { setDateError(true); return; }
+            setDateError(false);
+            setEnquiryDates({ pickup, returnDate, delivery });
+            document.getElementById("fleet")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+          }}>
             <div className="availability-intro"><span className="gold-dot" /><div><small>{t.live}</small><strong>{t.find}</strong></div></div>
-            <button className="booking-field" type="button"><span><CalendarDays size={15} />{t.pickup}</span><strong>{t.dates[0]}</strong></button>
-            <button className="booking-field" type="button"><span><CalendarDays size={15} />{t.return}</span><strong>{t.dates[1]}</strong></button>
-            <label className="booking-field booking-field-location"><span><MapPin size={15} />{t.delivery}</span><select key={language} defaultValue={t.places[0]}>{t.places.map((place) => <option key={place}>{place}</option>)}</select></label>
-            <button className="availability-submit" type="button">{t.viewAvailable}</button>
-          </div>
+            <label className="booking-field"><span><CalendarDays size={15} />{t.pickup}</span><input aria-label={t.pickup} type="date" required value={pickup} onChange={(event) => { setPickup(event.target.value); setDateError(false); }} /></label>
+            <label className="booking-field"><span><CalendarDays size={15} />{t.return}</span><input aria-label={t.return} type="date" required min={pickup || undefined} value={returnDate} aria-invalid={dateError} aria-describedby={dateError ? "date-error" : undefined} onChange={(event) => { setReturnDate(event.target.value); setDateError(false); }} /></label>
+            <div className="booking-field booking-field-location"><span id="delivery-label"><MapPin size={15} />{t.delivery}</span><Select value={delivery} onValueChange={setDelivery}><SelectTrigger className="booking-select" aria-labelledby="delivery-label"><SelectValue /></SelectTrigger><SelectContent className="booking-options" position="popper">{t.places.map((place, index) => <SelectItem key={index} value={String(index)}>{place}</SelectItem>)}</SelectContent></Select></div>
+            <button className="availability-submit" type="submit">{ft.browse}</button>
+          </form>
+          {dateError && <p id="date-error" className="availability-error" role="alert">{ft.dateError}</p>}
+          <p className="availability-note">{ft.dateNote}</p>
         </section>
 
         <section className="statement section-pad" id="experience">
@@ -136,16 +152,26 @@ export function LuxurySite() {
         <section className="fleet-section section-pad" id="fleet">
           <div className="section-heading"><div><p className="eyebrow">{t.reserve}</p><h2>{t.choose}</h2></div><p>{t.chooseBody}</p></div>
           <div className="filter-row" aria-label="Filter the collection">
-            {filterValues.map((filter, index) => <button type="button" key={filter} className={activeFilter === filter ? "active" : ""} onClick={() => setActiveFilter(filter)}>{t.filters[index]}</button>)}
+            {filterValues.map((filter, index) => <button type="button" key={filter} className={activeFilter === filter ? "active" : ""} aria-pressed={activeFilter === filter} onClick={() => setActiveFilter(filter)}>{ft.filters[index]}</button>)}
           </div>
+          <p className="fleet-count" aria-live="polite">{filteredCars.length} {ft.count}</p>
+          <p className="fleet-disclaimer">{ft.note}</p>
+          {enquiryDates && <p className="fleet-date-summary">{ft.dateSummary}: {new Intl.DateTimeFormat(language === "th" ? "th-TH" : language === "zh" ? "zh-CN" : "en-GB", { dateStyle: "medium" }).format(new Date(`${enquiryDates.pickup}T12:00:00`))} – {new Intl.DateTimeFormat(language === "th" ? "th-TH" : language === "zh" ? "zh-CN" : "en-GB", { dateStyle: "medium" }).format(new Date(`${enquiryDates.returnDate}T12:00:00`))} · {t.places[Number(enquiryDates.delivery)]}</p>}
           <div className="fleet-grid">
-            {filteredCars.map((car, index) => (
+            {filteredCars.map((car) => (
               <article className="car-card" key={car.name}>
-                <div className={`car-visual car-visual-${index + 1}`}><span>{String(index + 1).padStart(2, "0")}</span><div className="car-line" aria-hidden="true" /></div>
+                <div className="car-visual"><img src={car.image} alt={car.name} width={960} height={600} loading="lazy" decoding="async" /></div>
                 <div className="car-card-content">
-                  <div className="car-title-row"><div><small>{car.category} · {car.usage}</small><h3>{car.name}</h3></div><span className="status"><i />{t.available}</span></div>
-                  <p>{t.carNotes[cars.indexOf(car)]}</p><div className="spec-row"><span><Gauge size={15} />{car.power}</span><span>0–100 · {car.sprint}</span><strong>{car.price}<small>{t.perDay}</small></strong></div>
-                  <a href="#contact">{t.viewCar} <span aria-hidden="true">↗</span></a>
+                  <div className="car-title-row"><div><small>{ft.filters[filterValues.indexOf(car.category as typeof filterValues[number])]}</small><h3>{car.name}</h3></div></div>
+                  <p>{ft.quote}</p>
+                  <Dialog><DialogTrigger asChild><button type="button" className="car-detail-button">{t.viewCar}</button></DialogTrigger><DialogContent className="car-dialog" showCloseButton={false}>
+                    <DialogClose className="dialog-close">{ft.close}</DialogClose>
+                    <img src={car.image} alt={car.name} width={960} height={600} />
+                    <DialogTitle>{car.name}</DialogTitle><DialogDescription>{ft.note}</DialogDescription>
+                    <p>{ft.quote}</p>
+                    <p className="photo-credit">{ft.credit}: <a href={car.source} target="_blank" rel="noreferrer">{car.author}</a> · <a href={car.licenseUrl} target="_blank" rel="noreferrer">{car.license}</a></p>
+                  </DialogContent></Dialog>
+                  <a className="photo-credit" href={car.source} target="_blank" rel="noreferrer">{ft.credit}: {car.author} · {car.license}</a>
                 </div>
               </article>
             ))}

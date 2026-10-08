@@ -1,0 +1,90 @@
+[
+  {
+    "name": "Ferrari 296 GTB",
+    "category": "Supercar",
+    "image": "/cars/ferrari-296-gtb.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Ferrari_296_GTB_1X7A6377.jpg",
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "width": 960,
+    "height": 479
+  },
+  {
+    "name": "Lamborghini Huracan EVO",
+    "category": "Supercar",
+    "image": "/cars/lamborghini-huracan-evo.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Lamborghini_Huracan_Evo,_GIMS_2019,_Le_Grand-Saconnex_(GIMS1010).jpg",
+    "author": "Matti Blume",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "width": 960,
+    "height": 547
+  },
+  {
+    "name": "Porsche 718 Boxster T",
+    "category": "Sports",
+    "image": "/cars/porsche-718-boxster.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Porsche_718_Boxster_T_Genf_2019_1Y7A5425.jpg",
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "width": 960,
+    "height": 450
+  },
+  {
+    "name": "McLaren 720S",
+    "category": "Supercar",
+    "image": "/cars/mclaren-720s.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:McLaren_720S,_IAA_2017,_(1Y7A3405).jpg",
+    "author": "Matti Blume",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "width": 960,
+    "height": 540
+  },
+  {
+    "name": "BMW X7 M60i",
+    "category": "SUV",
+    "image": "/cars/bmw-x7.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:BMW_G07_X7_M60i_1X7A7226.jpg",
+    "author": "Alexander-93",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "width": 960,
+    "height": 640
+  },
+  {
+    "name": "BMW Z4 M40i",
+    "category": "Sports",
+    "image": "/cars/bmw-z4-g29.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:BMW_G29_Z4_M40i_(Facelift)_1X7A6946.jpg",
+    "author": "Alexander-93",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "width": 960,
+    "height": 474
+  },
+  {
+    "name": "Mercedes-Benz S-Class W223",
+    "category": "Ultra-Luxury",
+    "image": "/cars/mercedes-s-class-w223.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_W223_IAA_2021_1X7A0206.jpg",
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "width": 960,
+    "height": 420
+  },
+  {
+    "name": "Audi e-tron Sportback",
+    "category": "SUV",
+    "image": "/cars/audi-e-tron-sportback.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Audi_e-tron_Sportback_1X7A6778.jpg",
+    "author": "Alexander-93",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "width": 960,
+    "height": 498
+  }
+]
