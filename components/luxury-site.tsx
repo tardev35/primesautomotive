@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { CalendarDays, ChevronDown, Clock3, MapPin, Menu, MessageCircle, Phone, ShieldCheck, Sparkles, X } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { CalendarDays, ChevronDown, Clock3, MapPin, MessageCircle, Phone, ShieldCheck, Sparkles } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import cars from "@/data/cars.json";
@@ -63,6 +63,8 @@ const fleetCopy = {
 
 export function LuxurySite() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const [activeFilter, setActiveFilter] = useState("All");
   const [language, setLanguage] = useState<Language>("th");
   const [pickup, setPickup] = useState("");
@@ -78,10 +80,57 @@ export function LuxurySite() {
     document.documentElement.lang = language === "zh" ? "zh-Hans" : language;
   }, [language]);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { setMenuOpen(false); menuButtonRef.current?.focus(); }
+    };
+    const onOutside = (event: PointerEvent) => {
+      if (event.target instanceof Node && !headerRef.current?.contains(event.target)) setMenuOpen(false);
+    };
+    const desktop = window.matchMedia("(min-width: 901px)");
+    const onResize = () => { if (desktop.matches) setMenuOpen(false); };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onOutside);
+    desktop.addEventListener("change", onResize);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onOutside);
+      desktop.removeEventListener("change", onResize);
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (motion.matches || !("IntersectionObserver" in window)) return;
+    const elements = [...document.querySelectorAll<HTMLElement>(".statement > .eyebrow, .statement-grid > *, .section-heading > *, .process-grid article, .concierge-section > *, .footer-main > *")];
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(({ target, isIntersecting }) => {
+        if (!isIntersecting) return;
+        target.classList.replace("reveal-pending", "reveal-visible");
+        observer.unobserve(target);
+      });
+    }, { threshold: .08, rootMargin: "0px 0px -24px 0px" });
+    elements.forEach((element) => {
+      if (element.getBoundingClientRect().top < window.innerHeight - 24) return;
+      element.classList.add("reveal-pending");
+      observer.observe(element);
+    });
+    const revealAll = () => {
+      if (motion.matches) { observer.disconnect(); elements.forEach((el) => el.classList.remove("reveal-pending")); }
+    };
+    motion.addEventListener("change", revealAll);
+    return () => {
+      observer.disconnect();
+      motion.removeEventListener("change", revealAll);
+      elements.forEach((el) => el.classList.remove("reveal-pending", "reveal-visible"));
+    };
+  }, []);
+
   return (
     <div className="site-shell">
       <div className="film-grain" aria-hidden="true" />
-      <header className="site-header">
+      <header className="site-header" ref={headerRef}>
         <a className="brand" href="#top" aria-label="Aurelia Reserve home">
           <span className="brand-mark">AR</span>
           <span className="brand-copy"><b>AURELIA</b><small>PRIVATE MOTOR RESERVE</small></span>
@@ -96,15 +145,13 @@ export function LuxurySite() {
           </div>
           <a className="header-call" href="tel:+6620000000"><Phone size={15} aria-hidden="true" /><span>{t.concierge}</span></a>
         </div>
-        <button className="menu-toggle" type="button" aria-expanded={menuOpen} aria-controls="mobile-menu" aria-label={menuOpen ? "Close menu" : "Open menu"} onClick={() => setMenuOpen((open) => !open)}>
-          {menuOpen ? <X size={22} /> : <Menu size={22} />}
+        <button ref={menuButtonRef} className="menu-toggle" type="button" aria-expanded={menuOpen} aria-controls="mobile-menu" aria-label={language === "th" ? (menuOpen ? "ปิดเมนู" : "เปิดเมนู") : language === "zh" ? (menuOpen ? "关闭菜单" : "打开菜单") : (menuOpen ? "Close menu" : "Open menu")} onClick={() => setMenuOpen((open) => !open)}>
+          <span className="hamburger-lines" aria-hidden="true"><span /><span /><span /></span>
         </button>
-        {menuOpen && (
-          <nav id="mobile-menu" className="mobile-menu" aria-label="Mobile navigation">
-            <div className="mobile-language-switch">{languages.map((item) => <button type="button" key={item.code} className={language === item.code ? "active" : ""} onClick={() => setLanguage(item.code)}>{item.label}</button>)}</div>
+          <nav id="mobile-menu" className={`mobile-menu${menuOpen ? " is-open" : ""}`} aria-label="Mobile navigation" aria-hidden={!menuOpen} inert={!menuOpen}>
+            <div className="mobile-language-switch">{languages.map((item) => <button type="button" key={item.code} className={language === item.code ? "active" : ""} aria-pressed={language === item.code} onClick={() => setLanguage(item.code)}>{item.label}</button>)}</div>
             <a href="#fleet" onClick={() => setMenuOpen(false)}>{t.nav[0]}</a><a href="#experience" onClick={() => setMenuOpen(false)}>{t.nav[1]}</a><a href="#process" onClick={() => setMenuOpen(false)}>{t.nav[2]}</a><a href="#contact" onClick={() => setMenuOpen(false)}>{t.nav[3]}</a>
           </nav>
-        )}
       </header>
 
       <main id="top">
@@ -113,9 +160,9 @@ export function LuxurySite() {
           <div className="hero-overlay" aria-hidden="true" />
           <div className="hero-content">
             <p className="eyebrow">{t.heroEyebrow}</p>
-            <h1 id="hero-title" className={`hero-title hero-title-${language}`}>{t.heroTitle[0]}<span>{t.heroTitle[1]}</span></h1>
+            <TypewriterHeading key={language} language={language} lines={t.heroTitle} />
             <p className="hero-thai">{t.heroBody}</p>
-            <div className="hero-actions"><a className="button button-gold btn-77" href="#availability"><GoldCrown />{t.check}</a><a className="text-link" href="#fleet">{t.explore}</a></div>
+            <div className="hero-actions"><a className="button button-gold btn-77" href="#availability">{t.check}</a><a className="text-link" href="#fleet">{t.explore}</a></div>
           </div>
           <div className="hero-meta" aria-label="Service highlights">
             <span><ShieldCheck size={16} />{t.meta[0]}</span><span><Clock3 size={16} />{t.meta[1]}</span><span><MapPin size={16} />{t.meta[2]}</span>
@@ -138,7 +185,7 @@ export function LuxurySite() {
             <label className="booking-field"><span><CalendarDays size={15} />{t.pickup}</span><input name="pickup" aria-label={t.pickup} type="date" required value={pickup} onInput={(event) => { setPickup(event.currentTarget.value); setDateError(false); }} onChange={(event) => { setPickup(event.target.value); setDateError(false); }} /></label>
             <label className="booking-field"><span><CalendarDays size={15} />{t.return}</span><input name="returnDate" aria-label={t.return} type="date" required min={pickup || undefined} value={returnDate} aria-invalid={dateError} aria-describedby={dateError ? "date-error" : undefined} onInput={(event) => { setReturnDate(event.currentTarget.value); setDateError(false); }} onChange={(event) => { setReturnDate(event.target.value); setDateError(false); }} /></label>
             <div className="booking-field booking-field-location"><span id="delivery-label"><MapPin size={15} />{t.delivery}</span><Select value={delivery} onValueChange={setDelivery}><SelectTrigger className="booking-select" aria-labelledby="delivery-label"><SelectValue /></SelectTrigger><SelectContent className="booking-options" position="popper">{t.places.map((place, index) => <SelectItem key={index} value={String(index)}>{place}</SelectItem>)}</SelectContent></Select></div>
-            <button className="availability-submit btn-77" type="submit"><GoldCrown />{ft.browse}</button>
+            <button className="availability-submit btn-77" type="submit">{ft.browse}</button>
           </form>
           {dateError && <p id="date-error" className="availability-error" role="alert">{ft.dateError}</p>}
           <p className="availability-note">{ft.dateNote}</p>
@@ -167,7 +214,7 @@ export function LuxurySite() {
                 <div className="car-card-content">
                   <div className="car-title-row"><div><small>{ft.filters[filterValues.indexOf(car.category as typeof filterValues[number])]}</small><h3>{car.name}</h3></div></div>
                   <p>{ft.quote}</p>
-                  <Dialog><DialogTrigger asChild><button type="button" className="car-detail-button btn-77"><GoldCrown />{t.viewCar}</button></DialogTrigger><DialogContent className="car-dialog" showCloseButton={false}>
+                  <Dialog><DialogTrigger asChild><button type="button" className="car-detail-button btn-77">{t.viewCar}</button></DialogTrigger><DialogContent className="car-dialog" showCloseButton={false}>
                     <DialogClose className="dialog-close">{ft.close}</DialogClose>
                     <img src={car.image} alt={car.name} width={960} height={600} />
                     <DialogTitle>{car.name}</DialogTitle><DialogDescription>{ft.note}</DialogDescription>
@@ -214,8 +261,18 @@ export function LuxurySite() {
   );
 }
 
-function GoldCrown() {
-  return <svg viewBox="0 0 576 512" height="1em" className="logoIcon" aria-hidden="true" focusable="false"><path d="M309 106c11.4-7 19-19.7 19-34c0-22.1-17.9-40-40-40s-40 17.9-40 40c0 14.4 7.6 27 19 34L209.7 220.6c-9.1 18.2-32.7 23.4-48.6 10.7L72 160c5-6.7 8-15 8-24c0-22.1-17.9-40-40-40S0 113.9 0 136s17.9 40 40 40c.2 0 .5 0 .7 0L86.4 427.4c5.5 30.4 32 52.6 63 52.6H426.6c30.9 0 57.4-22.1 63-52.6L535.3 176c.2 0 .5 0 .7 0c22.1 0 40-17.9 40-40s-17.9-40-40-40s-40 17.9-40 40c0 9 3 17.3 8 24l-89.1 71.3c-15.9 12.7-39.5 7.5-48.6-10.7L309 106z" /></svg>;
+function TypewriterHeading({ language, lines }: { language: Language; lines: readonly string[] }) {
+  // Graphemes keep Thai tone marks and combining vowels with their base letter.
+  const segmenter = new Intl.Segmenter(language, { granularity: "grapheme" });
+  const segments = lines.map((line) => [...segmenter.segment(line)].map(({ segment }) => segment));
+  let offset = 0;
+  return <h1 id="hero-title" className={`hero-title hero-title-${language} typewriter-title`} aria-label={lines.join(" ")}>
+    {segments.map((line, lineIndex) => {
+      const start = offset;
+      offset += line.length;
+      return <span className={`typewriter-line${lineIndex ? " typewriter-line-accent" : ""}`} aria-hidden="true" key={lineIndex}>{line.map((glyph, index) => <span className="typewriter-glyph" key={index} style={{ animationDelay: `${220 + (start + index) * 65 + lineIndex * 180}ms` }}>{glyph}</span>)}</span>;
+    })}
+  </h1>;
 }
 
 function FooterColumn({ title, items }: { title: string; items: readonly string[] }) {
