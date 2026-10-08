@@ -31,6 +31,7 @@ const copy = {
     available: "พร้อมให้บริการ", perDay: "/วัน", viewCar: "ดูรายละเอียดรถ", carNotes: ["ความสบายระดับสูงสำหรับทุกค่ำคืนที่สำคัญ", "แกรนด์ทัวเรอร์สมรรถนะสูงที่ขับได้อย่างมั่นใจ", "สมดุลระหว่างความเร้าใจกับการใช้งานในเมือง"],
     processEyebrow: "เรียบง่ายในทุกขั้นตอน", processTitle: "สามขั้นตอนที่เราเตรียมไว้ให้", processBody: "ทุกขั้นตอนมีเจ้าหน้าที่ดูแล โดยไม่ต้องกรอกแบบฟอร์มยาว", processHeads: ["เลือก", "ยืนยัน", "รับรถ"], processNotes: ["เลือกคันที่เข้ากับโอกาสและรูปแบบการเดินทาง", "ยืนยันตัวตนกับคอนเซียร์จ โดยปกติภายใน 15 นาที", "รับรถที่บ้าน โรงแรม หรือสนามบินตามเวลานัดหมาย"],
     contactEyebrow: "การเดินทางของคุณเริ่มตรงนี้", contactTitle: ["คุยเพียงครั้งเดียว", "เราจัดการทุกอย่างให้"], line: "คุยผ่าน LINE", call: "โทรตอนนี้", hours: "ให้บริการทุกวัน · 08:00–24:00 น.", demo: "รถและราคาในหน้านี้เป็นข้อมูลตัวอย่าง",
+    footerIntro: "บริการรถหรูและรถสมรรถนะสูงแบบส่วนตัว ดูแลโดยทีมคอนเซียร์จ ตั้งแต่เลือกคันจนถึงรับรถคืน", footerHeads: ["คอลเลกชัน", "บริการ", "พื้นที่ให้บริการ"], footerRent: ["ซูเปอร์คาร์", "อัลตร้าลักชัวรี", "รถสปอร์ต", "ซีดานพร้อมคนขับ"], footerServices: ["ขับเอง", "พร้อมคนขับ", "รับ–ส่งสนามบิน", "งานแต่งและอีเวนต์"], footerPlaces: ["กรุงเทพฯ", "สุวรรณภูมิ", "ภูเก็ต", "เกาะสมุย", "เชียงใหม่"], footerContact: ["คอนเซียร์จ", "WhatsApp", "LINE"], footerLegal: ["ข้อตกลง", "ความเป็นส่วนตัว", "นโยบายการเช่า"], footerCopyright: "© 2026 Aurelia Private Motor Reserve · ข้อมูลตัวอย่างสำหรับงานออกแบบ",
   },
   en: {
     nav: ["Fleet", "Experience", "How it works", "Contact"], concierge: "Concierge",
@@ -41,6 +42,7 @@ const copy = {
     reserve: "THE RESERVE", choose: "Choose your presence", chooseBody: "Choose for the occasion and the way you want to travel—not simply for the badge.", filters: ["All", "Sports", "Supercar", "Ultra-Luxury"], available: "Available", perDay: "/day", viewCar: "View this car", carNotes: cars.map((car) => car.note),
     processEyebrow: "EFFORTLESS BY DESIGN", processTitle: "Three quiet steps", processBody: "A dedicated concierge guides every step—no long forms required.", processHeads: ["Select", "Verify", "Receive"], processNotes: ["Choose the car that suits your occasion and journey.", "Verify your identity with your concierge, usually within 15 minutes.", "Receive the car at your home, hotel or airport at the agreed time."],
     contactEyebrow: "YOUR JOURNEY BEGINS HERE", contactTitle: ["One conversation", "Everything arranged"], line: "LINE Concierge", call: "Call now", hours: "Available daily · 08:00–24:00 ICT", demo: "Concept fleet and pricing shown for demonstration.",
+    footerIntro: "Private access to luxury and performance cars, guided by one concierge from selection to return.", footerHeads: ["Collection", "Services", "Service areas"], footerRent: ["Supercars", "Ultra-luxury", "Sports cars", "Chauffeured sedans"], footerServices: ["Self-drive", "With chauffeur", "Airport delivery", "Weddings & events"], footerPlaces: ["Bangkok", "Suvarnabhumi", "Phuket", "Koh Samui", "Chiang Mai"], footerContact: ["Concierge", "WhatsApp", "LINE"], footerLegal: ["Terms", "Privacy", "Rental policy"], footerCopyright: "© 2026 Aurelia Private Motor Reserve · Design concept content",
   },
   zh: {
     nav: ["车队", "尊享体验", "服务流程", "联系我们"], concierge: "专属礼宾",
@@ -51,6 +53,7 @@ const copy = {
     reserve: "私享车库", choose: "选择属于您的风格", chooseBody: "根据场合与出行方式选择座驾，而不只是追随品牌标志。", filters: ["全部", "跑车", "超级跑车", "超豪华"], available: "可预订", perDay: "/天", viewCar: "查看车辆", carNotes: ["为重要夜晚准备的顶级后排舒适体验。", "从容易驾、性能澎湃的豪华旅行座驾。", "兼顾城市驾驶与动感体验的均衡之选。"],
     processEyebrow: "从容简单的服务流程", processTitle: "三个步骤，轻松启程", processBody: "专属礼宾全程协助，无需填写冗长表格。", processHeads: ["选择", "核验", "交付"], processNotes: ["选择适合场合与行程的座驾。", "通过专属礼宾完成身份核验，通常仅需15分钟。", "按约定时间在家中、酒店或机场接收车辆。"],
     contactEyebrow: "您的旅程，从这里开始", contactTitle: ["只需一次沟通", "其余交给我们"], line: "LINE 礼宾服务", call: "立即致电", hours: "每日服务 · 08:00–24:00", demo: "页面中的车辆与价格均为概念演示信息。",
+    footerIntro: "尊享豪华与高性能座驾，由专属礼宾从选车到还车全程为您安排。", footerHeads: ["车队系列", "服务项目", "服务地区"], footerRent: ["超级跑车", "超豪华座驾", "运动跑车", "礼宾专车"], footerServices: ["自驾服务", "专属司机", "机场交付", "婚礼与活动"], footerPlaces: ["曼谷", "素万那普", "普吉岛", "苏梅岛", "清迈"], footerContact: ["专属礼宾", "WhatsApp", "LINE"], footerLegal: ["服务条款", "隐私政策", "租赁政策"], footerCopyright: "© 2026 Aurelia Private Motor Reserve · 设计概念内容",
   },
 } as const;
 
@@ -164,7 +167,24 @@ export function LuxurySite() {
         </section>
       </main>
 
-      <footer><a className="brand footer-brand" href="#top"><span className="brand-mark">AR</span><span className="brand-copy"><b>AURELIA</b><small>PRIVATE MOTOR RESERVE</small></span></a><p>Bangkok · Thailand</p><p>{t.demo}</p></footer>
+      <footer className="site-footer">
+        <div className="footer-main">
+          <div className="footer-about">
+            <a className="brand footer-brand" href="#top"><span className="brand-mark">AR</span><span className="brand-copy"><b>AURELIA</b><small>PRIVATE MOTOR RESERVE</small></span></a>
+            <p>{t.footerIntro}</p>
+            <div className="footer-contact-list"><span>{t.footerContact[0]} <b>+66 2 000 0000</b></span><span>{t.footerContact[1]} <b>+66 8 0000 0000</b></span><span>{t.footerContact[2]} <b>@AURELIA.CARS</b></span></div>
+            <div className="social-row" aria-label="Social channels"><a href="#contact">IG</a><a href="#contact">WA</a><a href="#contact">LI</a></div>
+          </div>
+          <FooterColumn title={t.footerHeads[0]} items={t.footerRent} />
+          <FooterColumn title={t.footerHeads[1]} items={t.footerServices} />
+          <FooterColumn title={t.footerHeads[2]} items={t.footerPlaces} />
+        </div>
+        <div className="footer-bottom"><p>{t.footerCopyright}</p><nav aria-label="Legal"><a href="#contact">{t.footerLegal[0]}</a><a href="#contact">{t.footerLegal[1]}</a><a href="#contact">{t.footerLegal[2]}</a></nav></div>
+      </footer>
     </div>
   );
+}
+
+function FooterColumn({ title, items }: { title: string; items: readonly string[] }) {
+  return <div className="footer-column"><h3>{title}</h3><nav>{items.map((item) => <a href="#contact" key={item}>{item}</a>)}</nav></div>;
 }
