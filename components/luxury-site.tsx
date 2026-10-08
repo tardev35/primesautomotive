@@ -8,10 +8,10 @@ import cars from "@/data/cars.json";
 
 type Language = "th" | "en" | "zh";
 
-const languages: Array<{ code: Language; label: string }> = [
-  { code: "th", label: "ไทย" },
-  { code: "en", label: "EN" },
-  { code: "zh", label: "中文" },
+const languages: Array<{ code: Language; label: string; name: string; flag: string }> = [
+  { code: "th", label: "ไทย", name: "ไทย", flag: "/flags/th.svg" },
+  { code: "en", label: "EN", name: "English", flag: "/flags/gb.svg" },
+  { code: "zh", label: "中文", name: "中文", flag: "/flags/cn.svg" },
 ];
 
 const copy = {
@@ -141,15 +141,22 @@ export function LuxurySite() {
         </nav>
         <div className="header-actions">
           <div className="language-switch" aria-label="เลือกภาษา / Select language / 选择语言">
-            {languages.map((item) => <button type="button" key={item.code} className={language === item.code ? "active" : ""} aria-pressed={language === item.code} onClick={() => setLanguage(item.code)}>{item.label}</button>)}
+            {languages.map((item) => <button type="button" key={item.code} className={language === item.code ? "active" : ""} aria-label={item.name} lang={item.code} aria-pressed={language === item.code} onClick={() => setLanguage(item.code)}><img className="language-flag" src={item.flag} width={22} height={16} alt="" />{item.label}</button>)}
           </div>
           <a className="header-call" href="tel:+6620000000"><Phone size={15} aria-hidden="true" /><span>{t.concierge}</span></a>
+        </div>
+        <div className="mobile-header-language">
+          <Select value={language} onValueChange={(value) => setLanguage(value as Language)} onOpenChange={(open) => { if (open) setMenuOpen(false); }}>
+            <SelectTrigger className="header-language-trigger" aria-label="เลือกภาษา / Select language / 选择语言"><SelectValue /></SelectTrigger>
+            <SelectContent className="header-language-options" position="popper" align="end" sideOffset={8}>
+              {languages.map((item) => <SelectItem value={item.code} key={item.code} aria-label={item.name} lang={item.code}><img className="language-flag" src={item.flag} width={22} height={16} alt="" /><span>{item.label}</span></SelectItem>)}
+            </SelectContent>
+          </Select>
         </div>
         <button ref={menuButtonRef} className="menu-toggle" type="button" aria-expanded={menuOpen} aria-controls="mobile-menu" aria-label={language === "th" ? (menuOpen ? "ปิดเมนู" : "เปิดเมนู") : language === "zh" ? (menuOpen ? "关闭菜单" : "打开菜单") : (menuOpen ? "Close menu" : "Open menu")} onClick={() => setMenuOpen((open) => !open)}>
           <span className="hamburger-lines" aria-hidden="true"><span /><span /><span /></span>
         </button>
           <nav id="mobile-menu" className={`mobile-menu${menuOpen ? " is-open" : ""}`} aria-label="Mobile navigation" aria-hidden={!menuOpen} inert={!menuOpen}>
-            <div className="mobile-language-switch">{languages.map((item) => <button type="button" key={item.code} className={language === item.code ? "active" : ""} aria-pressed={language === item.code} onClick={() => setLanguage(item.code)}>{item.label}</button>)}</div>
             <a href="#fleet" onClick={() => setMenuOpen(false)}>{t.nav[0]}</a><a href="#experience" onClick={() => setMenuOpen(false)}>{t.nav[1]}</a><a href="#process" onClick={() => setMenuOpen(false)}>{t.nav[2]}</a><a href="#contact" onClick={() => setMenuOpen(false)}>{t.nav[3]}</a>
           </nav>
       </header>

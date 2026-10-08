@@ -404,6 +404,32 @@ h1, h2, h3, h4 { padding-block: .14em; }
   .concierge-section { border-radius: 0; border-inline: 0; }
 }
 
+/* Language selection remains reachable without opening the mobile menu. */
+.language-flag { display: block; width: 22px; height: 16px; object-fit: cover; border-radius: 2px; flex: 0 0 22px; box-shadow: 0 0 0 1px rgba(255,255,255,.14); }
+.language-switch button { display: inline-flex; align-items: center; gap: 6px; padding-inline: 10px; }
+.mobile-header-language { display: none; }
+.header-language-trigger { min-width: 92px; height: 42px; padding: 8px 10px; border: 1px solid #615035; border-radius: 999px; background: #15130f; color: #e0c27f; font-size: 14px; gap: 6px; box-shadow: none; }
+.header-language-trigger[data-size=default] { height: 42px; }
+.header-language-trigger [data-slot=select-value] { gap: 6px; }
+.header-language-trigger:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 3px; }
+.header-language-options { z-index: 100; min-width: 146px; padding: 5px; border: 1px solid #615035; border-radius: 12px; color: #ece4d6; background: #171510; box-shadow: 0 12px 32px rgba(0,0,0,.4); }
+.header-language-options [data-slot=select-item] { min-height: 44px; border-radius: 7px; font-size: 14px; cursor: pointer; }
+.header-language-options [data-slot=select-item][data-highlighted] { background: #332a1b; color: #f4dfb2; }
+.header-language-options [data-state=checked] { color: #e0c27f; }
+@media (max-width: 900px) {
+  .site-header { grid-template-columns: minmax(0, 1fr) auto auto; gap: 10px; padding-inline: 20px; }
+  .mobile-header-language { display: block; }
+  .site-header .menu-toggle { padding: 10px; }
+}
+@media (max-width: 380px) {
+  .site-header { padding-inline: 12px; gap: 6px; }
+  .site-header .brand { gap: 8px; }
+  .site-header .brand-mark { width: 32px; height: 32px; flex-shrink: 0; }
+  .site-header .brand-copy b { font-size: 11px; letter-spacing: .13em; }
+  .site-header .brand-copy small { font-size: 5px; letter-spacing: .1em; }
+  .header-language-trigger { min-width: 86px; padding-inline: 8px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero h1 .typewriter-glyph { animation: none !important; opacity: 1; }
   .hero-content > *, .hero-image { animation: none !important; }

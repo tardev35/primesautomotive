@@ -1,0 +1,6 @@
+Flag icons supplied by Flagpedia / FlagCDN, based on Wikimedia Commons vectors.
+API documentation: https://flagpedia.net/download/api
+Thai: https://flagcdn.com/th.svg
+English (UK flag): https://flagcdn.com/gb.svg
+Chinese: https://flagcdn.com/cn.svg
+Downloaded 2026-10-09. SVG geometry is unmodified; display size is set in CSS.
