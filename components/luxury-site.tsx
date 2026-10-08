@@ -115,7 +115,7 @@ export function LuxurySite() {
             <p className="eyebrow">{t.heroEyebrow}</p>
             <h1 id="hero-title" className={`hero-title hero-title-${language}`}>{t.heroTitle[0]}<span>{t.heroTitle[1]}</span></h1>
             <p className="hero-thai">{t.heroBody}</p>
-            <div className="hero-actions"><a className="button button-gold" href="#availability">{t.check}</a><a className="text-link" href="#fleet">{t.explore}</a></div>
+            <div className="hero-actions"><a className="button button-gold btn-77" href="#availability"><GoldCrown />{t.check}</a><a className="text-link" href="#fleet">{t.explore}</a></div>
           </div>
           <div className="hero-meta" aria-label="Service highlights">
             <span><ShieldCheck size={16} />{t.meta[0]}</span><span><Clock3 size={16} />{t.meta[1]}</span><span><MapPin size={16} />{t.meta[2]}</span>
@@ -126,16 +126,19 @@ export function LuxurySite() {
         <section className="availability-wrap" id="availability" aria-label="Check vehicle availability">
           <form className="availability-bar" onSubmit={(event) => {
             event.preventDefault();
-            if (returnDate <= pickup) { setDateError(true); return; }
+            const values = new FormData(event.currentTarget);
+            const selectedPickup = String(values.get("pickup") || "");
+            const selectedReturn = String(values.get("returnDate") || "");
+            if (!selectedPickup || !selectedReturn || selectedReturn <= selectedPickup) { setDateError(true); return; }
             setDateError(false);
-            setEnquiryDates({ pickup, returnDate, delivery });
+            setEnquiryDates({ pickup: selectedPickup, returnDate: selectedReturn, delivery });
             document.getElementById("fleet")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
           }}>
             <div className="availability-intro"><span className="gold-dot" /><div><small>{t.live}</small><strong>{t.find}</strong></div></div>
-            <label className="booking-field"><span><CalendarDays size={15} />{t.pickup}</span><input aria-label={t.pickup} type="date" required value={pickup} onChange={(event) => { setPickup(event.target.value); setDateError(false); }} /></label>
-            <label className="booking-field"><span><CalendarDays size={15} />{t.return}</span><input aria-label={t.return} type="date" required min={pickup || undefined} value={returnDate} aria-invalid={dateError} aria-describedby={dateError ? "date-error" : undefined} onChange={(event) => { setReturnDate(event.target.value); setDateError(false); }} /></label>
+            <label className="booking-field"><span><CalendarDays size={15} />{t.pickup}</span><input name="pickup" aria-label={t.pickup} type="date" required value={pickup} onInput={(event) => { setPickup(event.currentTarget.value); setDateError(false); }} onChange={(event) => { setPickup(event.target.value); setDateError(false); }} /></label>
+            <label className="booking-field"><span><CalendarDays size={15} />{t.return}</span><input name="returnDate" aria-label={t.return} type="date" required min={pickup || undefined} value={returnDate} aria-invalid={dateError} aria-describedby={dateError ? "date-error" : undefined} onInput={(event) => { setReturnDate(event.currentTarget.value); setDateError(false); }} onChange={(event) => { setReturnDate(event.target.value); setDateError(false); }} /></label>
             <div className="booking-field booking-field-location"><span id="delivery-label"><MapPin size={15} />{t.delivery}</span><Select value={delivery} onValueChange={setDelivery}><SelectTrigger className="booking-select" aria-labelledby="delivery-label"><SelectValue /></SelectTrigger><SelectContent className="booking-options" position="popper">{t.places.map((place, index) => <SelectItem key={index} value={String(index)}>{place}</SelectItem>)}</SelectContent></Select></div>
-            <button className="availability-submit" type="submit">{ft.browse}</button>
+            <button className="availability-submit btn-77" type="submit"><GoldCrown />{ft.browse}</button>
           </form>
           {dateError && <p id="date-error" className="availability-error" role="alert">{ft.dateError}</p>}
           <p className="availability-note">{ft.dateNote}</p>
@@ -164,7 +167,7 @@ export function LuxurySite() {
                 <div className="car-card-content">
                   <div className="car-title-row"><div><small>{ft.filters[filterValues.indexOf(car.category as typeof filterValues[number])]}</small><h3>{car.name}</h3></div></div>
                   <p>{ft.quote}</p>
-                  <Dialog><DialogTrigger asChild><button type="button" className="car-detail-button">{t.viewCar}</button></DialogTrigger><DialogContent className="car-dialog" showCloseButton={false}>
+                  <Dialog><DialogTrigger asChild><button type="button" className="car-detail-button btn-77"><GoldCrown />{t.viewCar}</button></DialogTrigger><DialogContent className="car-dialog" showCloseButton={false}>
                     <DialogClose className="dialog-close">{ft.close}</DialogClose>
                     <img src={car.image} alt={car.name} width={960} height={600} />
                     <DialogTitle>{car.name}</DialogTitle><DialogDescription>{ft.note}</DialogDescription>
@@ -189,7 +192,7 @@ export function LuxurySite() {
 
         <section className="concierge-section" id="contact">
           <div><p className="eyebrow">{t.contactEyebrow}</p><h2>{t.contactTitle[0]}<br />{t.contactTitle[1]}</h2></div>
-          <div className="concierge-actions"><a className="button button-gold" href="https://line.me" target="_blank" rel="noreferrer"><MessageCircle size={17} />{t.line}</a><a className="button button-outline" href="tel:+6620000000"><Phone size={17} />{t.call}</a><p>{t.hours}</p></div>
+          <div className="concierge-actions"><a className="button button-gold btn-77" href="https://line.me" target="_blank" rel="noreferrer"><MessageCircle size={17} />{t.line}</a><a className="button button-outline" href="tel:+6620000000"><Phone size={17} />{t.call}</a><p>{t.hours}</p></div>
         </section>
       </main>
 
@@ -209,6 +212,10 @@ export function LuxurySite() {
       </footer>
     </div>
   );
+}
+
+function GoldCrown() {
+  return <svg viewBox="0 0 576 512" height="1em" className="logoIcon" aria-hidden="true" focusable="false"><path d="M309 106c11.4-7 19-19.7 19-34c0-22.1-17.9-40-40-40s-40 17.9-40 40c0 14.4 7.6 27 19 34L209.7 220.6c-9.1 18.2-32.7 23.4-48.6 10.7L72 160c5-6.7 8-15 8-24c0-22.1-17.9-40-40-40S0 113.9 0 136s17.9 40 40 40c.2 0 .5 0 .7 0L86.4 427.4c5.5 30.4 32 52.6 63 52.6H426.6c30.9 0 57.4-22.1 63-52.6L535.3 176c.2 0 .5 0 .7 0c22.1 0 40-17.9 40-40s-17.9-40-40-40s-40 17.9-40 40c0 9 3 17.3 8 24l-89.1 71.3c-15.9 12.7-39.5 7.5-48.6-10.7L309 106z" /></svg>;
 }
 
 function FooterColumn({ title, items }: { title: string; items: readonly string[] }) {
