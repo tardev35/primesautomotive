@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { CalendarDays, ChevronDown, Clock3, MapPin, MessageCircle, Phone, ShieldCheck, Sparkles } from "lucide-react";
+import { ChevronDown, Clock3, MapPin, MessageCircle, Phone, ShieldCheck, Sparkles } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import cars from "@/data/cars.json";
+import { AvailabilitySearch, FleetResultNote, VehicleCard } from "@/components/fleet-experience";
+import { fleet, matchesRental, type RentalQuery } from "@/lib/fleet";
 
 type Language = "th" | "en" | "zh";
 
@@ -67,14 +67,12 @@ export function LuxurySite() {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const [activeFilter, setActiveFilter] = useState("All");
   const [language, setLanguage] = useState<Language>("th");
-  const [pickup, setPickup] = useState("");
-  const [returnDate, setReturnDate] = useState("");
-  const [delivery, setDelivery] = useState("0");
-  const [dateError, setDateError] = useState(false);
-  const [enquiryDates, setEnquiryDates] = useState<{ pickup: string; returnDate: string; delivery: string } | null>(null);
+  const [rentalQuery, setRentalQuery] = useState<RentalQuery | null>(null);
   const t = copy[language];
   const ft = fleetCopy[language];
-  const filteredCars = useMemo(() => activeFilter === "All" ? cars : cars.filter((car) => car.category === activeFilter), [activeFilter]);
+  const matchingCars = useMemo(() => rentalQuery ? fleet.filter((car) => matchesRental(car, rentalQuery)) : fleet, [rentalQuery]);
+  const filteredCars = useMemo(() => activeFilter === "All" ? matchingCars : matchingCars.filter((car) => car.category === activeFilter), [activeFilter, matchingCars]);
+  const resetSearch = () => { setRentalQuery(null); setActiveFilter("All"); };
 
   useEffect(() => {
     document.documentElement.lang = language === "zh" ? "zh-Hans" : language;
@@ -177,26 +175,7 @@ export function LuxurySite() {
           <a className="scroll-cue" href="#availability" aria-label="Scroll to availability"><span>{t.scroll}</span><ChevronDown size={16} /></a>
         </section>
 
-        <section className="availability-wrap" id="availability" aria-label="Check vehicle availability">
-          <form className="availability-bar" onSubmit={(event) => {
-            event.preventDefault();
-            const values = new FormData(event.currentTarget);
-            const selectedPickup = String(values.get("pickup") || "");
-            const selectedReturn = String(values.get("returnDate") || "");
-            if (!selectedPickup || !selectedReturn || selectedReturn <= selectedPickup) { setDateError(true); return; }
-            setDateError(false);
-            setEnquiryDates({ pickup: selectedPickup, returnDate: selectedReturn, delivery });
-            document.getElementById("fleet")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
-          }}>
-            <div className="availability-intro"><span className="gold-dot" /><div><small>{t.live}</small><strong>{t.find}</strong></div></div>
-            <label className="booking-field"><span><CalendarDays size={15} />{t.pickup}</span><input name="pickup" aria-label={t.pickup} type="date" required value={pickup} onInput={(event) => { setPickup(event.currentTarget.value); setDateError(false); }} onChange={(event) => { setPickup(event.target.value); setDateError(false); }} /></label>
-            <label className="booking-field"><span><CalendarDays size={15} />{t.return}</span><input name="returnDate" aria-label={t.return} type="date" required min={pickup || undefined} value={returnDate} aria-invalid={dateError} aria-describedby={dateError ? "date-error" : undefined} onInput={(event) => { setReturnDate(event.currentTarget.value); setDateError(false); }} onChange={(event) => { setReturnDate(event.target.value); setDateError(false); }} /></label>
-            <div className="booking-field booking-field-location"><span id="delivery-label"><MapPin size={15} />{t.delivery}</span><Select value={delivery} onValueChange={setDelivery}><SelectTrigger className="booking-select" aria-labelledby="delivery-label"><SelectValue /></SelectTrigger><SelectContent className="booking-options" position="popper">{t.places.map((place, index) => <SelectItem key={index} value={String(index)}>{place}</SelectItem>)}</SelectContent></Select></div>
-            <button className="availability-submit btn-77" type="submit">{ft.browse}</button>
-          </form>
-          {dateError && <p id="date-error" className="availability-error" role="alert">{ft.dateError}</p>}
-          <p className="availability-note">{ft.dateNote}</p>
-        </section>
+        <AvailabilitySearch language={language} query={rentalQuery} count={matchingCars.length} onSearch={(query) => { setRentalQuery(query); setActiveFilter("All"); }} onReset={resetSearch} />
 
         <section className="statement section-pad" id="experience">
           <p className="eyebrow">{t.statementEyebrow}</p>
@@ -212,26 +191,10 @@ export function LuxurySite() {
             {filterValues.map((filter, index) => <button type="button" key={filter} className={activeFilter === filter ? "active" : ""} aria-pressed={activeFilter === filter} onClick={() => setActiveFilter(filter)}>{ft.filters[index]}</button>)}
           </div>
           <p className="fleet-count" aria-live="polite">{filteredCars.length} {ft.count}</p>
-          <p className="fleet-disclaimer">{ft.note}</p>
-          {enquiryDates && <p className="fleet-date-summary">{ft.dateSummary}: {new Intl.DateTimeFormat(language === "th" ? "th-TH" : language === "zh" ? "zh-CN" : "en-GB", { dateStyle: "medium" }).format(new Date(`${enquiryDates.pickup}T12:00:00`))} – {new Intl.DateTimeFormat(language === "th" ? "th-TH" : language === "zh" ? "zh-CN" : "en-GB", { dateStyle: "medium" }).format(new Date(`${enquiryDates.returnDate}T12:00:00`))} · {t.places[Number(enquiryDates.delivery)]}</p>}
+          <p className="fleet-disclaimer">{t.demo}</p>
+          {rentalQuery && <FleetResultNote query={rentalQuery} language={language} count={filteredCars.length} onReset={resetSearch} />}
           <div className="fleet-grid">
-            {filteredCars.map((car) => (
-              <article className="car-card" key={car.name}>
-                <div className="car-visual"><img src={car.image} alt={car.name} width={960} height={600} loading="lazy" decoding="async" /></div>
-                <div className="car-card-content">
-                  <div className="car-title-row"><div><small>{ft.filters[filterValues.indexOf(car.category as typeof filterValues[number])]}</small><h3>{car.name}</h3></div></div>
-                  <p>{ft.quote}</p>
-                  <Dialog><DialogTrigger asChild><button type="button" className="car-detail-button btn-77">{t.viewCar}</button></DialogTrigger><DialogContent className="car-dialog" showCloseButton={false}>
-                    <DialogClose className="dialog-close">{ft.close}</DialogClose>
-                    <img src={car.image} alt={car.name} width={960} height={600} />
-                    <DialogTitle>{car.name}</DialogTitle><DialogDescription>{ft.note}</DialogDescription>
-                    <p>{ft.quote}</p>
-                    <p className="photo-credit">{ft.credit}: <a href={car.source} target="_blank" rel="noreferrer">{car.author}</a> · <a href={car.licenseUrl} target="_blank" rel="noreferrer">{car.license}</a></p>
-                  </DialogContent></Dialog>
-                  <a className="photo-credit" href={car.source} target="_blank" rel="noreferrer">{ft.credit}: {car.author} · {car.license}</a>
-                </div>
-              </article>
-            ))}
+            {filteredCars.map((car) => <VehicleCard car={car} language={language} query={rentalQuery} key={car.slug} />)}
           </div>
         </section>
 

@@ -1,0 +1,493 @@
+[
+  {
+    "key": "group_aurelia_vehicle",
+    "title": "Aurelia · ข้อมูลรถ / Vehicle data",
+    "active": true,
+    "show_in_rest": 1,
+    "location": [
+      [
+        {
+          "param": "post_type",
+          "operator": "==",
+          "value": "cars"
+        }
+      ]
+    ],
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "fields": [
+      {
+        "key": "field_aurelia_identity_tab",
+        "label": "01 · ข้อมูลรุ่นรถ",
+        "name": "identity_tab",
+        "type": "tab",
+        "required": 0
+      },
+      {
+        "key": "field_aurelia_data_status",
+        "label": "สถานะการตรวจสอบข้อมูล",
+        "name": "data_status",
+        "type": "select",
+        "required": 0,
+        "choices": {
+          "demo": "ข้อมูลจำลอง — ห้ามใช้เป็นราคาหรือสเปกยืนยัน",
+          "verified": "ตรวจสอบข้อมูลรถจริงแล้ว"
+        },
+        "return_format": "value",
+        "allow_null": 0
+      },
+      {
+        "key": "field_aurelia_brand",
+        "label": "ยี่ห้อ",
+        "name": "brand",
+        "type": "text",
+        "required": 1
+      },
+      {
+        "key": "field_aurelia_model",
+        "label": "รุ่น",
+        "name": "model",
+        "type": "text",
+        "required": 1
+      },
+      {
+        "key": "field_aurelia_variant",
+        "label": "รุ่นย่อย",
+        "name": "variant",
+        "type": "text",
+        "required": 0
+      },
+      {
+        "key": "field_aurelia_model_year",
+        "label": "ปีรุ่น (ค.ศ.)",
+        "name": "model_year",
+        "type": "number",
+        "required": 0,
+        "min": 1900,
+        "step": 1,
+        "max": 2100,
+        "instructions": "เว้นว่างเมื่อยังไม่ทราบ ห้ามใช้ 0"
+      },
+      {
+        "key": "field_aurelia_category",
+        "label": "ประเภทรถ",
+        "name": "category",
+        "type": "select",
+        "required": 0,
+        "choices": {
+          "Sports": "สปอร์ต",
+          "Supercar": "ซูเปอร์คาร์",
+          "Ultra-Luxury": "อัลตร้าลักชัวรี",
+          "SUV": "SUV"
+        },
+        "return_format": "value",
+        "allow_null": 0
+      },
+      {
+        "key": "field_aurelia_fleet_status",
+        "label": "สถานะการให้บริการ (ไม่ใช่คิวจอง)",
+        "name": "fleet_status",
+        "type": "select",
+        "required": 0,
+        "choices": {
+          "active": "เปิดให้สอบถาม",
+          "maintenance": "ปิดซ่อมบำรุง",
+          "retired": "เลิกให้บริการ"
+        },
+        "return_format": "value",
+        "allow_null": 0
+      },
+      {
+        "key": "field_aurelia_service_modes",
+        "label": "รูปแบบบริการ",
+        "name": "service_modes",
+        "type": "checkbox",
+        "required": 1,
+        "choices": {
+          "self-drive": "ขับเอง",
+          "chauffeur": "พร้อมคนขับ",
+          "event": "งานอีเวนต์"
+        },
+        "return_format": "value"
+      },
+      {
+        "key": "field_aurelia_delivery_locations",
+        "label": "พื้นที่รับ–ส่ง",
+        "name": "delivery_locations",
+        "type": "checkbox",
+        "required": 1,
+        "choices": {
+          "bangkok": "กรุงเทพฯ",
+          "bkk": "สุวรรณภูมิ",
+          "dmk": "ดอนเมือง",
+          "hotel": "โรงแรมในกรุงเทพฯ"
+        },
+        "return_format": "value"
+      },
+      {
+        "key": "field_aurelia_specs_tab",
+        "label": "02 · สเปก",
+        "name": "specs_tab",
+        "type": "tab",
+        "required": 0
+      },
+      {
+        "key": "field_aurelia_seats",
+        "label": "จำนวนที่นั่ง",
+        "name": "seats",
+        "type": "number",
+        "required": 0,
+        "min": 1,
+        "step": 1,
+        "max": 30
+      },
+      {
+        "key": "field_aurelia_doors",
+        "label": "จำนวนประตู",
+        "name": "doors",
+        "type": "number",
+        "required": 0,
+        "min": 1,
+        "step": 1,
+        "max": 10
+      },
+      {
+        "key": "field_aurelia_transmission",
+        "label": "ระบบเกียร์",
+        "name": "transmission",
+        "type": "select",
+        "required": 0,
+        "choices": {
+          "automatic": "อัตโนมัติ",
+          "manual": "ธรรมดา"
+        },
+        "return_format": "value",
+        "allow_null": 0
+      },
+      {
+        "key": "field_aurelia_fuel",
+        "label": "พลังงาน",
+        "name": "fuel",
+        "type": "select",
+        "required": 0,
+        "choices": {
+          "petrol": "เบนซิน",
+          "plug-in-hybrid": "ปลั๊กอินไฮบริด",
+          "mild-hybrid": "ไมลด์ไฮบริด",
+          "electric": "ไฟฟ้า",
+          "unconfirmed": "รอยืนยัน"
+        },
+        "return_format": "value",
+        "allow_null": 0
+      },
+      {
+        "key": "field_aurelia_power_ps",
+        "label": "กำลังสูงสุด (PS)",
+        "name": "power_ps",
+        "type": "number",
+        "required": 0,
+        "min": 0,
+        "step": 1,
+        "instructions": "ใช้ PS ทุก record ไม่ใช่ hp; เว้นว่างเมื่อยังไม่ทราบ"
+      },
+      {
+        "key": "field_aurelia_acceleration_seconds",
+        "label": "0–100 กม./ชม. (วินาที)",
+        "name": "acceleration_seconds",
+        "type": "number",
+        "required": 0,
+        "min": 0,
+        "step": 0.1
+      },
+      {
+        "key": "field_aurelia_top_speed_kmh",
+        "label": "ความเร็วสูงสุด (กม./ชม.)",
+        "name": "top_speed_kmh",
+        "type": "number",
+        "required": 0,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "key": "field_aurelia_spec_source_url",
+        "label": "แหล่งยืนยันสเปก",
+        "name": "spec_source_url",
+        "type": "url",
+        "required": 0
+      },
+      {
+        "key": "field_aurelia_rental_tab",
+        "label": "03 · ค่าเช่าและเงื่อนไข",
+        "name": "rental_tab",
+        "type": "tab",
+        "required": 0
+      },
+      {
+        "key": "field_aurelia_daily_rate_thb",
+        "label": "ค่าเช่าขับเองต่อวัน (THB)",
+        "name": "daily_rate_thb",
+        "type": "number",
+        "required": 0,
+        "min": 0,
+        "step": 1,
+        "instructions": "ไม่ใช้ค่านี้คำนวณบริการพร้อมคนขับหรืออีเวนต์; ไม่ใช่ใบเสนอราคา"
+      },
+      {
+        "key": "field_aurelia_deposit_thb",
+        "label": "มัดจำ (THB)",
+        "name": "deposit_thb",
+        "type": "number",
+        "required": 0,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "key": "field_aurelia_minimum_days",
+        "label": "จำนวนวันเช่าขั้นต่ำ",
+        "name": "minimum_days",
+        "type": "number",
+        "required": 0,
+        "min": 1,
+        "step": 1,
+        "default_value": 1
+      },
+      {
+        "key": "field_aurelia_included_km_per_day",
+        "label": "ระยะทางรวมต่อวัน (กม.)",
+        "name": "included_km_per_day",
+        "type": "number",
+        "required": 0,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "key": "field_aurelia_extra_km_thb",
+        "label": "ระยะทางส่วนเกิน (THB/กม.)",
+        "name": "extra_km_thb",
+        "type": "number",
+        "required": 0,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "key": "field_aurelia_content_tab",
+        "label": "04 · เนื้อหา 3 ภาษา",
+        "name": "content_tab",
+        "type": "tab",
+        "required": 0
+      },
+      {
+        "key": "field_aurelia_summary_th",
+        "label": "คำอธิบายสั้น · ไทย",
+        "name": "summary_th",
+        "type": "textarea",
+        "required": 0,
+        "rows": 3,
+        "new_lines": ""
+      },
+      {
+        "key": "field_aurelia_features_th",
+        "label": "จุดเด่น · ไทย",
+        "name": "features_th",
+        "type": "textarea",
+        "required": 0,
+        "rows": 4,
+        "new_lines": "",
+        "instructions": "หนึ่งจุดเด่นต่อบรรทัด"
+      },
+      {
+        "key": "field_aurelia_rental_terms_th",
+        "label": "เงื่อนไขการเช่า · ไทย",
+        "name": "rental_terms_th",
+        "type": "textarea",
+        "required": 0,
+        "rows": 5,
+        "new_lines": ""
+      },
+      {
+        "key": "field_aurelia_summary_en",
+        "label": "คำอธิบายสั้น · English",
+        "name": "summary_en",
+        "type": "textarea",
+        "required": 0,
+        "rows": 3,
+        "new_lines": ""
+      },
+      {
+        "key": "field_aurelia_features_en",
+        "label": "จุดเด่น · English",
+        "name": "features_en",
+        "type": "textarea",
+        "required": 0,
+        "rows": 4,
+        "new_lines": "",
+        "instructions": "หนึ่งจุดเด่นต่อบรรทัด"
+      },
+      {
+        "key": "field_aurelia_rental_terms_en",
+        "label": "เงื่อนไขการเช่า · English",
+        "name": "rental_terms_en",
+        "type": "textarea",
+        "required": 0,
+        "rows": 5,
+        "new_lines": ""
+      },
+      {
+        "key": "field_aurelia_summary_zh",
+        "label": "คำอธิบายสั้น · 中文",
+        "name": "summary_zh",
+        "type": "textarea",
+        "required": 0,
+        "rows": 3,
+        "new_lines": ""
+      },
+      {
+        "key": "field_aurelia_features_zh",
+        "label": "จุดเด่น · 中文",
+        "name": "features_zh",
+        "type": "textarea",
+        "required": 0,
+        "rows": 4,
+        "new_lines": "",
+        "instructions": "หนึ่งจุดเด่นต่อบรรทัด"
+      },
+      {
+        "key": "field_aurelia_rental_terms_zh",
+        "label": "เงื่อนไขการเช่า · 中文",
+        "name": "rental_terms_zh",
+        "type": "textarea",
+        "required": 0,
+        "rows": 5,
+        "new_lines": ""
+      },
+      {
+        "key": "field_aurelia_media_tab",
+        "label": "05 · รูปภาพและเครดิต",
+        "name": "media_tab",
+        "type": "tab",
+        "required": 0
+      },
+      {
+        "key": "field_aurelia_cover_image",
+        "label": "รูปปกจาก Media Library",
+        "name": "cover_image",
+        "type": "image",
+        "required": 0,
+        "return_format": "id",
+        "preview_size": "medium",
+        "library": "all"
+      },
+      {
+        "key": "field_aurelia_gallery",
+        "label": "แกลเลอรี (ACF Pro)",
+        "name": "gallery",
+        "type": "gallery",
+        "required": 0,
+        "return_format": "id",
+        "preview_size": "medium",
+        "library": "all"
+      },
+      {
+        "key": "field_aurelia_fallback_image_path",
+        "label": "ไฟล์ภาพตัวอย่างบน Frontend",
+        "name": "fallback_image_path",
+        "type": "text",
+        "required": 0,
+        "instructions": "ใช้เฉพาะ demo เมื่อยังไม่มี cover_image เช่น /cars/ferrari-296-gtb.jpg; ไม่ใช่ WordPress attachment ID"
+      },
+      {
+        "key": "field_aurelia_photo_source_url",
+        "label": "หน้าต้นฉบับภาพ",
+        "name": "photo_source_url",
+        "type": "url",
+        "required": 0
+      },
+      {
+        "key": "field_aurelia_photo_author",
+        "label": "ผู้สร้างภาพ",
+        "name": "photo_author",
+        "type": "text",
+        "required": 0
+      },
+      {
+        "key": "field_aurelia_photo_license",
+        "label": "สัญญาอนุญาตภาพ",
+        "name": "photo_license",
+        "type": "text",
+        "required": 0
+      },
+      {
+        "key": "field_aurelia_photo_license_url",
+        "label": "URL สัญญาอนุญาต",
+        "name": "photo_license_url",
+        "type": "url",
+        "required": 0
+      },
+      {
+        "key": "field_aurelia_virtual_tour_url",
+        "label": "URL ภาพ/ทัวร์ 360°",
+        "name": "virtual_tour_url",
+        "type": "url",
+        "required": 0,
+        "instructions": "เว้นว่างหากยังไม่มีไฟล์; ไม่ได้เปิดใช้ตัว viewer ใน frontend รุ่นนี้"
+      },
+      {
+        "key": "field_aurelia_seo_tab",
+        "label": "06 · SEO",
+        "name": "seo_tab",
+        "type": "tab",
+        "required": 0
+      },
+      {
+        "key": "field_aurelia_seo_title_th",
+        "label": "SEO title · ไทย",
+        "name": "seo_title_th",
+        "type": "text",
+        "required": 0
+      },
+      {
+        "key": "field_aurelia_seo_description_th",
+        "label": "SEO description · ไทย",
+        "name": "seo_description_th",
+        "type": "textarea",
+        "required": 0,
+        "rows": 3,
+        "new_lines": ""
+      },
+      {
+        "key": "field_aurelia_seo_title_en",
+        "label": "SEO title · English",
+        "name": "seo_title_en",
+        "type": "text",
+        "required": 0
+      },
+      {
+        "key": "field_aurelia_seo_description_en",
+        "label": "SEO description · English",
+        "name": "seo_description_en",
+        "type": "textarea",
+        "required": 0,
+        "rows": 3,
+        "new_lines": ""
+      },
+      {
+        "key": "field_aurelia_seo_title_zh",
+        "label": "SEO title · 中文",
+        "name": "seo_title_zh",
+        "type": "text",
+        "required": 0
+      },
+      {
+        "key": "field_aurelia_seo_description_zh",
+        "label": "SEO description · 中文",
+        "name": "seo_description_zh",
+        "type": "textarea",
+        "required": 0,
+        "rows": 3,
+        "new_lines": ""
+      }
+    ]
+  }
+]

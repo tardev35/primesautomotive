@@ -1,0 +1,63 @@
+AURELIA — HEADLESS WORDPRESS HANDOFF
+
+สถานะ: เตรียมฟิลด์และข้อมูลตัวอย่างแล้ว ยังไม่เชื่อม WordPress จริง
+เว็บไซต์ปัจจุบันอ่านไฟล์ data/vehicle-details.json ร่วมกับ data/cars.json
+ข้อมูลสเปก ราคา มัดจำ เงื่อนไข และคิวจองทั้งหมดเป็นตัวอย่างที่ต้องตรวจสอบก่อนใช้จริง
+
+1. เตรียม cms.โดเมนของคุณ และ HTTPS แล้วติดตั้ง WordPress + ACF Pro
+   Pro ใช้สำหรับฟิลด์ Gallery เท่านั้น ฟิลด์ทั่วไปใช้ ACF ได้
+2. ติดตั้งไฟล์ aurelia-cars.php ในโฟลเดอร์ wp-content/plugins/aurelia-cars/
+   แล้วเปิดใช้งานปลั๊กอินจากหลังบ้าน ไม่ต้องสร้าง post type cars ซ้ำใน CPT UI
+3. ใน ACF > Tools > Import Field Groups เลือก acf-vehicle-fields.json
+   field group เปิด show_in_rest แล้ว และผูกกับ post type cars
+4. car-seed.json เป็นชุด payload ตัวอย่าง 8 รายการ ไม่ใช่ไฟล์ Import Field Groups
+   ใช้เป็นแบบกรอกข้อมูลหรือส่ง records แต่ละรายการไป REST ด้วยเครื่องมือฝั่ง server
+   status เป็น draft ทุก record เพื่อไม่เผลอเผยแพร่สเปกหรือราคาตัวอย่าง
+   ยังไม่มีการส่ง API หรือนำเข้าข้อมูลไปยังบัญชีใด
+5. อัปโหลดรูปของร้านใน Media Library แล้วเลือก cover_image และ gallery
+   cover_image เป็น attachment ID; gallery เป็นรายการ attachment ID
+   fallback_image_path อ้างถึงภาพ demo ในเว็บไซต์ปัจจุบัน ไม่ใช่ URL ของ WordPress
+   เครดิตภาพ demo ยังอยู่ในรายละเอียดรถ ต้องรักษา attribution ตามสัญญาอนุญาต
+6. ตรวจสอบรุ่นปี รุ่นย่อย เกียร์ จำนวนที่นั่ง สเปก (หน่วย PS ไม่ใช่ hp) และราคา
+   ค่าที่ยังไม่ทราบใช้ null/ช่องว่าง ไม่ใช่ 0
+   ตรวจเงื่อนไขประกันภัย ภาษี ค่าส่ง มัดจำ และการใช้รถก่อนเปลี่ยน data_status เป็น verified
+7. เมื่อติดตั้งพร้อมแล้ว แจ้งเฉพาะ URL CMS เพื่อทำ adapter ฝั่ง server ในขั้นถัดไป
+   ห้ามใส่ admin password / Application Password ลง frontend, Git หรือแชต
+   สิทธิ์เขียนควรจำกัดและใช้ secret ฝั่ง server; ไม่ส่ง credential ไป browser
+
+REST CONTRACT
+GET /wp-json/wp/v2/cars
+WordPress core: id, slug, title.rendered
+ACF: brand, model, variant, category, specs, rental fields, localized content, media, SEO
+ชื่อฟิลด์จริงทั้งหมดอยู่ใน acf-vehicle-fields.json และตรงกับ car-seed.json
+draft ต้องผ่าน authentication จึงอ่านได้; หลัง publish ทดสอบสิทธิ์การอ่านอีกครั้ง
+การเปิด show_in_rest ไม่ใช่การป้องกันข้อมูลลับ ห้ามเก็บข้อมูลลูกค้าในกลุ่มฟิลด์สาธารณะนี้
+ฟิลด์ SEO/แกลเลอรี/360 เตรียมไว้แล้ว แต่ยังไม่ได้ต่อเข้าหน้ารายละเอียดแบบ URL แยก
+
+แยก 3 ส่วนในการทำระบบจริง
+- รุ่นรถ / catalogue: ข้อมูลนำเสนอ ราคาเริ่มต้น รูป สเปก และเงื่อนไข (ฟิลด์ชุดนี้)
+- รถจริง / units: รหัสรถภายใน สถานะพร้อมใช้งาน เลขทะเบียน เก็บข้อมูลส่วนตัวในระบบที่มีสิทธิ์เหมาะสม
+- คิวจอง / reservations: unit_id, pickup_at, return_at, status, hold_expires_at
+  คิวจองและข้อมูลลูกค้าไม่ควรเปิดออกใน public ACF REST
+  ต้องตรวจ overlap และล็อกคิวแบบ atomic ฝั่ง server ก่อนยืนยัน ไม่เช็คแล้วเขียนแยกใน browser
+
+DEMO SEARCH
+- ใช้เวลา Asia/Bangkok (+07:00) และช่วง [วันรับ, วันคืน)
+- ระยะเวลาเช่าปัดขึ้นทุก 24 ชั่วโมง
+- ตรวจชนิดบริการ สถานที่ ประเภทรถ จำนวนวันขั้นต่ำ และสถานะ maintenance
+- คิวจำลองเก็บแยกใน data/demo-bookings.json ไม่มีข้อมูลลูกค้า
+- Ferrari ไม่ว่าง 12 ต.ค. 2026 10:00 ถึง 15 ต.ค. 2026 10:00
+- BMW X7 ไม่ว่าง 14 ต.ค. 2026 10:00 ถึง 17 ต.ค. 2026 10:00
+- Porsche ไม่ว่าง 20 ต.ค. 2026 10:00 ถึง 23 ต.ค. 2026 10:00
+- Audi ใช้สาธิตสถานะ maintenance, McLaren ใช้สาธิตขั้นต่ำ 2 วัน
+- ราคารวมคำนวณเฉพาะขับเอง ไม่รวมมัดจำ ค่าส่ง หรือค่าเพิ่มเติม
+- พร้อมคนขับและอีเวนต์เป็นสอบถามราคา ไม่เอาราคาขับเองไปใช้แทน
+- การค้นหาไม่จอง ไม่ชำระเงิน และไม่บันทึกข้อมูลผู้ใช้
+
+ตรวจแก้ schema/data แล้วสร้างไฟล์นำเข้าใหม่: node cms/build-cms-files.mjs
+ไฟล์ PHP และการ Import ACF ยังไม่ได้ทดสอบบน WordPress จริง เพราะยังไม่มี instance
+
+เอกสารอ้างอิงทางการ
+https://www.advancedcustomfields.com/resources/wp-rest-api-integration/
+https://www.advancedcustomfields.com/resources/register-fields-via-php/
+https://developer.wordpress.org/reference/functions/register_post_type/
