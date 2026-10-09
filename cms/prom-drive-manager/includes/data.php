@@ -1,11 +1,25 @@
 <?php
 if (!defined('ABSPATH')) { exit; }
 
-function pdm_schema($type) {
-    static $schema;
-    if ($schema === null) { $schema = json_decode(file_get_contents(PDM_DIR.'schema.json'), true); }
-    return isset($schema[$type]) ? $schema[$type] : array();
+if (!defined('PDM_LANGS')) define('PDM_LANGS', array('th','en','zh'));
+if (!defined('PDM_PAGE_KEYS')) define('PDM_PAGE_KEYS', array('home','about','contact'));
+
+// Built-in fields shipped in schema.json.
+function pdm_base_schema($type) {
+    if (!isset($GLOBALS['pdm_base_schema'])) { $GLOBALS['pdm_base_schema'] = json_decode(file_get_contents(PDM_DIR.'schema.json'), true); }
+    return isset($GLOBALS['pdm_base_schema'][$type]) ? $GLOBALS['pdm_base_schema'][$type] : array();
 }
+
+// Built-in fields plus user-defined ones (includes/custom-fields.php), cached per request.
+function pdm_schema($type) {
+    if (!isset($GLOBALS['pdm_schema_cache'][$type])) {
+        $custom = function_exists('pdm_custom_schema') ? pdm_custom_schema($type) : array();
+        $GLOBALS['pdm_schema_cache'][$type] = array_merge(pdm_base_schema($type), $custom);
+    }
+    return $GLOBALS['pdm_schema_cache'][$type];
+}
+
+function pdm_schema_reset() { unset($GLOBALS['pdm_schema_cache']); }
 
 function pdm_read_field($id,$field,$prefix='') {
     $key=$prefix.$field['name'];

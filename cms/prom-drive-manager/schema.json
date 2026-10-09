@@ -235,6 +235,7 @@
       "type": "textarea",
       "required": 0,
       "rows": 4,
+      "list": true,
       "instructions": "หนึ่งจุดเด่นต่อบรรทัด"
     },
     {
@@ -257,6 +258,7 @@
       "type": "textarea",
       "required": 0,
       "rows": 4,
+      "list": true,
       "instructions": "หนึ่งจุดเด่นต่อบรรทัด"
     },
     {
@@ -279,6 +281,7 @@
       "type": "textarea",
       "required": 0,
       "rows": 4,
+      "list": true,
       "instructions": "หนึ่งจุดเด่นต่อบรรทัด"
     },
     {
@@ -567,6 +570,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -575,6 +579,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 4,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -583,6 +588,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 4,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -591,6 +597,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 5,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -599,6 +606,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -607,6 +615,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -655,6 +664,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -663,6 +673,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 4,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -671,6 +682,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 4,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -679,6 +691,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 5,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -687,6 +700,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -695,6 +709,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -743,6 +758,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -751,6 +767,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 4,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -759,6 +776,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 4,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -767,6 +785,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 5,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -775,6 +794,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -783,6 +803,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -829,6 +850,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 4,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 4 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 4 items."
             },
             {
@@ -853,6 +875,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 2,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
             },
             {
@@ -885,6 +908,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -941,6 +965,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 2,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -949,6 +974,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 4,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -973,6 +999,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 2,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
             },
             {
@@ -989,6 +1016,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -1021,6 +1049,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 4,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -1053,6 +1082,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -1085,6 +1115,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -1093,6 +1124,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -1109,6 +1141,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 2,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
             },
             {
@@ -1149,6 +1182,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 4,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 4 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 4 items."
             },
             {
@@ -1173,6 +1207,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 2,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
             },
             {
@@ -1205,6 +1240,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -1261,6 +1297,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 2,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -1269,6 +1306,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 4,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -1293,6 +1331,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 2,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
             },
             {
@@ -1309,6 +1348,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -1341,6 +1381,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 4,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -1373,6 +1414,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 2,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -1405,6 +1447,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -1413,6 +1456,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -1429,6 +1473,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 2,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
             },
             {
@@ -1469,6 +1514,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 4,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 4 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 4 items."
             },
             {
@@ -1493,6 +1539,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 2,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
             },
             {
@@ -1525,6 +1572,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -1581,6 +1629,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 2,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -1589,6 +1638,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 4,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -1613,6 +1663,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 2,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
             },
             {
@@ -1629,6 +1680,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -1661,6 +1713,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 4,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -1693,6 +1746,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -1725,6 +1779,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -1733,6 +1788,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -1749,6 +1805,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 2,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
             },
             {
@@ -1813,6 +1870,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 2,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
             },
             {
@@ -1853,6 +1911,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -1861,6 +1920,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -1877,6 +1937,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 4,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -1941,6 +2002,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 2,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
             },
             {
@@ -1981,6 +2043,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -1989,6 +2052,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -2005,6 +2069,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 4,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -2069,6 +2134,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 2,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
             },
             {
@@ -2109,6 +2175,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -2117,6 +2184,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 3,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
             },
             {
@@ -2133,6 +2201,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 4,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -2205,6 +2274,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 2,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
             },
             {
@@ -2285,6 +2355,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 4,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -2333,6 +2404,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 2,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
             },
             {
@@ -2413,6 +2485,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 4,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {
@@ -2461,6 +2534,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 2,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
             },
             {
@@ -2541,6 +2615,7 @@
               "type": "textarea",
               "required": 0,
               "rows": 4,
+              "list": true,
               "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
             },
             {

@@ -1,4 +1,4 @@
-PROM DRIVE Manager 2.0.0
+PROM DRIVE Manager 2.2.0
 WordPress 6.0+ / PHP 7.4+ / HTTPS recommended
 
 ติดตั้งปลั๊กอินเดียว ไม่ต้องใช้ ACF / ACF Pro / CPT UI
@@ -36,19 +36,67 @@ PROM DRIVE · เนื้อหา 3 ภาษา (post type: prom_drive_page)
   รายการที่ระบุจำนวนตายตัวต้องรักษาจำนวนบรรทัดเพื่อให้ตรงดีไซน์
   ตั้ง Slug ได้ใน Screen Options > Slug ของตัวแก้ไข WordPress
 
+ฟิลด์เพิ่มเติม (สร้างเองได้ ไม่ต้องแก้ปลั๊กอิน)
+==========================================
+เมนู PROM DRIVE · ข้อมูลเว็บไซต์ > ฟิลด์เพิ่มเติม (สิทธิ์ manage_options)
+เลือกว่าใช้กับ รถยนต์ / ข้อมูลเว็บไซต์ / เนื้อหา 3 ภาษา แล้วกำหนด:
+  ป้ายชื่อ, name (a-z 0-9 _ เปลี่ยนไม่ได้หลังบันทึก), ชนิด
+  ชนิดที่รองรับ: ข้อความสั้น, ข้อความยาว, ตัวเลข (min/max/step), select, checkbox,
+  เปิด/ปิด, ลิงก์ HTTPS, อีเมล, รูปภาพ, แกลเลอรี
+  หลายภาษา: สร้าง name_th / name_en / name_zh ให้อัตโนมัติ และยุบด้วย ?lang= เหมือนฟิลด์เดิม
+  รายการ: หนึ่งรายการต่อบรรทัด API คืนเป็น array
+  เฉพาะหน้า (เนื้อหา 3 ภาษา): เลือก home/about/contact หรือเว้นว่าง = ทุกหน้า
+ฟิลด์ใหม่โผล่ในหน้าแก้ไข ผ่าน validation เดียวกัน และออกทาง API ทันที:
+  รถ: key ระดับบนของแต่ละคัน · ข้อมูลเว็บไซต์: key ใน settings · หน้า: key ใน content ของหน้านั้น
+  ใน /wp/v2 อยู่ใน object acf เหมือนฟิลด์เดิม
+ชื่อที่ใช้ไม่ได้: ซ้ำกับฟิลด์เดิม (รวมฟิลด์ใน group), ลงท้าย _th/_en/_zh,
+  และคำสงวนของ API เช่น id slug name lang media updated_at
+นิยามเก็บใน option pdm_custom_fields (ไม่อยู่ใน schema.json) ส่งออก/นำเข้าเป็น JSON ได้
+  จากหน้าเดียวกัน ใช้ย้าย staging → production; นำเข้าแบบ upsert ไม่ลบของเดิม
+ลบนิยามไม่ลบค่าที่เคยกรอก; ถ้าเพิ่มชื่อเดิมกลับมา ค่าจะกลับมาด้วย
+ฝั่งเว็บ Next.js และแอปจะเห็น key ใหม่ใน JSON ทันที แต่ต้องเขียนโค้ดแสดงผลเอง
+
 API (อ่านอย่างเดียว ไม่ต้องมี API key สำหรับข้อมูลที่ Publish)
 ============================================================
+สองชุด ใช้คนละงาน:
+
+1) WordPress core — รูปแบบดิบ สำหรับเว็บ Next.js ตัวปัจจุบัน (ทุกภาษาใน record เดียว)
 GET /wp-json/wp/v2/prom-drive-settings?slug=global&status=publish
 GET /wp-json/wp/v2/prom-drive-pages?slug=home,about,contact&status=publish
 GET /wp-json/wp/v2/cars
-GET /wp-json/prom-drive/v1/vehicles?location=bangkok&category=Supercar&service=self-drive&page=1&per_page=12
+   ฟิลด์อยู่ใน object ชื่อ acf (ชื่อเดิมเพื่อเข้ากับ frontend ไม่ต้องติดตั้ง ACF)
+   2.1: cars มี object media เพิ่ม (cover/gallery เป็น URL พร้อมขนาด) อ่านรายละเอียดด้านล่าง
+   core /wp/v2/cars เป็นรายการเนื้อหา ไม่ใช่ผลยืนยันรถว่าง และอาจมี demo ที่ผู้ดูแล Publish
+
+2) prom-drive/v1 — API สำหรับแอปและเว็บ รองรับ ?lang= และคืนรูปเป็น URL (รายละเอียดใน API.md)
+GET /wp-json/prom-drive/v1/vehicles?location=bangkok&category=Supercar&service=self-drive&page=1&per_page=12&lang=th
+GET /wp-json/prom-drive/v1/vehicles/{slug}?lang=th
+GET /wp-json/prom-drive/v1/pages/{home|about|contact}?lang=th
+GET /wp-json/prom-drive/v1/settings?lang=th
+GET /wp-json/prom-drive/v1/content?lang=th      (settings + 3 หน้า ในคำขอเดียว สำหรับเปิดแอป)
+
+?lang=th|en|zh
+   ไม่ส่ง = ได้ทุกภาษา (summary_th/summary_en/summary_zh และ group th/en/zh)
+   ส่ง   = ฟิลด์ *_th/_en/_zh ยุบเหลือชื่อเดียว (summary, features, rental_terms,
+           seo_title, seo_description) และ group th/en/zh ยุบเหลือภาษานั้น
+   ค่าอื่นนอกจาก th/en/zh ถูกปฏิเสธโดย REST schema (400)
+ฟิลด์ที่กรอก "หนึ่งรายการต่อบรรทัด" (features, nav, heroTitle, footerHeads ฯลฯ)
+   คืนเป็น array เสมอใน v1 (บรรทัดว่างถูกตัดทิ้ง); ใน /wp/v2 ยังเป็นข้อความคั่นด้วย \n
+media (ทั้งใน v1 และ /wp/v2/cars)
+   cover: {id,url,width,height,alt,caption,mime,sizes:{thumbnail,medium,large,full:{url,width,height}}} หรือ null
+   gallery: array ของรูปรูปแบบเดียวกัน (ข้ามรูปที่ถูกลบจาก Media Library)
+   fallback_image_path, credit:{source_url,author,license,license_url}, virtual_tour_url
+   ใน v1 ฟิลด์รูป/เครดิตย้ายมาอยู่ใต้ media ที่เดียว (ไม่มี cover_image / photo_* ระดับบน)
+ทุก record ใน v1 มี updated_at (ISO 8601 UTC) และ header Cache-Control: public, max-age=60
 
 สามตัวกรองทำงานร่วมกันแบบ AND; per_page 1–100
 category: All / Sports / Supercar / Ultra-Luxury / SUV
-ผลค้นหาพิเศษคืนเฉพาะ Publish, ไม่มีรหัสผ่าน, active และ verified
-core /wp/v2/cars เป็นรายการเนื้อหา ไม่ใช่ผลยืนยันรถว่าง และอาจมี demo ที่ผู้ดูแล Publish
-ข้อมูล field ยังคงอยู่ใน object ชื่อ acf เพื่อเข้ากับ frontend เดิม แต่ไม่ต้องติดตั้ง ACF
+ผลค้นหา v1 คืนเฉพาะ Publish, ไม่มีรหัสผ่าน, active และ verified
+/vehicles/{slug} คืนเฉพาะ Publish + verified (ทุก fleet_status) ไม่พบหรือเป็น demo = 404
 การเขียนฟิลด์ทำผ่าน WordPress Admin เท่านั้น ไม่เปิด unauthenticated write API
+
+เปลี่ยนจาก 2.0: รายการใน /prom-drive/v1/vehicles ไม่มี key acf และ cover_image_url แล้ว
+   ฟิลด์ทั้งหมดอยู่ระดับบนของแต่ละ item และรูปอยู่ใน media
 
 สำคัญ: API นี้ยังไม่ใช่ระบบคิวจอง
 availability_confirmed = false และ availability_source = not_connected
@@ -86,6 +134,7 @@ Deactivate/Delete ปลั๊กอินไม่ลบโพสต์แล�
 ผลตรวจชุดส่งมอบ
 ===============
 PHP syntax ผ่าน; offline tests ผ่าน 60 ชุดตัวกรอง, draft/demo/password exclusion,
-pagination, date rejection, seed 12 รายการ, legacy group, validation และสิทธิ์/nonce
+pagination, date rejection, seed 12 รายการ, legacy group, validation, สิทธิ์/nonce,
+media URL, ?lang= และ v1 routes (2.1), ฟิลด์เพิ่มเติม 30 กรณี (2.2)
 ยังไม่ได้ทดสอบติดตั้งกับ WordPress จริงของคุณ: ทดสอบบน staging ก่อนขึ้นระบบจริง
 ทดสอบ upload logo/gallery, บันทึก/โหลดซ้ำทุกภาษา, Draft/Publish, API และสิทธิ์ผู้ใช้

@@ -35,7 +35,7 @@ const group = {
     tab("content_tab", "04 · เนื้อหา 3 ภาษา"),
     ...Object.entries(languages).flatMap(([code, label]) => [
       field(`summary_${code}`, `คำอธิบายสั้น · ${label}`, "textarea", { rows: 3, new_lines: "" }),
-      field(`features_${code}`, `จุดเด่น · ${label}`, "textarea", { rows: 4, new_lines: "", instructions: "หนึ่งจุดเด่นต่อบรรทัด" }),
+      field(`features_${code}`, `จุดเด่น · ${label}`, "textarea", { rows: 4, new_lines: "", list: true, instructions: "หนึ่งจุดเด่นต่อบรรทัด" }),
       field(`rental_terms_${code}`, `เงื่อนไขการเช่า · ${label}`, "textarea", { rows: 5, new_lines: "" }),
     ]),
     tab("media_tab", "05 · รูปภาพและเครดิต"),

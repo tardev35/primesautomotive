@@ -21,6 +21,7 @@ function current_user_can($cap,$id=null){return $GLOBALS['can_edit']??false;}
 function get_current_user_id(){return 1;}
 function set_transient($key,$value,$time){$GLOBALS['notices'][$key]=$value;}
 function get_post($id){return $GLOBALS['posts'][$id]??null;}
+require PDM_DIR.'includes/custom-fields.php';
 require PDM_DIR.'includes/admin.php';
 $seed=json_decode(file_get_contents(PDM_DIR.'seed.json'),true);
 check(count($seed)===12,'12 draft records');
@@ -66,4 +67,55 @@ unset($_POST['pdm_fields']['logo_url']);unset($_POST['pdm_complete']);
 pdm_save_post(100,$post,true);check(pdm_read(100,'prom_drive_setting')['brand_name']==='PROM DRIVE','Truncated form keeps old fields');
 $_POST['pdm_complete']='1';pdm_save_post(100,$post,true);
 check(pdm_read(100,'prom_drive_setting')['brand_name']==='NEW','Authorized valid save');
-echo "PASS: 12 seed round trips, field validation, legacy ACF reads, nested allowlist, protected content, nonce/capability and atomic metadata validation (offline stubs).\n";
+// 2.1: demo vehicles are editor-only on the slug endpoint too.
+$GLOBALS['can_edit']=false;
+$GLOBALS['records'][500]=array('post_type'=>'cars','slug'=>'demo-car','title'=>'Demo','status'=>'publish','acf'=>array('data_status'=>'demo','brand'=>'X','model'=>'Y'));
+check(pdm_get_vehicle(new Request(array('slug'=>'demo-car')))instanceof WP_Error,'Demo vehicle hidden by slug');
+$GLOBALS['can_edit']=true;
+check(pdm_get_vehicle(new Request(array('slug'=>'demo-car')))instanceof WP_REST_Response,'Editors can preview demo vehicle');
+// 2.2: user-defined fields behave like built-in ones everywhere.
+$GLOBALS['options']=array(); pdm_schema_reset();
+check(is_wp_error(pdm_custom_save_definition('cars',array('name'=>'brand','label'=>'x','type'=>'text'))),'Custom name must not shadow built-in');
+check(is_wp_error(pdm_custom_save_definition('prom_drive_setting',array('name'=>'address','label'=>'x','type'=>'text'))),'Nested built-in names are protected');
+check(is_wp_error(pdm_custom_save_definition('cars',array('name'=>'media','label'=>'x','type'=>'text'))),'Reserved API key rejected');
+check(is_wp_error(pdm_custom_save_definition('cars',array('name'=>'Bad Name','label'=>'x','type'=>'text'))),'Name format enforced');
+check(is_wp_error(pdm_custom_save_definition('cars',array('name'=>'tagline_th','label'=>'x','type'=>'text'))),'Language suffix reserved');
+check(is_wp_error(pdm_custom_save_definition('cars',array('name'=>'colors','label'=>'สี','type'=>'checkbox','choices'=>"แดง\nดำ"))),'Thai-only choices need an ASCII key');
+check(!is_wp_error(pdm_custom_save_definition('cars',array('name'=>'tagline','label'=>'Tagline','type'=>'text','i18n'=>'1'))),'Save multilingual text');
+check(is_wp_error(pdm_custom_save_definition('cars',array('name'=>'tagline','label'=>'dup','type'=>'text'))),'Duplicate custom name rejected');
+check(!is_wp_error(pdm_custom_save_definition('cars',array('name'=>'tagline','label'=>'Tagline 2','type'=>'text','i18n'=>'1'),'tagline')),'Edit keeps the name');
+$saved=pdm_custom_save_definition('cars',array('name'=>'colors','label'=>'สี','type'=>'checkbox','choices'=>"red|แดง\nblack | ดำ",'required'=>'1'));
+check(!is_wp_error($saved)&&$saved['choices']===array('red'=>'แดง','black'=>'ดำ'),'Checkbox choices parsed');
+check(!is_wp_error(pdm_custom_save_definition('cars',array('name'=>'wheel_inch','label'=>'ล้อ','type'=>'number','min'=>'15','max'=>'24','default_value'=>'20'))),'Number with range');
+check(is_wp_error(pdm_custom_save_definition('cars',array('name'=>'bad_range','label'=>'x','type'=>'number','min'=>'5','max'=>'1'))),'min > max rejected');
+$names=array_column(pdm_schema('cars'),'name');
+check(in_array('tagline_th',$names,true)&&in_array('tagline_zh',$names,true)&&in_array('colors',$names,true)&&$names[count($names)-1]==='wheel_inch','Custom fields merged after built-ins');
+check(pdm_schema('cars')[array_search('tagline_th',$names,true)]['label']==='Tagline 2 · ไทย','Language labels');
+check(is_wp_error(pdm_validate('cars',array('colors'=>array('blue')))),'Custom choices enforced on save');
+check(is_wp_error(pdm_validate('cars',array('wheel_inch'=>30))),'Custom number range enforced');
+check(pdm_validate('cars',array('tagline_en'=>'<b>Fast</b>','colors'=>array('red')))===array('tagline_en'=>'Fast','colors'=>array('red')),'Custom values sanitized');
+$GLOBALS['records'][600]=array('post_type'=>'cars','slug'=>'custom-car','title'=>'Custom','status'=>'publish','acf'=>array('data_status'=>'verified','brand'=>'A','model'=>'B','tagline_th'=>'เร็ว','tagline_en'=>'Fast','colors'=>array('red')));
+$item=pdm_vehicle_item((object)array('ID'=>600,'post_name'=>'custom-car','post_title'=>'Custom'),'th');
+check($item['tagline']==='เร็ว'&&!isset($item['tagline_en'])&&$item['colors']===array('red')&&$item['wheel_inch']===20,'Custom fields localized in v1 with defaults');
+$item=pdm_vehicle_item((object)array('ID'=>600,'post_name'=>'custom-car','post_title'=>'Custom'));
+check($item['tagline_en']==='Fast'&&$item['tagline_zh']==='','Custom fields in all-language output');
+check(pdm_rest_fields(array('id'=>100))['brand_name']==='NEW'&&!isset(pdm_rest_fields(array('id'=>100))['tagline_th']),'Custom car fields do not leak into settings');
+check(!is_wp_error(pdm_custom_save_definition('prom_drive_page',array('name'=>'promo_banner','label'=>'Promo','type'=>'textarea','i18n'=>'1','list'=>'1','page_keys'=>array('home','bogus')))),'Page-scoped multilingual list');
+check(!is_wp_error(pdm_custom_save_definition('prom_drive_page',array('name'=>'show_badge','label'=>'Badge','type'=>'true_false'))),'Unscoped page toggle');
+$GLOBALS['records'][201]['acf']['promo_banner_th']="ลด 10%\n\nฟรีส่ง";
+$GLOBALS['records'][201]['acf']['show_badge']='1';
+$GLOBALS['records'][202]['acf']['show_badge']='';
+$home=pdm_page_content('home','th');
+check($home['content']['promo_banner']===array('ลด 10%','ฟรีส่ง')&&$home['content']['show_badge']===true&&isset($home['content']['heroTitle']),'Custom page fields merged into content');
+$about=pdm_page_content('about','th');
+check(!isset($about['content']['promo_banner'])&&$about['content']['show_badge']===false,'Scoped field stays on its page');
+check(count(pdm_page_content('home')['content']['th'])===39&&is_array(pdm_page_content('home')['content']['promo_banner_th']),'All-language page output keeps groups intact');
+check(pdm_custom_move('cars','wheel_inch','up')&&array_column(pdm_schema('cars'),'name')[count(pdm_schema('cars'))-1]==='colors','Reorder');
+check(pdm_custom_delete('cars','colors')&&!in_array('colors',array_column(pdm_schema('cars'),'name'),true)&&!pdm_custom_delete('cars','colors'),'Delete definition');
+$json=pdm_custom_export(); $GLOBALS['options']=array(); pdm_schema_reset();
+check(!in_array('tagline_th',array_column(pdm_schema('cars'),'name'),true),'Cache reset after clearing');
+$imported=pdm_custom_import($json);
+check($imported===4&&in_array('tagline_th',array_column(pdm_schema('cars'),'name'),true)&&pdm_page_content('home','th')['content']['promo_banner']===array('ลด 10%','ฟรีส่ง'),'Export/import round trip');
+check(pdm_custom_import($json)===4,'Re-import upserts without duplicates');
+check(is_wp_error(pdm_custom_import('{bad'))&&is_wp_error(pdm_custom_import('{"fields":{"cars":[{"name":"media","label":"x","type":"text"}]}}')),'Import validates every definition');
+echo "PASS: 12 seed round trips, field validation, legacy ACF reads, nested allowlist, protected content, nonce/capability, atomic metadata validation and user-defined fields (offline stubs).\n";

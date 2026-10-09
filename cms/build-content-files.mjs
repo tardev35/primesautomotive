@@ -16,7 +16,7 @@ const label = name => labels[name] || locales[name] || name.replace(/([a-z])([A-
 function field(name,value,path) {
   const key = `field_pd_${path}_${name}`;
   const common = { key, name, label: label(name), required: 0 };
-  if (Array.isArray(value)) return { ...common, type: "textarea", rows: Math.max(2,Math.min(value.length,6)), new_lines: "", instructions: `หนึ่งรายการต่อบรรทัด / One item per line. ${contract.fixedLists.includes(name) ? `ต้องมี ${value.length} รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep ${value.length} items.` : "เพิ่มหรือลบรายการได้ / Add or remove lines."}` };
+  if (Array.isArray(value)) return { ...common, type: "textarea", list: true, rows: Math.max(2,Math.min(value.length,6)), new_lines: "", instructions: `หนึ่งรายการต่อบรรทัด / One item per line. ${contract.fixedLists.includes(name) ? `ต้องมี ${value.length} รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep ${value.length} items.` : "เพิ่มหรือลบรายการได้ / Add or remove lines."}` };
   if (typeof value === "boolean") return { ...common, type: "true_false", ui: 1, default_value: 1 };
   if (value && typeof value === "object") return { ...common, type: "group", layout: "block", sub_fields: Object.entries(value).map(([n,v]) => field(n,v,`${path}_${name}`)) };
   const isLink = path.endsWith("_social") || name === "maps_url";

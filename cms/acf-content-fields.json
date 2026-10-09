@@ -231,6 +231,7 @@
                 "label": "หัวคอลัมน์ Footer",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -241,6 +242,7 @@
                 "label": "รายการคอลเลกชัน Footer",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 4,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -251,6 +253,7 @@
                 "label": "รายการบริการ Footer",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 4,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -261,6 +264,7 @@
                 "label": "พื้นที่บริการ Footer",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 5,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -271,6 +275,7 @@
                 "label": "ป้ายช่องทางติดต่อ (สำรอง)",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -281,6 +286,7 @@
                 "label": "ป้ายลิงก์นโยบาย Footer",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -341,6 +347,7 @@
                 "label": "หัวคอลัมน์ Footer",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -351,6 +358,7 @@
                 "label": "รายการคอลเลกชัน Footer",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 4,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -361,6 +369,7 @@
                 "label": "รายการบริการ Footer",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 4,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -371,6 +380,7 @@
                 "label": "พื้นที่บริการ Footer",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 5,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -381,6 +391,7 @@
                 "label": "ป้ายช่องทางติดต่อ (สำรอง)",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -391,6 +402,7 @@
                 "label": "ป้ายลิงก์นโยบาย Footer",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -451,6 +463,7 @@
                 "label": "หัวคอลัมน์ Footer",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -461,6 +474,7 @@
                 "label": "รายการคอลเลกชัน Footer",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 4,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -471,6 +485,7 @@
                 "label": "รายการบริการ Footer",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 4,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -481,6 +496,7 @@
                 "label": "พื้นที่บริการ Footer",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 5,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -491,6 +507,7 @@
                 "label": "ป้ายช่องทางติดต่อ (สำรอง)",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -501,6 +518,7 @@
                 "label": "ป้ายลิงก์นโยบาย Footer",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -574,6 +592,7 @@
                 "label": "nav",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 4,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 4 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 4 items."
@@ -604,6 +623,7 @@
                 "label": "หัวเรื่อง Hero (2 บรรทัด)",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 2,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
@@ -644,6 +664,7 @@
                 "label": "meta",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -714,6 +735,7 @@
                 "label": "dates",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 2,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -724,6 +746,7 @@
                 "label": "places",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 4,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -754,6 +777,7 @@
                 "label": "statement Title",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 2,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
@@ -774,6 +798,7 @@
                 "label": "stats",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -814,6 +839,7 @@
                 "label": "filters",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 4,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -854,6 +880,7 @@
                 "label": "car Notes",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -894,6 +921,7 @@
                 "label": "process Heads",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -904,6 +932,7 @@
                 "label": "process Notes",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -924,6 +953,7 @@
                 "label": "หัวเรื่อง Contact us",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 2,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
@@ -974,6 +1004,7 @@
                 "label": "nav",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 4,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 4 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 4 items."
@@ -1004,6 +1035,7 @@
                 "label": "หัวเรื่อง Hero (2 บรรทัด)",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 2,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
@@ -1044,6 +1076,7 @@
                 "label": "meta",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -1114,6 +1147,7 @@
                 "label": "dates",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 2,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -1124,6 +1158,7 @@
                 "label": "places",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 4,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -1154,6 +1189,7 @@
                 "label": "statement Title",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 2,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
@@ -1174,6 +1210,7 @@
                 "label": "stats",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -1214,6 +1251,7 @@
                 "label": "filters",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 4,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -1254,6 +1292,7 @@
                 "label": "car Notes",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 2,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -1294,6 +1333,7 @@
                 "label": "process Heads",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -1304,6 +1344,7 @@
                 "label": "process Notes",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -1324,6 +1365,7 @@
                 "label": "หัวเรื่อง Contact us",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 2,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
@@ -1374,6 +1416,7 @@
                 "label": "nav",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 4,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 4 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 4 items."
@@ -1404,6 +1447,7 @@
                 "label": "หัวเรื่อง Hero (2 บรรทัด)",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 2,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
@@ -1444,6 +1488,7 @@
                 "label": "meta",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -1514,6 +1559,7 @@
                 "label": "dates",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 2,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -1524,6 +1570,7 @@
                 "label": "places",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 4,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -1554,6 +1601,7 @@
                 "label": "statement Title",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 2,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
@@ -1574,6 +1622,7 @@
                 "label": "stats",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -1614,6 +1663,7 @@
                 "label": "filters",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 4,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -1654,6 +1704,7 @@
                 "label": "car Notes",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -1694,6 +1745,7 @@
                 "label": "process Heads",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -1704,6 +1756,7 @@
                 "label": "process Notes",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -1724,6 +1777,7 @@
                 "label": "หัวเรื่อง Contact us",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 2,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
@@ -1813,6 +1867,7 @@
                 "label": "หัวเรื่อง About us",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 2,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
@@ -1863,6 +1918,7 @@
                 "label": "หัวข้อคุณค่าแบรนด์",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -1873,6 +1929,7 @@
                 "label": "รายละเอียดคุณค่าแบรนด์",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -1893,6 +1950,7 @@
                 "label": "services",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 4,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -1973,6 +2031,7 @@
                 "label": "หัวเรื่อง About us",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 2,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
@@ -2023,6 +2082,7 @@
                 "label": "หัวข้อคุณค่าแบรนด์",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -2033,6 +2093,7 @@
                 "label": "รายละเอียดคุณค่าแบรนด์",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -2053,6 +2114,7 @@
                 "label": "services",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 4,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -2133,6 +2195,7 @@
                 "label": "หัวเรื่อง About us",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 2,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
@@ -2183,6 +2246,7 @@
                 "label": "หัวข้อคุณค่าแบรนด์",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -2193,6 +2257,7 @@
                 "label": "รายละเอียดคุณค่าแบรนด์",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 3,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
@@ -2213,6 +2278,7 @@
                 "label": "services",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 4,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -2312,6 +2378,7 @@
                 "label": "หัวเรื่อง Contact us",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 2,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
@@ -2412,6 +2479,7 @@
                 "label": "รายการเตรียมก่อนติดต่อ",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 4,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -2472,6 +2540,7 @@
                 "label": "หัวเรื่อง Contact us",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 2,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
@@ -2572,6 +2641,7 @@
                 "label": "รายการเตรียมก่อนติดต่อ",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 4,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
@@ -2632,6 +2702,7 @@
                 "label": "หัวเรื่อง Contact us",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 2,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
@@ -2732,6 +2803,7 @@
                 "label": "รายการเตรียมก่อนติดต่อ",
                 "required": 0,
                 "type": "textarea",
+                "list": true,
                 "rows": 4,
                 "new_lines": "",
                 "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."

@@ -8,8 +8,8 @@ add_action('admin_enqueue_scripts', function () {
     $screen=get_current_screen();
     if (!$screen||!in_array($screen->post_type,array('cars','prom_drive_setting','prom_drive_page'),true)) return;
     wp_enqueue_media();
-    wp_enqueue_style('pdm-admin',plugins_url('assets/admin.css',PDM_DIR.'prom-drive-manager.php'),array(),'2.0.0');
-    wp_enqueue_script('pdm-admin',plugins_url('assets/admin.js',PDM_DIR.'prom-drive-manager.php'),array('jquery','media-views'),'2.0.0',true);
+    wp_enqueue_style('pdm-admin',plugins_url('assets/admin.css',PDM_DIR.'prom-drive-manager.php'),array(),'2.2.0');
+    wp_enqueue_script('pdm-admin',plugins_url('assets/admin.js',PDM_DIR.'prom-drive-manager.php'),array('jquery','media-views'),'2.2.0',true);
 });
 
 function pdm_render_box($post) {
@@ -18,7 +18,12 @@ function pdm_render_box($post) {
     echo '<div class="pdm-editor"><p class="pdm-notice">ข้อมูลที่ Publish จะอ่านได้ผ่าน API สาธารณะ ห้ามกรอกข้อมูลลูกค้าหรือรหัสผ่าน</p>';
     if ($post->post_type==='prom_drive_setting') echo '<p>ใช้ Slug <code>global</code> สำหรับข้อมูลส่วนกลาง</p>';
     if ($post->post_type==='prom_drive_page') echo '<p>Slug ต้องตรงกับหน้าที่เลือก: <code>home</code>, <code>about</code> หรือ <code>contact</code></p>';
-    foreach (pdm_schema($post->post_type) as $field) pdm_render_field($field,$data[$field['name']]??null,'pdm_fields');
+    foreach (pdm_schema($post->post_type) as $field) {
+        $scoped=$post->post_type==='prom_drive_page'&&!empty($field['page_keys']);
+        if ($scoped) echo '<div class="pdm-scoped" data-pages="'.esc_attr(implode(',',$field['page_keys'])).'">';
+        pdm_render_field($field,$data[$field['name']]??null,'pdm_fields');
+        if ($scoped) echo '</div>';
+    }
     echo '<input type="hidden" name="pdm_complete" value="1"></div>';
 }
 
@@ -37,6 +42,7 @@ function pdm_render_field($field,$value,$parent) {
     if ($type==='textarea') echo '<textarea'.$attr.' rows="'.esc_attr($field['rows']??3).'">'.esc_textarea(is_array($value)?implode("\n",$value):(string)$value).'</textarea>';
     elseif ($type==='select') {
         echo '<select'.$attr.'>';
+        if (!empty($field['custom'])&&empty($field['required'])) echo '<option value="">— ไม่ระบุ —</option>';
         foreach ($field['choices'] as $key=>$label) echo '<option value="'.esc_attr($key).'" '.selected((string)$value,(string)$key,false).'>'.esc_html($label).'</option>';
         echo '</select>';
     } elseif ($type==='checkbox') {
@@ -83,7 +89,7 @@ function pdm_setup_screen() {
     echo '<div class="wrap"><h1>PROM DRIVE Manager</h1><p>ปลั๊กอินตัวเดียว ไม่ต้องใช้ ACF หรือ CPT UI</p><p>สร้างร่างข้อมูลเว็บไซต์ 4 รายการ และรถตัวอย่าง 8 รายการ ข้าม Slug ที่มีอยู่แล้ว ไม่เขียนทับและไม่ Publish อัตโนมัติ</p><p>ตรวจข้อมูลบริษัท รูปภาพ ราคา สเปก และบริการก่อนเผยแพร่ ข้อมูลรถตัวอย่างไม่ใช่รถว่างจริง</p>';
     if(isset($_GET['pdm_imported']))echo '<div class="notice notice-success inline"><p>สร้างร่างเริ่มต้นเรียบร้อย รายการเดิมถูกข้าม กรุณาตรวจข้อมูลก่อน Publish</p></div>';
     echo '<form action="'.esc_url(admin_url('admin-post.php')).'" method="post"><input type="hidden" name="action" value="pdm_seed">';
-    wp_nonce_field('pdm_seed');submit_button('สร้างข้อมูลเริ่มต้นเป็น Draft');echo '</form><p>API: <code>/wp-json/prom-drive/v1/vehicles</code> รองรับ location + category + service (AND) แต่ยังไม่ยืนยันคิวตามวันเวลา</p></div>';
+    wp_nonce_field('pdm_seed');submit_button('สร้างข้อมูลเริ่มต้นเป็น Draft');echo '</form><p>API: <code>/wp-json/prom-drive/v1/vehicles</code> รองรับ location + category + service (AND) แต่ยังไม่ยืนยันคิวตามวันเวลา</p><p>ต้องการฟิลด์เพิ่ม? ไปที่เมนู <a href="'.esc_url(admin_url('edit.php?post_type=prom_drive_setting&page=pdm-fields')).'">ฟิลด์เพิ่มเติม</a> สร้างได้เองโดยไม่ต้องแก้ปลั๊กอิน</p></div>';
 }
 add_action('admin_post_pdm_seed',function(){
     if(!current_user_can('manage_options'))wp_die('Not allowed.','',array('response'=>403));

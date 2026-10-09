@@ -4,7 +4,7 @@ const root = new URL('./', import.meta.url);
 const read = (name) => JSON.parse(readFileSync(new URL(name, root), 'utf8'));
 const clean = (field) => {
   const result = {};
-  for (const key of ['name','label','type','required','choices','default_value','min','max','step','rows','instructions']) {
+  for (const key of ['name','label','type','required','choices','default_value','min','max','step','rows','list','instructions']) {
     if (field[key] !== undefined) result[key] = field[key];
   }
   result.label = result.label.replace(' (ACF Pro)', '');

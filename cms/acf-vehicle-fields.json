@@ -295,6 +295,7 @@
         "required": 0,
         "rows": 4,
         "new_lines": "",
+        "list": true,
         "instructions": "หนึ่งจุดเด่นต่อบรรทัด"
       },
       {
@@ -323,6 +324,7 @@
         "required": 0,
         "rows": 4,
         "new_lines": "",
+        "list": true,
         "instructions": "หนึ่งจุดเด่นต่อบรรทัด"
       },
       {
@@ -351,6 +353,7 @@
         "required": 0,
         "rows": 4,
         "new_lines": "",
+        "list": true,
         "instructions": "หนึ่งจุดเด่นต่อบรรทัด"
       },
       {

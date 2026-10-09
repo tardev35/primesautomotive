@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: PROM DRIVE Manager
- * Description: All-in-one car catalogue, multilingual content, social settings and headless search. No ACF dependency.
- * Version: 2.0.0
+ * Description: All-in-one car catalogue, multilingual content, social settings and user-defined fields, and a headless read API with resolved media URLs and per-language output (?lang=). No ACF dependency.
+ * Version: 2.2.0
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * License: GPL-2.0-or-later
@@ -19,6 +19,7 @@ add_action('plugins_loaded', function () {
         }
     }
     require_once PDM_DIR . 'includes/data.php';
+    require_once PDM_DIR . 'includes/custom-fields.php';
     require_once PDM_DIR . 'includes/admin.php';
     require_once PDM_DIR . 'includes/rest.php';
     add_action('init', 'pdm_register_types');
