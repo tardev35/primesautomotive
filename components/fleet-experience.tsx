@@ -4,6 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { CalendarDays, Clock3, MapPin, SlidersHorizontal, Users, Gauge, Info, Search } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { th, enGB, zhCN } from "date-fns/locale";
 import { categories, locations, locale, localized, money, queryError, rentalDays, rentalAmount, type Language, type RentalQuery, type Vehicle } from "@/lib/fleet";
 
 const words = {
@@ -29,6 +32,7 @@ export function AvailabilitySearch({ language, query, count, onSearch, onReset }
   const [service, setService] = useState("self-drive");
   const [error, setError] = useState<"dates" | "past" | null>(null);
   const [pickupDate, setPickupDate] = useState("");
+  const [returnDate, setReturnDate] = useState("");
   const [pickupTime, setPickupTime] = useState("10:00");
   const [returnTime, setReturnTime] = useState("10:00");
   const [dirty, setDirty] = useState(false);
@@ -36,22 +40,21 @@ export function AvailabilitySearch({ language, query, count, onSearch, onReset }
   const resultsRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (query) { resultsRef.current?.focus({ preventScroll: true }); return; }
-    formRef.current?.reset(); setLocation("bangkok"); setCategory("All"); setService("self-drive"); setPickupDate(""); setPickupTime("10:00"); setReturnTime("10:00"); setError(null); setDirty(false);
+    formRef.current?.reset(); setLocation("bangkok"); setCategory("All"); setService("self-drive"); setPickupDate(""); setReturnDate(""); setPickupTime("10:00"); setReturnTime("10:00"); setError(null); setDirty(false);
   }, [query]);
   function markDirty() { setDirty(true); setError(null); }
   return <section id="availability" className="rental-search" aria-labelledby="rental-search-title">
     <div className="rental-search-heading"><div><p className="eyebrow">{w.eyebrow}</p><p data-heading="h2" id="rental-search-title">{w.title}</p><p>{w.intro}</p></div><span className="demo-label"><Info size={14} aria-hidden="true" />{w.demo}</span></div>
     <form ref={formRef} className="rental-search-form" onInput={markDirty} onSubmit={(event) => {
       event.preventDefault();
-      const data = new FormData(event.currentTarget);
-      const next = { pickup: `${data.get("pickupDate")}T${pickupTime || "10:00"}:00+07:00`, returnAt: `${data.get("returnDate")}T${returnTime || "10:00"}:00+07:00`, location, category, service };
+      const next = { pickup: `${dateToIso(pickupDate)}T${pickupTime || "10:00"}:00+07:00`, returnAt: `${dateToIso(returnDate)}T${returnTime || "10:00"}:00+07:00`, location, category, service };
       const invalid = queryError(next);
       setError(invalid);
       if (invalid) return;
       setDirty(false); onSearch(next);
     }}>
-      <fieldset className="rental-field"><legend><CalendarDays size={16} />{w.pickup}</legend><div className="date-time-pair"><input aria-label={w.pickup} name="pickupDate" type="date" required onInput={(e) => setPickupDate(e.currentTarget.value)} aria-describedby={error ? "rental-error" : undefined} /><RentalTimeInput language={language} label={w.pickupTime} name="pickupTime" value={pickupTime} onChange={(v) => { setPickupTime(v); markDirty(); }} /></div></fieldset>
-      <fieldset className="rental-field"><legend><CalendarDays size={16} />{w.returnAt}</legend><div className="date-time-pair"><input aria-label={w.returnAt} name="returnDate" type="date" required min={pickupDate || undefined} aria-invalid={!!error} aria-describedby={error ? "rental-error" : undefined} /><RentalTimeInput language={language} label={w.returnTime} name="returnTime" value={returnTime} onChange={(v) => { setReturnTime(v); markDirty(); }} /></div></fieldset>
+      <fieldset className="rental-field"><legend><CalendarDays size={16} />{w.pickup}</legend><div className="date-time-pair"><RentalDateInput language={language} label={w.pickup} name="pickupDate" value={pickupDate} onChange={(v) => { setPickupDate(v); markDirty(); }} /><RentalTimeInput language={language} label={w.pickupTime} name="pickupTime" value={pickupTime} onChange={(v) => { setPickupTime(v); markDirty(); }} /></div></fieldset>
+      <fieldset className="rental-field"><legend><CalendarDays size={16} />{w.returnAt}</legend><div className="date-time-pair"><RentalDateInput language={language} label={w.returnAt} name="returnDate" value={returnDate} minimum={pickupDate} invalid={!!error} onChange={(v) => { setReturnDate(v); markDirty(); }} /><RentalTimeInput language={language} label={w.returnTime} name="returnTime" value={returnTime} onChange={(v) => { setReturnTime(v); markDirty(); }} /></div></fieldset>
       <SearchSelect label={w.place} icon={<MapPin size={16} />} value={location} values={locations} labels={w.places} onChange={(v) => { setLocation(v); markDirty(); }} />
       <SearchSelect label={w.category} icon={<SlidersHorizontal size={16} />} value={category} values={categories} labels={w.categories} onChange={(v) => { setCategory(v); markDirty(); }} />
       <SearchSelect label={w.service} icon={<Users size={16} />} value={service} values={serviceValues} labels={w.services} onChange={(v) => { setService(v); markDirty(); }} />
@@ -63,6 +66,34 @@ export function AvailabilitySearch({ language, query, count, onSearch, onReset }
       {query && <><div><span className="result-eyebrow">{w.resultTitle}</span><strong>{count} {w.result}</strong><p>{formatQuery(query, language)} · {rentalDays(query)} {w.day}</p>{dirty && <p className="rental-dirty">{language === "th" ? "เปลี่ยนเงื่อนไขแล้ว กรุณากดเช็กรถอีกครั้งเพื่ออัปเดตผล" : language === "zh" ? "条件已更改，请重新查询以更新结果。" : "Criteria changed. Run the search again to update results."}</p>}</div><div className="rental-result-actions"><a href="#fleet" className="button button-outline">{w.viewResults}</a><button type="button" onClick={() => { onReset(); setDirty(false); }} className="rental-reset">{w.reset}</button></div></>}
     </div>
   </section>;
+}
+
+function parseRentalDate(value: string) {
+  if (!/^\d{2}\/\d{2}\/\d{4}$/.test(value)) return undefined;
+  const [day, month, year] = value.split("/").map(Number);
+  if (year < 1000) return undefined;
+  const date = new Date(year, month - 1, day);
+  return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day ? date : undefined;
+}
+
+function dateToIso(value: string) {
+  if (!parseRentalDate(value)) return "";
+  const [day, month, year] = value.split("/");
+  return `${year}-${month}-${day}`;
+}
+
+function RentalDateInput({ language, label, name, value, minimum, invalid, onChange }: { language: Language; label: string; name: string; value: string; minimum?: string; invalid?: boolean; onChange: (value: string) => void }) {
+  const [open, setOpen] = useState(false);
+  const input = useRef<HTMLInputElement>(null);
+  const selected = parseRentalDate(value);
+  const minDate = minimum ? parseRentalDate(minimum) : undefined;
+  useEffect(() => {
+    input.current?.setCustomValidity(value && !parseRentalDate(value) ? (language === "th" ? "กรุณาระบุวันที่ที่ถูกต้องในรูปแบบ dd/mm/yyyy (ค.ศ.)" : language === "zh" ? "请输入有效日期，格式为 dd/mm/yyyy。" : "Enter a valid date in dd/mm/yyyy format.") : "");
+  }, [value, language]);
+  return <div className="rental-date-input">
+    <input ref={input} type="text" name={name} aria-label={label} aria-invalid={invalid || undefined} aria-describedby={invalid ? "rental-error" : undefined} value={value} onChange={(e) => onChange(e.currentTarget.value)} placeholder="dd/mm/yyyy" maxLength={10} pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" required autoComplete="off" />
+    <Popover open={open} onOpenChange={setOpen}><PopoverTrigger asChild><button type="button" className="rental-calendar-trigger" aria-label={`${label} — ${language === "th" ? "เปิดปฏิทิน" : language === "zh" ? "打开日历" : "Open calendar"}`}><CalendarDays size={16} /></button></PopoverTrigger><PopoverContent className="rental-calendar-popover" align="start" collisionPadding={12}><Calendar mode="single" locale={language === "th" ? th : language === "zh" ? zhCN : enGB} selected={selected} defaultMonth={selected ?? minDate} disabled={minDate ? { before: minDate } : undefined} onSelect={(date) => { if (date) { onChange(`${String(date.getDate()).padStart(2, "0")}/${String(date.getMonth() + 1).padStart(2, "0")}/${date.getFullYear()}`); setOpen(false); } }} /></PopoverContent></Popover>
+  </div>;
 }
 
 // Native time inputs follow the device's clock format, not reliably the page language.
@@ -83,7 +114,7 @@ function SearchSelect({ label, icon, value, values, labels, onChange }: { label:
 }
 
 export function formatQuery(query: RentalQuery, language: Language) {
-  const fmt = new Intl.DateTimeFormat(locale(language), { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", ...(language === "th" ? { hourCycle: "h23" as const } : {}), timeZone: "Asia/Bangkok" });
+  const fmt = new Intl.DateTimeFormat(language === "th" ? "en-GB" : locale(language), { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit", ...(language === "th" ? { hourCycle: "h23" as const } : {}), timeZone: "Asia/Bangkok" });
   return `${fmt.format(new Date(query.pickup))} – ${fmt.format(new Date(query.returnAt))} · ${words[language].places[locations.indexOf(query.location as typeof locations[number])]}`;
 }
 

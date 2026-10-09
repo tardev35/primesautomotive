@@ -448,6 +448,13 @@ p:where([data-heading="h1"]), p:where([data-heading="h2"]), p:where([data-headin
 .time24-select > svg { display: none; }
 .time24 > svg { flex-shrink: 0; margin-left: 5px; }
 .time24 .time24-select:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+.rental-date-input { position: relative; min-width: 0; }
+.date-time-pair .rental-date-input input { height: 41px; padding-right: 30px; }
+.rental-calendar-trigger { position: absolute; right: 0; top: 0; display: grid; place-items: center; width: 28px; height: 40px; color: #f3eee4; background: transparent; border: 0; cursor: pointer; }
+.rental-calendar-popover { width: auto; max-width: calc(100vw - 24px); padding: 0; background: #171610; color: #f3eee4; border: 1px solid #756035; }
+.rental-calendar-popover [data-slot="calendar"] { background: transparent; --cell-size: 36px; }
+.rental-calendar-popover button:hover { background: #40351e; }
+.rental-calendar-popover [data-selected-single="true"] { background: #dec16f; color: #171610; }
 .rental-field:focus-within { border-color: #d4b574; box-shadow: 0 0 0 1px #d4b574; }
 .rental-select { width: 100%; height: auto; min-height: 36px; padding: 4px 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; color: #f3eee4; font-size: 16px; }
 .rental-select [data-slot=select-value] { white-space: normal; text-align: left; }
@@ -479,6 +486,18 @@ p:where([data-heading="h1"]), p:where([data-heading="h2"]), p:where([data-headin
 .vehicle-price strong { color: #eed18b; font-size: 26px; font-weight: 500; line-height: 1.6; }
 .vehicle-price small { color: #bcae91; font-size: 12px; line-height: 1.8; }
 .vehicle-detail-dialog { max-width: 780px; width: min(780px,calc(100% - 32px)); border-radius: 18px; gap: 18px; }
+.vehicle-detail-dialog[data-state="open"] { animation: vehicle-dialog-enter 420ms cubic-bezier(.16,1,.3,1) both; }
+.vehicle-detail-dialog[data-state="closed"] { animation: vehicle-dialog-exit 220ms cubic-bezier(.4,0,1,1) both; pointer-events: none; }
+body:has(.vehicle-detail-dialog) [data-slot="dialog-overlay"] { backdrop-filter: blur(5px); }
+body:has(.vehicle-detail-dialog) [data-slot="dialog-overlay"][data-state="open"] { animation: vehicle-backdrop-enter 320ms ease-out both; }
+body:has(.vehicle-detail-dialog) [data-slot="dialog-overlay"][data-state="closed"] { animation: vehicle-backdrop-exit 220ms ease-in both; }
+@keyframes vehicle-dialog-enter { from { opacity: 0; transform: translateY(22px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes vehicle-dialog-exit { from { opacity: 1; transform: translateY(0) scale(1); } to { opacity: 0; transform: translateY(12px) scale(.985); } }
+@keyframes vehicle-backdrop-enter { from { opacity: 0; } to { opacity: 1; } }
+@keyframes vehicle-backdrop-exit { from { opacity: 1; } to { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .vehicle-detail-dialog[data-state], body:has(.vehicle-detail-dialog) [data-slot="dialog-overlay"][data-state] { animation-duration: 1ms; transform: none; }
+}
 .vehicle-detail-dialog .demo-label { justify-self: start; }
 .vehicle-detail-dialog p:where([data-heading="h3"]) { font-size: 20px; margin: 8px 0 0; }
 .vehicle-spec-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); border: 1px solid #413824; border-radius: 10px; padding: 8px 20px; margin: 0; gap: 0 24px; }
