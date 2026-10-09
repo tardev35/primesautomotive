@@ -1,5 +1,9 @@
 PROM DRIVE — HEADLESS WORDPRESS HANDOFF
 
+อัปเดต 2.0: ใช้ prom-drive-manager.zip ตัวเดียว ไม่ต้องใช้ ACF
+เริ่มจาก prom-drive-manager/README.txt; ขั้นตอนด้านล่างเป็นเอกสารชุดเดิมเพื่ออ้างอิง
+อย่าเปิด PROM DRIVE Manager พร้อมปลั๊กอิน Cars/Content เดิม
+
 อัปเดต: ข้อมูลส่วนกลาง, About/Contact, Social และ API ค้นหา 3 ตัวกรอง
 อ่าน CONTENT-SETUP.txt เพิ่มเติม ชุดใหม่ใช้ปลั๊กอิน prom-drive-content.php
 ไฟล์นี้ยังคงอธิบายข้อมูลรถและคิว DEMO เดิม

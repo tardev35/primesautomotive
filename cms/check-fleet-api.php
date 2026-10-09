@@ -5,7 +5,7 @@ $hooks = array();
 function add_action($hook, $callback) { $GLOBALS['hooks'][$hook] = $callback; }
 function register_rest_route($namespace, $route, $config) { $GLOBALS['route'] = $config; }
 class WP_REST_Server { const READABLE = 'GET'; }
-class WP_Error { public $code; public $data; function __construct($code,$message,$data) { $this->code=$code; $this->data=$data; } }
+class WP_Error { public $code; public $data; public $message; function __construct($code,$message,$data=null) { $this->code=$code; $this->data=$data; $this->message=$message; } function get_error_message(){return $this->message;} }
 class WP_REST_Response { public $data; public $headers=array(); function __construct($data) { $this->data=$data; } function header($key,$value) { $this->headers[$key]=$value; } }
 class Request extends ArrayObject { function get_param($name) { return $this->offsetExists($name) ? $this[$name] : null; } }
 function post_type_exists($type) { return $type === 'cars'; }
@@ -34,7 +34,17 @@ class WP_Query {
     }
 }
 function check($condition,$message) { if(!$condition) throw new Exception($message); }
-require __DIR__ . '/prom-drive-fleet-api.php';
+if (defined('PDM_OFFLINE_TEST')) {
+    define('PDM_DIR',__DIR__.'/prom-drive-manager/');
+    function metadata_exists($type,$id,$key){return array_key_exists($key,$GLOBALS['records'][$id]['acf']);}
+    function get_post_meta($id,$key,$single=true){return $GLOBALS['records'][$id]['acf'][$key]??'';}
+    require PDM_DIR.'includes/data.php';
+    require PDM_DIR.'includes/rest.php';
+    $search_callback='pdm_search_vehicles';
+} else {
+    require __DIR__ . '/prom-drive-fleet-api.php';
+    $search_callback='prom_drive_search_vehicles';
+}
 $hooks['rest_api_init']();
 check($GLOBALS['route']['args']['per_page']['maximum']===100,'Bound pagination');
 check(in_array('event',$GLOBALS['route']['args']['service']['enum'],true),'REST service allowlist');
@@ -44,7 +54,7 @@ foreach($seed['records'] as $i=>$r) { $r['status']='publish';$r['acf']['data_sta
 $GLOBALS['records']=$records;
 $count=0;
 foreach(array('bangkok','bkk','dmk','hotel') as $location) foreach(array('All','Sports','Supercar','Ultra-Luxury','SUV') as $category) foreach(array('self-drive','chauffeur','event') as $service) {
-    $response=prom_drive_search_vehicles(new Request(array('location'=>$location,'category'=>$category,'service'=>$service,'page'=>1,'per_page'=>100)));
+    $response=$search_callback(new Request(array('location'=>$location,'category'=>$category,'service'=>$service,'page'=>1,'per_page'=>100)));
     $expected=array_filter($records,function($r)use($location,$category,$service) {
         $v=$r['acf'];return $v['fleet_status']==='active' && in_array($location,$v['delivery_locations'],true) && ($category==='All'||$category===$v['category']) && in_array($service,$v['service_modes'],true);
     });
@@ -58,10 +68,10 @@ $GLOBALS['records'][1]['status']='draft';
 $GLOBALS['records'][2]['acf']['data_status']='demo';
 $GLOBALS['records'][3]['password']='secret';
 $request=new Request(array('location'=>'','category'=>'All','service'=>'','page'=>1,'per_page'=>2));
-$page=prom_drive_search_vehicles($request);
+$page=$search_callback($request);
 check(count($page->data['items'])===2,'Pagination');
 foreach($page->data['items'] as $item) check(!in_array($item['id'],array(1,2,3),true),'Draft/demo/protected vehicle leaked');
 $request['pickup']='2026-12-01T10:00:00+07:00';
-$error=prom_drive_search_vehicles($request);
+$error=$search_callback($request);
 check($error instanceof WP_Error && $error->code==='prom_drive_availability_not_connected','Dates must not silently be ignored');
 echo "PASS: $count filter combinations, AND matching, pagination, draft/demo/protected exclusion, public field allowlist and date rejection (offline stub).\n";

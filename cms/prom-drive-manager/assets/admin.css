@@ -1,0 +1,16 @@
+.pdm-editor { max-width: 1100px; padding: 12px; }
+.pdm-notice { padding: 14px 18px; background: #faf4e4; border-left: 4px solid #b99546; }
+.pdm-section { margin: 30px 0 16px; padding-bottom: 12px; border-bottom: 1px solid #d7c7a7; }
+.pdm-group { border: 1px solid #ddd4c0; border-radius: 6px; margin: 16px 0; }
+.pdm-group[hidden] { display: none; }
+.pdm-group > summary { cursor: pointer; padding: 14px 18px; background: #f8f6f0; font-weight: 600; }
+.pdm-group > div { padding: 4px 18px 14px; }
+.pdm-field { display: grid; gap: 8px; margin: 18px 0; }
+.pdm-field > input, .pdm-field > textarea, .pdm-field > select { width: 100%; max-width: 800px; }
+.pdm-field textarea { min-height: 80px; }
+.pdm-field .description { margin: 0; }
+.pdm-check { display: inline-flex; align-items: center; gap: 6px; margin: 4px 20px 4px 0; }
+.pdm-media { display: flex; flex-wrap: wrap; gap: 8px; }
+.pdm-media > input { flex: 1; min-width: 180px; }
+.pdm-preview { display: flex; flex-wrap: wrap; gap: 8px; flex-basis: 100%; }
+.pdm-preview img { width: 96px; height: 72px; object-fit: cover; border-radius: 4px; }

@@ -1,0 +1,2567 @@
+{
+  "cars": [
+    {
+      "name": "identity_tab",
+      "label": "01 · ข้อมูลรุ่นรถ",
+      "type": "tab",
+      "required": 0
+    },
+    {
+      "name": "data_status",
+      "label": "สถานะการตรวจสอบข้อมูล",
+      "type": "select",
+      "required": 0,
+      "choices": {
+        "demo": "ข้อมูลจำลอง — ห้ามใช้เป็นราคาหรือสเปกยืนยัน",
+        "verified": "ตรวจสอบข้อมูลรถจริงแล้ว"
+      }
+    },
+    {
+      "name": "brand",
+      "label": "ยี่ห้อ",
+      "type": "text",
+      "required": 1
+    },
+    {
+      "name": "model",
+      "label": "รุ่น",
+      "type": "text",
+      "required": 1
+    },
+    {
+      "name": "variant",
+      "label": "รุ่นย่อย",
+      "type": "text",
+      "required": 0
+    },
+    {
+      "name": "model_year",
+      "label": "ปีรุ่น (ค.ศ.)",
+      "type": "number",
+      "required": 0,
+      "min": 1900,
+      "max": 2100,
+      "step": 1,
+      "instructions": "เว้นว่างเมื่อยังไม่ทราบ ห้ามใช้ 0"
+    },
+    {
+      "name": "category",
+      "label": "ประเภทรถ",
+      "type": "select",
+      "required": 0,
+      "choices": {
+        "Sports": "สปอร์ต",
+        "Supercar": "ซูเปอร์คาร์",
+        "Ultra-Luxury": "อัลตร้าลักชัวรี",
+        "SUV": "SUV"
+      }
+    },
+    {
+      "name": "fleet_status",
+      "label": "สถานะการให้บริการ (ไม่ใช่คิวจอง)",
+      "type": "select",
+      "required": 0,
+      "choices": {
+        "active": "เปิดให้สอบถาม",
+        "maintenance": "ปิดซ่อมบำรุง",
+        "retired": "เลิกให้บริการ"
+      }
+    },
+    {
+      "name": "service_modes",
+      "label": "รูปแบบบริการ",
+      "type": "checkbox",
+      "required": 1,
+      "choices": {
+        "self-drive": "ขับเอง",
+        "chauffeur": "พร้อมคนขับ",
+        "event": "งานอีเวนต์"
+      }
+    },
+    {
+      "name": "delivery_locations",
+      "label": "พื้นที่รับ–ส่ง",
+      "type": "checkbox",
+      "required": 1,
+      "choices": {
+        "bangkok": "กรุงเทพฯ",
+        "bkk": "สุวรรณภูมิ",
+        "dmk": "ดอนเมือง",
+        "hotel": "โรงแรมในกรุงเทพฯ"
+      }
+    },
+    {
+      "name": "specs_tab",
+      "label": "02 · สเปก",
+      "type": "tab",
+      "required": 0
+    },
+    {
+      "name": "seats",
+      "label": "จำนวนที่นั่ง",
+      "type": "number",
+      "required": 0,
+      "min": 1,
+      "max": 30,
+      "step": 1
+    },
+    {
+      "name": "doors",
+      "label": "จำนวนประตู",
+      "type": "number",
+      "required": 0,
+      "min": 1,
+      "max": 10,
+      "step": 1
+    },
+    {
+      "name": "transmission",
+      "label": "ระบบเกียร์",
+      "type": "select",
+      "required": 0,
+      "choices": {
+        "automatic": "อัตโนมัติ",
+        "manual": "ธรรมดา"
+      }
+    },
+    {
+      "name": "fuel",
+      "label": "พลังงาน",
+      "type": "select",
+      "required": 0,
+      "choices": {
+        "petrol": "เบนซิน",
+        "plug-in-hybrid": "ปลั๊กอินไฮบริด",
+        "mild-hybrid": "ไมลด์ไฮบริด",
+        "electric": "ไฟฟ้า",
+        "unconfirmed": "รอยืนยัน"
+      }
+    },
+    {
+      "name": "power_ps",
+      "label": "กำลังสูงสุด (PS)",
+      "type": "number",
+      "required": 0,
+      "min": 0,
+      "step": 1,
+      "instructions": "ใช้ PS ทุก record ไม่ใช่ hp; เว้นว่างเมื่อยังไม่ทราบ"
+    },
+    {
+      "name": "acceleration_seconds",
+      "label": "0–100 กม./ชม. (วินาที)",
+      "type": "number",
+      "required": 0,
+      "min": 0,
+      "step": 0.1
+    },
+    {
+      "name": "top_speed_kmh",
+      "label": "ความเร็วสูงสุด (กม./ชม.)",
+      "type": "number",
+      "required": 0,
+      "min": 0,
+      "step": 1
+    },
+    {
+      "name": "spec_source_url",
+      "label": "แหล่งยืนยันสเปก",
+      "type": "url",
+      "required": 0
+    },
+    {
+      "name": "rental_tab",
+      "label": "03 · ค่าเช่าและเงื่อนไข",
+      "type": "tab",
+      "required": 0
+    },
+    {
+      "name": "daily_rate_thb",
+      "label": "ค่าเช่าขับเองต่อวัน (THB)",
+      "type": "number",
+      "required": 0,
+      "min": 0,
+      "step": 1,
+      "instructions": "ไม่ใช้ค่านี้คำนวณบริการพร้อมคนขับหรืออีเวนต์; ไม่ใช่ใบเสนอราคา"
+    },
+    {
+      "name": "deposit_thb",
+      "label": "มัดจำ (THB)",
+      "type": "number",
+      "required": 0,
+      "min": 0,
+      "step": 1
+    },
+    {
+      "name": "minimum_days",
+      "label": "จำนวนวันเช่าขั้นต่ำ",
+      "type": "number",
+      "required": 0,
+      "default_value": 1,
+      "min": 1,
+      "step": 1
+    },
+    {
+      "name": "included_km_per_day",
+      "label": "ระยะทางรวมต่อวัน (กม.)",
+      "type": "number",
+      "required": 0,
+      "min": 0,
+      "step": 1
+    },
+    {
+      "name": "extra_km_thb",
+      "label": "ระยะทางส่วนเกิน (THB/กม.)",
+      "type": "number",
+      "required": 0,
+      "min": 0,
+      "step": 1
+    },
+    {
+      "name": "content_tab",
+      "label": "04 · เนื้อหา 3 ภาษา",
+      "type": "tab",
+      "required": 0
+    },
+    {
+      "name": "summary_th",
+      "label": "คำอธิบายสั้น · ไทย",
+      "type": "textarea",
+      "required": 0,
+      "rows": 3
+    },
+    {
+      "name": "features_th",
+      "label": "จุดเด่น · ไทย",
+      "type": "textarea",
+      "required": 0,
+      "rows": 4,
+      "instructions": "หนึ่งจุดเด่นต่อบรรทัด"
+    },
+    {
+      "name": "rental_terms_th",
+      "label": "เงื่อนไขการเช่า · ไทย",
+      "type": "textarea",
+      "required": 0,
+      "rows": 5
+    },
+    {
+      "name": "summary_en",
+      "label": "คำอธิบายสั้น · English",
+      "type": "textarea",
+      "required": 0,
+      "rows": 3
+    },
+    {
+      "name": "features_en",
+      "label": "จุดเด่น · English",
+      "type": "textarea",
+      "required": 0,
+      "rows": 4,
+      "instructions": "หนึ่งจุดเด่นต่อบรรทัด"
+    },
+    {
+      "name": "rental_terms_en",
+      "label": "เงื่อนไขการเช่า · English",
+      "type": "textarea",
+      "required": 0,
+      "rows": 5
+    },
+    {
+      "name": "summary_zh",
+      "label": "คำอธิบายสั้น · 中文",
+      "type": "textarea",
+      "required": 0,
+      "rows": 3
+    },
+    {
+      "name": "features_zh",
+      "label": "จุดเด่น · 中文",
+      "type": "textarea",
+      "required": 0,
+      "rows": 4,
+      "instructions": "หนึ่งจุดเด่นต่อบรรทัด"
+    },
+    {
+      "name": "rental_terms_zh",
+      "label": "เงื่อนไขการเช่า · 中文",
+      "type": "textarea",
+      "required": 0,
+      "rows": 5
+    },
+    {
+      "name": "media_tab",
+      "label": "05 · รูปภาพและเครดิต",
+      "type": "tab",
+      "required": 0
+    },
+    {
+      "name": "cover_image",
+      "label": "รูปปกจาก Media Library",
+      "type": "image",
+      "required": 0
+    },
+    {
+      "name": "gallery",
+      "label": "แกลเลอรี",
+      "type": "gallery",
+      "required": 0,
+      "instructions": "เลือกรูปจาก Media Library ได้หลายภาพ ไม่ต้องใช้ ACF Pro"
+    },
+    {
+      "name": "fallback_image_path",
+      "label": "ไฟล์ภาพตัวอย่างบน Frontend",
+      "type": "text",
+      "required": 0,
+      "instructions": "ใช้เฉพาะ demo เมื่อยังไม่มี cover_image เช่น /cars/ferrari-296-gtb.jpg; ไม่ใช่ WordPress attachment ID"
+    },
+    {
+      "name": "photo_source_url",
+      "label": "หน้าต้นฉบับภาพ",
+      "type": "url",
+      "required": 0
+    },
+    {
+      "name": "photo_author",
+      "label": "ผู้สร้างภาพ",
+      "type": "text",
+      "required": 0
+    },
+    {
+      "name": "photo_license",
+      "label": "สัญญาอนุญาตภาพ",
+      "type": "text",
+      "required": 0
+    },
+    {
+      "name": "photo_license_url",
+      "label": "URL สัญญาอนุญาต",
+      "type": "url",
+      "required": 0
+    },
+    {
+      "name": "virtual_tour_url",
+      "label": "URL ภาพ/ทัวร์ 360°",
+      "type": "url",
+      "required": 0,
+      "instructions": "เว้นว่างหากยังไม่มีไฟล์; ไม่ได้เปิดใช้ตัว viewer ใน frontend รุ่นนี้"
+    },
+    {
+      "name": "seo_tab",
+      "label": "06 · SEO",
+      "type": "tab",
+      "required": 0
+    },
+    {
+      "name": "seo_title_th",
+      "label": "SEO title · ไทย",
+      "type": "text",
+      "required": 0
+    },
+    {
+      "name": "seo_description_th",
+      "label": "SEO description · ไทย",
+      "type": "textarea",
+      "required": 0,
+      "rows": 3
+    },
+    {
+      "name": "seo_title_en",
+      "label": "SEO title · English",
+      "type": "text",
+      "required": 0
+    },
+    {
+      "name": "seo_description_en",
+      "label": "SEO description · English",
+      "type": "textarea",
+      "required": 0,
+      "rows": 3
+    },
+    {
+      "name": "seo_title_zh",
+      "label": "SEO title · 中文",
+      "type": "text",
+      "required": 0
+    },
+    {
+      "name": "seo_description_zh",
+      "label": "SEO description · 中文",
+      "type": "textarea",
+      "required": 0,
+      "rows": 3
+    }
+  ],
+  "prom_drive_setting": [
+    {
+      "name": "brand_name",
+      "label": "ชื่อแบรนด์ / Brand name",
+      "type": "text",
+      "required": 0,
+      "rows": 3,
+      "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+    },
+    {
+      "name": "brand_tagline",
+      "label": "คำใต้โลโก้ / Brand tagline",
+      "type": "text",
+      "required": 0,
+      "rows": 3,
+      "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+    },
+    {
+      "name": "logo_url",
+      "label": "URL โลโก้ / Logo URL",
+      "type": "text",
+      "required": 0,
+      "rows": 3,
+      "instructions": "HTTPS URL ของไฟล์ใน Media Library หรือ /prom-drive-logo.png สำหรับภาพเดิมใน frontend"
+    },
+    {
+      "name": "phone",
+      "label": "เบอร์ CALL",
+      "type": "text",
+      "required": 0,
+      "rows": 3,
+      "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+    },
+    {
+      "name": "whatsapp",
+      "label": "เบอร์ WhatsApp (เตรียมไว้ ยังไม่แสดงใน UI)",
+      "type": "text",
+      "required": 0,
+      "rows": 3,
+      "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+    },
+    {
+      "name": "email",
+      "label": "อีเมล / Email",
+      "type": "email",
+      "required": 0
+    },
+    {
+      "name": "line_id",
+      "label": "ชื่อบัญชี LINE",
+      "type": "text",
+      "required": 0,
+      "rows": 3,
+      "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+    },
+    {
+      "name": "maps_url",
+      "label": "ลิงก์แผนที่ / Map URL",
+      "type": "url",
+      "required": 0,
+      "instructions": "ใช้ https:// เท่านั้น เว้นว่างเมื่อยังไม่มีลิงก์จริง / HTTPS only; leave blank if unconfirmed."
+    },
+    {
+      "name": "social",
+      "label": "ลิงก์โซเชียล / Social URLs",
+      "type": "group",
+      "required": 0,
+      "sub_fields": [
+        {
+          "name": "facebook",
+          "label": "Facebook",
+          "type": "url",
+          "required": 0,
+          "instructions": "ใช้ https:// เท่านั้น เว้นว่างเมื่อยังไม่มีลิงก์จริง / HTTPS only; leave blank if unconfirmed."
+        },
+        {
+          "name": "line",
+          "label": "LINE",
+          "type": "url",
+          "required": 0,
+          "instructions": "ใช้ https:// เท่านั้น เว้นว่างเมื่อยังไม่มีลิงก์จริง / HTTPS only; leave blank if unconfirmed."
+        },
+        {
+          "name": "instagram",
+          "label": "Instagram",
+          "type": "url",
+          "required": 0,
+          "instructions": "ใช้ https:// เท่านั้น เว้นว่างเมื่อยังไม่มีลิงก์จริง / HTTPS only; leave blank if unconfirmed."
+        },
+        {
+          "name": "tiktok",
+          "label": "TikTok",
+          "type": "url",
+          "required": 0,
+          "instructions": "ใช้ https:// เท่านั้น เว้นว่างเมื่อยังไม่มีลิงก์จริง / HTTPS only; leave blank if unconfirmed."
+        }
+      ]
+    },
+    {
+      "name": "social_visible",
+      "label": "แสดงไอคอน / Visible social icons",
+      "type": "group",
+      "required": 0,
+      "sub_fields": [
+        {
+          "name": "facebook",
+          "label": "Facebook",
+          "type": "true_false",
+          "required": 0,
+          "default_value": 1
+        },
+        {
+          "name": "line",
+          "label": "LINE",
+          "type": "true_false",
+          "required": 0,
+          "default_value": 1
+        },
+        {
+          "name": "instagram",
+          "label": "Instagram",
+          "type": "true_false",
+          "required": 0,
+          "default_value": 1
+        },
+        {
+          "name": "tiktok",
+          "label": "TikTok",
+          "type": "true_false",
+          "required": 0,
+          "default_value": 1
+        }
+      ]
+    },
+    {
+      "name": "text",
+      "label": "ข้อมูลส่วนกลาง 3 ภาษา",
+      "type": "group",
+      "required": 0,
+      "sub_fields": [
+        {
+          "name": "th",
+          "label": "ไทย",
+          "type": "group",
+          "required": 0,
+          "sub_fields": [
+            {
+              "name": "address",
+              "label": "ที่อยู่หรือจุดนัดรับรถ / Address",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "hours",
+              "label": "เวลาบริการ / Opening hours",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "footerIntro",
+              "label": "แนะนำแบรนด์ใน Footer",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "footerHeads",
+              "label": "หัวคอลัมน์ Footer",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "footerRent",
+              "label": "รายการคอลเลกชัน Footer",
+              "type": "textarea",
+              "required": 0,
+              "rows": 4,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "footerServices",
+              "label": "รายการบริการ Footer",
+              "type": "textarea",
+              "required": 0,
+              "rows": 4,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "footerPlaces",
+              "label": "พื้นที่บริการ Footer",
+              "type": "textarea",
+              "required": 0,
+              "rows": 5,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "footerContact",
+              "label": "ป้ายช่องทางติดต่อ (สำรอง)",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "footerLegal",
+              "label": "ป้ายลิงก์นโยบาย Footer",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "footerCopyright",
+              "label": "ข้อความลิขสิทธิ์ท้ายเว็บ",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            }
+          ]
+        },
+        {
+          "name": "en",
+          "label": "English",
+          "type": "group",
+          "required": 0,
+          "sub_fields": [
+            {
+              "name": "address",
+              "label": "ที่อยู่หรือจุดนัดรับรถ / Address",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "hours",
+              "label": "เวลาบริการ / Opening hours",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "footerIntro",
+              "label": "แนะนำแบรนด์ใน Footer",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "footerHeads",
+              "label": "หัวคอลัมน์ Footer",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "footerRent",
+              "label": "รายการคอลเลกชัน Footer",
+              "type": "textarea",
+              "required": 0,
+              "rows": 4,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "footerServices",
+              "label": "รายการบริการ Footer",
+              "type": "textarea",
+              "required": 0,
+              "rows": 4,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "footerPlaces",
+              "label": "พื้นที่บริการ Footer",
+              "type": "textarea",
+              "required": 0,
+              "rows": 5,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "footerContact",
+              "label": "ป้ายช่องทางติดต่อ (สำรอง)",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "footerLegal",
+              "label": "ป้ายลิงก์นโยบาย Footer",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "footerCopyright",
+              "label": "ข้อความลิขสิทธิ์ท้ายเว็บ",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            }
+          ]
+        },
+        {
+          "name": "zh",
+          "label": "中文",
+          "type": "group",
+          "required": 0,
+          "sub_fields": [
+            {
+              "name": "address",
+              "label": "ที่อยู่หรือจุดนัดรับรถ / Address",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "hours",
+              "label": "เวลาบริการ / Opening hours",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "footerIntro",
+              "label": "แนะนำแบรนด์ใน Footer",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "footerHeads",
+              "label": "หัวคอลัมน์ Footer",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "footerRent",
+              "label": "รายการคอลเลกชัน Footer",
+              "type": "textarea",
+              "required": 0,
+              "rows": 4,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "footerServices",
+              "label": "รายการบริการ Footer",
+              "type": "textarea",
+              "required": 0,
+              "rows": 4,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "footerPlaces",
+              "label": "พื้นที่บริการ Footer",
+              "type": "textarea",
+              "required": 0,
+              "rows": 5,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "footerContact",
+              "label": "ป้ายช่องทางติดต่อ (สำรอง)",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "footerLegal",
+              "label": "ป้ายลิงก์นโยบาย Footer",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "footerCopyright",
+              "label": "ข้อความลิขสิทธิ์ท้ายเว็บ",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "prom_drive_page": [
+    {
+      "name": "page_key",
+      "label": "หน้าเว็บ / Page",
+      "type": "select",
+      "required": 1,
+      "choices": {
+        "home": "หน้าแรก / Home",
+        "about": "เกี่ยวกับเรา / About us",
+        "contact": "ติดต่อเรา / Contact us"
+      },
+      "instructions": "Slug ของรายการต้องตรงกับค่านี้: home, about หรือ contact"
+    },
+    {
+      "name": "home",
+      "label": "home",
+      "type": "group",
+      "required": 0,
+      "sub_fields": [
+        {
+          "name": "th",
+          "label": "ไทย",
+          "type": "group",
+          "required": 0,
+          "sub_fields": [
+            {
+              "name": "nav",
+              "label": "nav",
+              "type": "textarea",
+              "required": 0,
+              "rows": 4,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 4 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 4 items."
+            },
+            {
+              "name": "concierge",
+              "label": "concierge",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "heroEyebrow",
+              "label": "ข้อความเหนือ Hero",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "heroTitle",
+              "label": "หัวเรื่อง Hero (2 บรรทัด)",
+              "type": "textarea",
+              "required": 0,
+              "rows": 2,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+            },
+            {
+              "name": "heroBody",
+              "label": "คำอธิบาย Hero",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "check",
+              "label": "check",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "explore",
+              "label": "explore",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "meta",
+              "label": "meta",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "scroll",
+              "label": "scroll",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "live",
+              "label": "live",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "find",
+              "label": "find",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "pickup",
+              "label": "pickup",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "return",
+              "label": "return",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "delivery",
+              "label": "delivery",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "dates",
+              "label": "dates",
+              "type": "textarea",
+              "required": 0,
+              "rows": 2,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "places",
+              "label": "places",
+              "type": "textarea",
+              "required": 0,
+              "rows": 4,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "viewAvailable",
+              "label": "view Available",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "statementEyebrow",
+              "label": "statement Eyebrow",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "statementTitle",
+              "label": "statement Title",
+              "type": "textarea",
+              "required": 0,
+              "rows": 2,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+            },
+            {
+              "name": "statementBody",
+              "label": "statement Body",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "stats",
+              "label": "stats",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "reserve",
+              "label": "reserve",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "choose",
+              "label": "choose",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "chooseBody",
+              "label": "choose Body",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "filters",
+              "label": "filters",
+              "type": "textarea",
+              "required": 0,
+              "rows": 4,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "available",
+              "label": "available",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "perDay",
+              "label": "per Day",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "viewCar",
+              "label": "view Car",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "carNotes",
+              "label": "car Notes",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "processEyebrow",
+              "label": "process Eyebrow",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "processTitle",
+              "label": "process Title",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "processBody",
+              "label": "process Body",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "processHeads",
+              "label": "process Heads",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "processNotes",
+              "label": "process Notes",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "contactEyebrow",
+              "label": "contact Eyebrow",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "contactTitle",
+              "label": "หัวเรื่อง Contact us",
+              "type": "textarea",
+              "required": 0,
+              "rows": 2,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+            },
+            {
+              "name": "line",
+              "label": "LINE",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "call",
+              "label": "call",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "demo",
+              "label": "demo",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            }
+          ]
+        },
+        {
+          "name": "en",
+          "label": "English",
+          "type": "group",
+          "required": 0,
+          "sub_fields": [
+            {
+              "name": "nav",
+              "label": "nav",
+              "type": "textarea",
+              "required": 0,
+              "rows": 4,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 4 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 4 items."
+            },
+            {
+              "name": "concierge",
+              "label": "concierge",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "heroEyebrow",
+              "label": "ข้อความเหนือ Hero",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "heroTitle",
+              "label": "หัวเรื่อง Hero (2 บรรทัด)",
+              "type": "textarea",
+              "required": 0,
+              "rows": 2,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+            },
+            {
+              "name": "heroBody",
+              "label": "คำอธิบาย Hero",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "check",
+              "label": "check",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "explore",
+              "label": "explore",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "meta",
+              "label": "meta",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "scroll",
+              "label": "scroll",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "live",
+              "label": "live",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "find",
+              "label": "find",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "pickup",
+              "label": "pickup",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "return",
+              "label": "return",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "delivery",
+              "label": "delivery",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "dates",
+              "label": "dates",
+              "type": "textarea",
+              "required": 0,
+              "rows": 2,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "places",
+              "label": "places",
+              "type": "textarea",
+              "required": 0,
+              "rows": 4,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "viewAvailable",
+              "label": "view Available",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "statementEyebrow",
+              "label": "statement Eyebrow",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "statementTitle",
+              "label": "statement Title",
+              "type": "textarea",
+              "required": 0,
+              "rows": 2,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+            },
+            {
+              "name": "statementBody",
+              "label": "statement Body",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "stats",
+              "label": "stats",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "reserve",
+              "label": "reserve",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "choose",
+              "label": "choose",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "chooseBody",
+              "label": "choose Body",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "filters",
+              "label": "filters",
+              "type": "textarea",
+              "required": 0,
+              "rows": 4,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "available",
+              "label": "available",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "perDay",
+              "label": "per Day",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "viewCar",
+              "label": "view Car",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "carNotes",
+              "label": "car Notes",
+              "type": "textarea",
+              "required": 0,
+              "rows": 2,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "processEyebrow",
+              "label": "process Eyebrow",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "processTitle",
+              "label": "process Title",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "processBody",
+              "label": "process Body",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "processHeads",
+              "label": "process Heads",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "processNotes",
+              "label": "process Notes",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "contactEyebrow",
+              "label": "contact Eyebrow",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "contactTitle",
+              "label": "หัวเรื่อง Contact us",
+              "type": "textarea",
+              "required": 0,
+              "rows": 2,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+            },
+            {
+              "name": "line",
+              "label": "LINE",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "call",
+              "label": "call",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "demo",
+              "label": "demo",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            }
+          ]
+        },
+        {
+          "name": "zh",
+          "label": "中文",
+          "type": "group",
+          "required": 0,
+          "sub_fields": [
+            {
+              "name": "nav",
+              "label": "nav",
+              "type": "textarea",
+              "required": 0,
+              "rows": 4,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 4 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 4 items."
+            },
+            {
+              "name": "concierge",
+              "label": "concierge",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "heroEyebrow",
+              "label": "ข้อความเหนือ Hero",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "heroTitle",
+              "label": "หัวเรื่อง Hero (2 บรรทัด)",
+              "type": "textarea",
+              "required": 0,
+              "rows": 2,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+            },
+            {
+              "name": "heroBody",
+              "label": "คำอธิบาย Hero",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "check",
+              "label": "check",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "explore",
+              "label": "explore",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "meta",
+              "label": "meta",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "scroll",
+              "label": "scroll",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "live",
+              "label": "live",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "find",
+              "label": "find",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "pickup",
+              "label": "pickup",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "return",
+              "label": "return",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "delivery",
+              "label": "delivery",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "dates",
+              "label": "dates",
+              "type": "textarea",
+              "required": 0,
+              "rows": 2,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "places",
+              "label": "places",
+              "type": "textarea",
+              "required": 0,
+              "rows": 4,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "viewAvailable",
+              "label": "view Available",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "statementEyebrow",
+              "label": "statement Eyebrow",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "statementTitle",
+              "label": "statement Title",
+              "type": "textarea",
+              "required": 0,
+              "rows": 2,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+            },
+            {
+              "name": "statementBody",
+              "label": "statement Body",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "stats",
+              "label": "stats",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "reserve",
+              "label": "reserve",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "choose",
+              "label": "choose",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "chooseBody",
+              "label": "choose Body",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "filters",
+              "label": "filters",
+              "type": "textarea",
+              "required": 0,
+              "rows": 4,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "available",
+              "label": "available",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "perDay",
+              "label": "per Day",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "viewCar",
+              "label": "view Car",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "carNotes",
+              "label": "car Notes",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "processEyebrow",
+              "label": "process Eyebrow",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "processTitle",
+              "label": "process Title",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "processBody",
+              "label": "process Body",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "processHeads",
+              "label": "process Heads",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "processNotes",
+              "label": "process Notes",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "contactEyebrow",
+              "label": "contact Eyebrow",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "contactTitle",
+              "label": "หัวเรื่อง Contact us",
+              "type": "textarea",
+              "required": 0,
+              "rows": 2,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+            },
+            {
+              "name": "line",
+              "label": "LINE",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "call",
+              "label": "call",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "demo",
+              "label": "demo",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "about",
+      "label": "about",
+      "type": "group",
+      "required": 0,
+      "sub_fields": [
+        {
+          "name": "th",
+          "label": "ไทย",
+          "type": "group",
+          "required": 0,
+          "sub_fields": [
+            {
+              "name": "home",
+              "label": "home",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "aboutEyebrow",
+              "label": "about Eyebrow",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "aboutTitle",
+              "label": "หัวเรื่อง About us",
+              "type": "textarea",
+              "required": 0,
+              "rows": 2,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+            },
+            {
+              "name": "aboutIntro",
+              "label": "บทนำ About us",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "storyTitle",
+              "label": "หัวเรื่องแบรนด์",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "story",
+              "label": "เรื่องราวแบรนด์",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "valuesTitle",
+              "label": "values Title",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "values",
+              "label": "หัวข้อคุณค่าแบรนด์",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "valuesBody",
+              "label": "รายละเอียดคุณค่าแบรนด์",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "servicesTitle",
+              "label": "services Title",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "services",
+              "label": "services",
+              "type": "textarea",
+              "required": 0,
+              "rows": 4,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "serviceNote",
+              "label": "service Note",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "explore",
+              "label": "explore",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "talk",
+              "label": "talk",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "draft",
+              "label": "หมายเหตุร่างเนื้อหา",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            }
+          ]
+        },
+        {
+          "name": "en",
+          "label": "English",
+          "type": "group",
+          "required": 0,
+          "sub_fields": [
+            {
+              "name": "home",
+              "label": "home",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "aboutEyebrow",
+              "label": "about Eyebrow",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "aboutTitle",
+              "label": "หัวเรื่อง About us",
+              "type": "textarea",
+              "required": 0,
+              "rows": 2,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+            },
+            {
+              "name": "aboutIntro",
+              "label": "บทนำ About us",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "storyTitle",
+              "label": "หัวเรื่องแบรนด์",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "story",
+              "label": "เรื่องราวแบรนด์",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "valuesTitle",
+              "label": "values Title",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "values",
+              "label": "หัวข้อคุณค่าแบรนด์",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "valuesBody",
+              "label": "รายละเอียดคุณค่าแบรนด์",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "servicesTitle",
+              "label": "services Title",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "services",
+              "label": "services",
+              "type": "textarea",
+              "required": 0,
+              "rows": 4,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "serviceNote",
+              "label": "service Note",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "explore",
+              "label": "explore",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "talk",
+              "label": "talk",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "draft",
+              "label": "หมายเหตุร่างเนื้อหา",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            }
+          ]
+        },
+        {
+          "name": "zh",
+          "label": "中文",
+          "type": "group",
+          "required": 0,
+          "sub_fields": [
+            {
+              "name": "home",
+              "label": "home",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "aboutEyebrow",
+              "label": "about Eyebrow",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "aboutTitle",
+              "label": "หัวเรื่อง About us",
+              "type": "textarea",
+              "required": 0,
+              "rows": 2,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+            },
+            {
+              "name": "aboutIntro",
+              "label": "บทนำ About us",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "storyTitle",
+              "label": "หัวเรื่องแบรนด์",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "story",
+              "label": "เรื่องราวแบรนด์",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "valuesTitle",
+              "label": "values Title",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "values",
+              "label": "หัวข้อคุณค่าแบรนด์",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "valuesBody",
+              "label": "รายละเอียดคุณค่าแบรนด์",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+            },
+            {
+              "name": "servicesTitle",
+              "label": "services Title",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "services",
+              "label": "services",
+              "type": "textarea",
+              "required": 0,
+              "rows": 4,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "serviceNote",
+              "label": "service Note",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "explore",
+              "label": "explore",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "talk",
+              "label": "talk",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "draft",
+              "label": "หมายเหตุร่างเนื้อหา",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "contact",
+      "label": "contact",
+      "type": "group",
+      "required": 0,
+      "sub_fields": [
+        {
+          "name": "th",
+          "label": "ไทย",
+          "type": "group",
+          "required": 0,
+          "sub_fields": [
+            {
+              "name": "home",
+              "label": "home",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "contactEyebrow",
+              "label": "contact Eyebrow",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "contactTitle",
+              "label": "หัวเรื่อง Contact us",
+              "type": "textarea",
+              "required": 0,
+              "rows": 2,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+            },
+            {
+              "name": "contactIntro",
+              "label": "บทนำ Contact us",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "channelTitle",
+              "label": "channel Title",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "channelIntro",
+              "label": "ข้อความเมื่อยังไม่มีช่องทางติดต่อ",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "email",
+              "label": "อีเมล / Email",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "address",
+              "label": "ที่อยู่หรือจุดนัดรับรถ / Address",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "addressNote",
+              "label": "address Note",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "social",
+              "label": "ลิงก์โซเชียล / Social URLs",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "socialNote",
+              "label": "ข้อความเมื่อยังไม่มีบัญชีโซเชียล",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "checklistTitle",
+              "label": "checklist Title",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "checklist",
+              "label": "รายการเตรียมก่อนติดต่อ",
+              "type": "textarea",
+              "required": 0,
+              "rows": 4,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "checklistNote",
+              "label": "checklist Note",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "check",
+              "label": "check",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            }
+          ]
+        },
+        {
+          "name": "en",
+          "label": "English",
+          "type": "group",
+          "required": 0,
+          "sub_fields": [
+            {
+              "name": "home",
+              "label": "home",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "contactEyebrow",
+              "label": "contact Eyebrow",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "contactTitle",
+              "label": "หัวเรื่อง Contact us",
+              "type": "textarea",
+              "required": 0,
+              "rows": 2,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+            },
+            {
+              "name": "contactIntro",
+              "label": "บทนำ Contact us",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "channelTitle",
+              "label": "channel Title",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "channelIntro",
+              "label": "ข้อความเมื่อยังไม่มีช่องทางติดต่อ",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "email",
+              "label": "อีเมล / Email",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "address",
+              "label": "ที่อยู่หรือจุดนัดรับรถ / Address",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "addressNote",
+              "label": "address Note",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "social",
+              "label": "ลิงก์โซเชียล / Social URLs",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "socialNote",
+              "label": "ข้อความเมื่อยังไม่มีบัญชีโซเชียล",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "checklistTitle",
+              "label": "checklist Title",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "checklist",
+              "label": "รายการเตรียมก่อนติดต่อ",
+              "type": "textarea",
+              "required": 0,
+              "rows": 4,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "checklistNote",
+              "label": "checklist Note",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "check",
+              "label": "check",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            }
+          ]
+        },
+        {
+          "name": "zh",
+          "label": "中文",
+          "type": "group",
+          "required": 0,
+          "sub_fields": [
+            {
+              "name": "home",
+              "label": "home",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "contactEyebrow",
+              "label": "contact Eyebrow",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "contactTitle",
+              "label": "หัวเรื่อง Contact us",
+              "type": "textarea",
+              "required": 0,
+              "rows": 2,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+            },
+            {
+              "name": "contactIntro",
+              "label": "บทนำ Contact us",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "channelTitle",
+              "label": "channel Title",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "channelIntro",
+              "label": "ข้อความเมื่อยังไม่มีช่องทางติดต่อ",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "email",
+              "label": "อีเมล / Email",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "address",
+              "label": "ที่อยู่หรือจุดนัดรับรถ / Address",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "addressNote",
+              "label": "address Note",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "social",
+              "label": "ลิงก์โซเชียล / Social URLs",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "socialNote",
+              "label": "ข้อความเมื่อยังไม่มีบัญชีโซเชียล",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "checklistTitle",
+              "label": "checklist Title",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "checklist",
+              "label": "รายการเตรียมก่อนติดต่อ",
+              "type": "textarea",
+              "required": 0,
+              "rows": 4,
+              "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+            },
+            {
+              "name": "checklistNote",
+              "label": "checklist Note",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            },
+            {
+              "name": "check",
+              "label": "check",
+              "type": "text",
+              "required": 0,
+              "rows": 3,
+              "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

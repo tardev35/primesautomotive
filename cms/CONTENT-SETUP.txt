@@ -1,5 +1,8 @@
 PROM DRIVE — WORDPRESS CONTENT + HEADLESS SEARCH
 
+อัปเดต 2.0: ชุดใหม่รวมอยู่ใน prom-drive-manager.zip ไม่ต้องใช้ ACF
+อ่าน prom-drive-manager/README.txt สำหรับติดตั้งใหม่ เอกสารส่วนถัดไปเก็บไว้สำหรับชุดเก่า
+
 สถานะ
 - เตรียมปลั๊กอิน CPT, ฟิลด์ ACF, draft seed, ตัวอ่าน REST ฝั่งเว็บไซต์ และ API ค้นหา 3 ตัวกรองแล้ว
 - ยังไม่มีการติดตั้งหรือเชื่อมต่อ WordPress จริง เพราะยังไม่ได้รับ URL CMS
