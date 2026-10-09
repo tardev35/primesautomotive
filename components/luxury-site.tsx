@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { AvailabilitySearch, FleetResultNote, VehicleCard } from "@/components/fleet-experience";
 import { fleet, matchesRental, type RentalQuery } from "@/lib/fleet";
 import { CompanyPage } from "@/components/company-pages";
-import { companyLabels, pendingLabel, PhotoCredits, SocialLinks } from "@/components/site-branding";
+import { companyLabels, pendingLabel,  SocialLinks } from "@/components/site-branding";
 import { callLink, lineLink, defaultSiteContent, type SiteContent } from "@/lib/site-content";
 import { SiteContentProvider, useSiteContent } from "@/components/site-content-provider";
 import { Vehicle360Demo } from "@/components/vehicle-360-demo";
@@ -202,7 +202,7 @@ function LuxurySiteView({ page }: { page: "home" | "about" | "contact" }) {
         </> : <CompanyPage page={page} language={language} />}
       </main>
 
-      <footer className="site-footer">
+      <footer className="site-footer" id="footer">
         <div className="footer-main">
           <div className="footer-about">
             <a className="brand footer-brand" href="/"><img className="brand-logo" src={settings.logo_url} alt={settings.brand_name} width={56} height={56} /><span className="brand-copy"><b>{settings.brand_name}</b><small>{settings.brand_tagline}</small></span></a>
@@ -215,7 +215,7 @@ function LuxurySiteView({ page }: { page: "home" | "about" | "contact" }) {
           <FooterColumn title={t.footerHeads[2]} items={t.footerPlaces} />
         </div>
         <nav className="footer-company-links" aria-label="PROM DRIVE"><a href="/about">{companyLabels[language].about}</a><a href="/contact">{companyLabels[language].contact}</a></nav>
-        <div className="footer-bottom"><p>{t.footerCopyright}</p><nav aria-label="Legal"><a href="/contact">{t.footerLegal[0]}</a><a href="/contact">{t.footerLegal[1]}</a><a href="/contact">{t.footerLegal[2]}</a><PhotoCredits language={language} /></nav></div>
+        <div className="footer-bottom"><p>{t.footerCopyright}</p><nav aria-label="Legal"><a href="/contact">{t.footerLegal[0]}</a><a href="/contact">{t.footerLegal[1]}</a><a href="/contact">{t.footerLegal[2]}</a></nav></div>
       </footer>
     </div>
   );

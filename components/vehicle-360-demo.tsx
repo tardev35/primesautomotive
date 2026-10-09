@@ -13,7 +13,7 @@ const copy = {
     badge: "ตัวอย่างเพื่อการนำเสนอ", model: "Kia Telluride · EVOX Demo",
     launch: "เปิดประสบการณ์ 360°", hint: "ลากซ้าย–ขวาบนภาพเพื่อหมุนรถ",
     privacy: "กดเพื่อโหลดเดโมจากเว็บไซต์ EVOX", loading: "กำลังเปิดเดโม EVOX…",
-    fallback: "ภาพไม่แสดง? เปิดเดโมในแท็บใหม่", credit: "ภาพและตัวเล่นโดย EVOX Images",
+    fallback: "", credit: "ภาพและตัวเล่นโดย EVOX Images",
     notice: "เดโมจาก EVOX สำหรับแสดงแนวทางการใช้งาน ไม่ใช่รถในคอลเลกชัน PROM DRIVE",
     frame: "ตัวอย่างหมุนชมภายนอกรถ 360 องศาจาก EVOX",
   },
@@ -65,7 +65,6 @@ export function Vehicle360Demo({ language }: { language: "th" | "en" | "zh" }) {
         </div>
         <div className="virtual360-controls"><span><MoveHorizontal size={18} aria-hidden="true" />{t.hint}</span><a href={demoUrl} target="_blank" rel="noopener noreferrer">{t.fallback}</a></div>
       </div>
-      <div className="virtual360-footnote"><p>{t.notice}</p><a href={sourceUrl} target="_blank" rel="noopener noreferrer">{t.credit}</a></div>
     </section>
   );
 }
