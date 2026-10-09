@@ -38,7 +38,7 @@ export function AvailabilitySearch({ language, query, count, onSearch, onReset }
   }, [query]);
   function markDirty() { setDirty(true); setError(null); }
   return <section id="availability" className="rental-search" aria-labelledby="rental-search-title">
-    <div className="rental-search-heading"><div><p className="eyebrow">{w.eyebrow}</p><h2 id="rental-search-title">{w.title}</h2><p>{w.intro}</p></div><span className="demo-label"><Info size={14} aria-hidden="true" />{w.demo}</span></div>
+    <div className="rental-search-heading"><div><p className="eyebrow">{w.eyebrow}</p><p data-heading="h2" id="rental-search-title">{w.title}</p><p>{w.intro}</p></div><span className="demo-label"><Info size={14} aria-hidden="true" />{w.demo}</span></div>
     <form ref={formRef} className="rental-search-form" onInput={markDirty} onSubmit={(event) => {
       event.preventDefault();
       const data = new FormData(event.currentTarget);
@@ -74,7 +74,7 @@ export function formatQuery(query: RentalQuery, language: Language) {
 
 export function FleetResultNote({ query, language, count, onReset }: { query: RentalQuery; language: Language; count: number; onReset: () => void }) {
   const w = words[language];
-  return <div className="fleet-result-note"><div><span className="demo-label">{w.resultTitle}</span><p>{formatQuery(query, language)} · {rentalDays(query)} {w.day} · {w.services[serviceValues.indexOf(query.service)]}</p>{count === 0 && <><h3>{w.empty}</h3><p>{w.emptyBody}</p></>}</div><div><a className="text-link" href="#availability">{w.searchAgain}</a><button type="button" className="rental-reset" onClick={onReset}>{w.reset}</button></div></div>;
+  return <div className="fleet-result-note"><div><span className="demo-label">{w.resultTitle}</span><p>{formatQuery(query, language)} · {rentalDays(query)} {w.day} · {w.services[serviceValues.indexOf(query.service)]}</p>{count === 0 && <><p data-heading="h3">{w.empty}</p><p>{w.emptyBody}</p></>}</div><div><a className="text-link" href="#availability">{w.searchAgain}</a><button type="button" className="rental-reset" onClick={onReset}>{w.reset}</button></div></div>;
 }
 
 export function VehicleCard({ car, language, query }: { car: Vehicle; language: Language; query: RentalQuery | null }) {
@@ -86,18 +86,18 @@ export function VehicleCard({ car, language, query }: { car: Vehicle; language: 
   return <article className="car-card">
     <div className="car-visual"><img src={car.image} alt={car.name} width={960} height={600} loading="lazy" decoding="async" /></div>
     <div className="car-card-content">
-      <div className="car-title-row"><div><small>{w.categories[categories.indexOf(car.category as typeof categories[number])]}</small><h3>{car.name}</h3></div></div>
+      <div className="car-title-row"><div><small>{w.categories[categories.indexOf(car.category as typeof categories[number])]}</small><p data-heading="h3">{car.name}</p></div></div>
       <p className="vehicle-summary">{localized(car, "summary", language)}</p>
       <div className="vehicle-quick-specs"><span><Users size={15} />{car.seats} {w.seats}</span><span><Gauge size={15} />{car.power_ps ? `${car.power_ps} PS` : fuelLabel}</span><span>{car.transmission === "manual" ? w.manual : w.automatic}</span></div>
       <div className="vehicle-price"><span>{query ? `${w.total} · ${rentalDays(query)} ${w.day}` : w.from}</span><strong>{amount === null ? w.quote : money(amount, language)}</strong><small>{car.fleet_status === "maintenance" ? w.maintenance : w.sample}</small></div>
       <Dialog><DialogTrigger asChild><button type="button" className="car-detail-button btn-77">{w.detail}</button></DialogTrigger><DialogContent className="car-dialog vehicle-detail-dialog" showCloseButton={false}>
         <DialogClose className="dialog-close">{w.close}</DialogClose>
         <img src={car.image} alt={car.name} width={960} height={600} />
-        <span className="demo-label">{w.demo}</span><DialogTitle>{car.name}</DialogTitle><DialogDescription>{localized(car, "summary", language)}</DialogDescription>
+        <span className="demo-label">{w.demo}</span><DialogTitle asChild><p data-heading="h2">{car.name}</p></DialogTitle><DialogDescription>{localized(car, "summary", language)}</DialogDescription>
         <p className="vehicle-spec-note">{w.specNote}</p>
-        <h3>{w.specs}</h3><dl className="vehicle-spec-grid">{specs.map(([label, value]) => <div key={String(label)}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
-        <h3>{w.highlights}</h3><ul className="vehicle-features">{localized(car, "features", language).split("\n").map((feature) => <li key={feature}>{feature}</li>)}</ul>
-        <h3>{w.terms}</h3><dl className="vehicle-spec-grid"><div><dt>{query ? w.total : w.from}</dt><dd>{amount === null ? w.quote : money(amount, language)}</dd></div><div><dt>{w.deposit}</dt><dd>{money(car.deposit_thb, language)}</dd></div><div><dt>{w.minimum}</dt><dd>{car.minimum_days} {w.day}</dd></div><div><dt>{w.mileage}</dt><dd>{car.included_km_per_day} {w.km}</dd></div><div><dt>{w.extra}</dt><dd>{money(car.extra_km_thb, language)}{w.perKm}</dd></div></dl>
+        <p data-heading="h3">{w.specs}</p><dl className="vehicle-spec-grid">{specs.map(([label, value]) => <div key={String(label)}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+        <p data-heading="h3">{w.highlights}</p><ul className="vehicle-features">{localized(car, "features", language).split("\n").map((feature) => <li key={feature}>{feature}</li>)}</ul>
+        <p data-heading="h3">{w.terms}</p><dl className="vehicle-spec-grid"><div><dt>{query ? w.total : w.from}</dt><dd>{amount === null ? w.quote : money(amount, language)}</dd></div><div><dt>{w.deposit}</dt><dd>{money(car.deposit_thb, language)}</dd></div><div><dt>{w.minimum}</dt><dd>{car.minimum_days} {w.day}</dd></div><div><dt>{w.mileage}</dt><dd>{car.included_km_per_day} {w.km}</dd></div><div><dt>{w.extra}</dt><dd>{money(car.extra_km_thb, language)}{w.perKm}</dd></div></dl>
         {query && <p className="vehicle-spec-note">{formatQuery(query, language)}</p>}
         <p className="vehicle-spec-note">{w.excluded}</p><p className="vehicle-terms">{localized(car, "rental_terms", language)}</p>
         <DialogClose asChild><a className="btn-77 vehicle-contact" href="#contact">{w.enquire}</a></DialogClose>

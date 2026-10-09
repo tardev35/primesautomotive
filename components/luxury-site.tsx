@@ -28,7 +28,7 @@ const copy = {
     available: "พร้อมให้บริการ", perDay: "/วัน", viewCar: "ดูรายละเอียดรถ", carNotes: ["ความสบายระดับสูงสำหรับทุกค่ำคืนที่สำคัญ", "แกรนด์ทัวเรอร์สมรรถนะสูงที่ขับได้อย่างมั่นใจ", "สมดุลระหว่างความเร้าใจกับการใช้งานในเมือง"],
     processEyebrow: "เรียบง่ายในทุกขั้นตอน", processTitle: "สามขั้นตอนที่เราเตรียมไว้ให้", processBody: "ทุกขั้นตอนมีเจ้าหน้าที่ดูแล โดยไม่ต้องกรอกแบบฟอร์มยาว", processHeads: ["เลือก", "ยืนยัน", "รับรถ"], processNotes: ["เลือกคันที่เข้ากับโอกาสและรูปแบบการเดินทาง", "ยืนยันตัวตนกับคอนเซียร์จ โดยปกติภายใน 15 นาที", "รับรถที่บ้าน โรงแรม หรือสนามบินตามเวลานัดหมาย"],
     contactEyebrow: "การเดินทางของคุณเริ่มตรงนี้", contactTitle: ["คุยเพียงครั้งเดียว", "เราจัดการทุกอย่างให้"], line: "คุยผ่าน LINE", call: "โทรตอนนี้", hours: "ให้บริการทุกวัน · 08:00–24:00 น.", demo: "รถและราคาในหน้านี้เป็นข้อมูลตัวอย่าง",
-    footerIntro: "บริการรถหรูและรถสมรรถนะสูงแบบส่วนตัว ดูแลโดยทีมคอนเซียร์จ ตั้งแต่เลือกคันจนถึงรับรถคืน", footerHeads: ["คอลเลกชัน", "บริการ", "พื้นที่ให้บริการ"], footerRent: ["ซูเปอร์คาร์", "อัลตร้าลักชัวรี", "รถสปอร์ต", "ซีดานพร้อมคนขับ"], footerServices: ["ขับเอง", "พร้อมคนขับ", "รับ–ส่งสนามบิน", "งานแต่งและอีเวนต์"], footerPlaces: ["กรุงเทพฯ", "สุวรรณภูมิ", "ภูเก็ต", "เกาะสมุย", "เชียงใหม่"], footerContact: ["คอนเซียร์จ", "WhatsApp", "LINE"], footerLegal: ["ข้อตกลง", "ความเป็นส่วนตัว", "นโยบายการเช่า"], footerCopyright: "© 2026 Aurelia Private Motor Reserve · ข้อมูลตัวอย่างสำหรับงานออกแบบ",
+    footerIntro: "บริการรถหรูและรถสมรรถนะสูงแบบส่วนตัว ดูแลโดยทีมคอนเซียร์จ ตั้งแต่เลือกคันจนถึงรับรถคืน", footerHeads: ["คอลเลกชัน", "บริการ", "พื้นที่ให้บริการ"], footerRent: ["ซูเปอร์คาร์", "อัลตร้าลักชัวรี", "รถสปอร์ต", "ซีดานพร้อมคนขับ"], footerServices: ["ขับเอง", "พร้อมคนขับ", "รับ–ส่งสนามบิน", "งานแต่งและอีเวนต์"], footerPlaces: ["กรุงเทพฯ", "สุวรรณภูมิ", "ภูเก็ต", "เกาะสมุย", "เชียงใหม่"], footerContact: ["คอนเซียร์จ", "WhatsApp", "LINE"], footerLegal: ["ข้อตกลง", "ความเป็นส่วนตัว", "นโยบายการเช่า"], footerCopyright: "© 2026 PROM DRIVE · ข้อมูลตัวอย่างสำหรับงานออกแบบ",
   },
   en: {
     nav: ["Fleet", "Experience", "How it works", "Contact"], concierge: "Concierge",
@@ -39,7 +39,7 @@ const copy = {
     reserve: "THE RESERVE", choose: "Choose your presence", chooseBody: "Choose for the occasion and the way you want to travel—not simply for the badge.", filters: ["All", "Sports", "Supercar", "Ultra-Luxury"], available: "Available", perDay: "/day", viewCar: "View this car", carNotes: [],
     processEyebrow: "EFFORTLESS BY DESIGN", processTitle: "Three quiet steps", processBody: "A dedicated concierge guides every step—no long forms required.", processHeads: ["Select", "Verify", "Receive"], processNotes: ["Choose the car that suits your occasion and journey.", "Verify your identity with your concierge, usually within 15 minutes.", "Receive the car at your home, hotel or airport at the agreed time."],
     contactEyebrow: "YOUR JOURNEY BEGINS HERE", contactTitle: ["One conversation", "Everything arranged"], line: "LINE Concierge", call: "Call now", hours: "Available daily · 08:00–24:00 ICT", demo: "Concept fleet and pricing shown for demonstration.",
-    footerIntro: "Private access to luxury and performance cars, guided by one concierge from selection to return.", footerHeads: ["Collection", "Services", "Service areas"], footerRent: ["Supercars", "Ultra-luxury", "Sports cars", "Chauffeured sedans"], footerServices: ["Self-drive", "With chauffeur", "Airport delivery", "Weddings & events"], footerPlaces: ["Bangkok", "Suvarnabhumi", "Phuket", "Koh Samui", "Chiang Mai"], footerContact: ["Concierge", "WhatsApp", "LINE"], footerLegal: ["Terms", "Privacy", "Rental policy"], footerCopyright: "© 2026 Aurelia Private Motor Reserve · Design concept content",
+    footerIntro: "Private access to luxury and performance cars, guided by one concierge from selection to return.", footerHeads: ["Collection", "Services", "Service areas"], footerRent: ["Supercars", "Ultra-luxury", "Sports cars", "Chauffeured sedans"], footerServices: ["Self-drive", "With chauffeur", "Airport delivery", "Weddings & events"], footerPlaces: ["Bangkok", "Suvarnabhumi", "Phuket", "Koh Samui", "Chiang Mai"], footerContact: ["Concierge", "WhatsApp", "LINE"], footerLegal: ["Terms", "Privacy", "Rental policy"], footerCopyright: "© 2026 PROM DRIVE · Design concept content",
   },
   zh: {
     nav: ["车队", "尊享体验", "服务流程", "联系我们"], concierge: "专属礼宾",
@@ -50,7 +50,7 @@ const copy = {
     reserve: "私享车库", choose: "选择属于您的风格", chooseBody: "根据场合与出行方式选择座驾，而不只是追随品牌标志。", filters: ["全部", "跑车", "超级跑车", "超豪华"], available: "可预订", perDay: "/天", viewCar: "查看车辆", carNotes: ["为重要夜晚准备的顶级后排舒适体验。", "从容易驾、性能澎湃的豪华旅行座驾。", "兼顾城市驾驶与动感体验的均衡之选。"],
     processEyebrow: "从容简单的服务流程", processTitle: "三个步骤，轻松启程", processBody: "专属礼宾全程协助，无需填写冗长表格。", processHeads: ["选择", "核验", "交付"], processNotes: ["选择适合场合与行程的座驾。", "通过专属礼宾完成身份核验，通常仅需15分钟。", "按约定时间在家中、酒店或机场接收车辆。"],
     contactEyebrow: "您的旅程，从这里开始", contactTitle: ["只需一次沟通", "其余交给我们"], line: "LINE 礼宾服务", call: "立即致电", hours: "每日服务 · 08:00–24:00", demo: "页面中的车辆与价格均为概念演示信息。",
-    footerIntro: "尊享豪华与高性能座驾，由专属礼宾从选车到还车全程为您安排。", footerHeads: ["车队系列", "服务项目", "服务地区"], footerRent: ["超级跑车", "超豪华座驾", "运动跑车", "礼宾专车"], footerServices: ["自驾服务", "专属司机", "机场交付", "婚礼与活动"], footerPlaces: ["曼谷", "素万那普", "普吉岛", "苏梅岛", "清迈"], footerContact: ["专属礼宾", "WhatsApp", "LINE"], footerLegal: ["服务条款", "隐私政策", "租赁政策"], footerCopyright: "© 2026 Aurelia Private Motor Reserve · 设计概念内容",
+    footerIntro: "尊享豪华与高性能座驾，由专属礼宾从选车到还车全程为您安排。", footerHeads: ["车队系列", "服务项目", "服务地区"], footerRent: ["超级跑车", "超豪华座驾", "运动跑车", "礼宾专车"], footerServices: ["自驾服务", "专属司机", "机场交付", "婚礼与活动"], footerPlaces: ["曼谷", "素万那普", "普吉岛", "苏梅岛", "清迈"], footerContact: ["专属礼宾", "WhatsApp", "LINE"], footerLegal: ["服务条款", "隐私政策", "租赁政策"], footerCopyright: "© 2026 PROM DRIVE · 设计概念内容",
   },
 } as const;
 
@@ -129,9 +129,9 @@ export function LuxurySite() {
     <div className="site-shell">
       <div className="film-grain" aria-hidden="true" />
       <header className="site-header" ref={headerRef}>
-        <a className="brand" href="#top" aria-label="Aurelia Reserve home">
-          <span className="brand-mark">AR</span>
-          <span className="brand-copy"><b>AURELIA</b><small>PRIVATE MOTOR RESERVE</small></span>
+        <a className="brand" href="#top" aria-label="PROM DRIVE home">
+          <img className="brand-logo" src="/prom-drive-logo.png" alt="PROM DRIVE" width={56} height={56} />
+          <span className="brand-copy"><b>PROM DRIVE</b><small>CAR RENTAL</small></span>
         </a>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
@@ -180,13 +180,13 @@ export function LuxurySite() {
         <section className="statement section-pad" id="experience">
           <p className="eyebrow">{t.statementEyebrow}</p>
           <div className="statement-grid">
-            <h2 className={`statement-title statement-title-${language}`}>{t.statementTitle[0]}<span>{t.statementTitle[1]}</span></h2>
+            <p data-heading="h2" className={`statement-title statement-title-${language}`}>{t.statementTitle[0]}<span>{t.statementTitle[1]}</span></p>
             <div className="statement-copy"><p>{t.statementBody}</p><div className="stats"><div><strong>100%</strong><span>{t.stats[0]}</span></div><div><strong>24/7</strong><span>{t.stats[1]}</span></div><div><strong>3</strong><span>{t.stats[2]}</span></div></div></div>
           </div>
         </section>
 
         <section className="fleet-section section-pad" id="fleet">
-          <div className="section-heading"><div><p className="eyebrow">{t.reserve}</p><h2>{t.choose}</h2></div><p>{t.chooseBody}</p></div>
+          <div className="section-heading"><div><p className="eyebrow">{t.reserve}</p><p data-heading="h2">{t.choose}</p></div><p>{t.chooseBody}</p></div>
           <div className="filter-row" aria-label="Filter the collection">
             {filterValues.map((filter, index) => <button type="button" key={filter} className={activeFilter === filter ? "active" : ""} aria-pressed={activeFilter === filter} onClick={() => setActiveFilter(filter)}>{ft.filters[index]}</button>)}
           </div>
@@ -199,16 +199,16 @@ export function LuxurySite() {
         </section>
 
         <section className="process-section section-pad" id="process">
-          <div className="section-heading"><div><p className="eyebrow">{t.processEyebrow}</p><h2>{t.processTitle}</h2></div><p>{t.processBody}</p></div>
+          <div className="section-heading"><div><p className="eyebrow">{t.processEyebrow}</p><p data-heading="h2">{t.processTitle}</p></div><p>{t.processBody}</p></div>
           <div className="process-grid">
-            <article><span>01</span><Sparkles size={24} /><h3>{t.processHeads[0]}</h3><p>{t.processNotes[0]}</p></article>
-            <article><span>02</span><ShieldCheck size={24} /><h3>{t.processHeads[1]}</h3><p>{t.processNotes[1]}</p></article>
-            <article><span>03</span><MapPin size={24} /><h3>{t.processHeads[2]}</h3><p>{t.processNotes[2]}</p></article>
+            <article><span>01</span><Sparkles size={24} /><p data-heading="h3">{t.processHeads[0]}</p><p>{t.processNotes[0]}</p></article>
+            <article><span>02</span><ShieldCheck size={24} /><p data-heading="h3">{t.processHeads[1]}</p><p>{t.processNotes[1]}</p></article>
+            <article><span>03</span><MapPin size={24} /><p data-heading="h3">{t.processHeads[2]}</p><p>{t.processNotes[2]}</p></article>
           </div>
         </section>
 
         <section className="concierge-section" id="contact">
-          <div><p className="eyebrow">{t.contactEyebrow}</p><h2>{t.contactTitle[0]}<br />{t.contactTitle[1]}</h2></div>
+          <div><p className="eyebrow">{t.contactEyebrow}</p><p data-heading="h2">{t.contactTitle[0]}<br />{t.contactTitle[1]}</p></div>
           <div className="concierge-actions"><a className="button button-gold btn-77" href="https://line.me" target="_blank" rel="noreferrer"><MessageCircle size={17} />{t.line}</a><a className="button button-outline" href="tel:+6620000000"><Phone size={17} />{t.call}</a><p>{t.hours}</p></div>
         </section>
       </main>
@@ -216,9 +216,9 @@ export function LuxurySite() {
       <footer className="site-footer">
         <div className="footer-main">
           <div className="footer-about">
-            <a className="brand footer-brand" href="#top"><span className="brand-mark">AR</span><span className="brand-copy"><b>AURELIA</b><small>PRIVATE MOTOR RESERVE</small></span></a>
+            <a className="brand footer-brand" href="#top"><img className="brand-logo" src="/prom-drive-logo.png" alt="PROM DRIVE" width={56} height={56} /><span className="brand-copy"><b>PROM DRIVE</b><small>CAR RENTAL</small></span></a>
             <p>{t.footerIntro}</p>
-            <div className="footer-contact-list"><span>{t.footerContact[0]} <b>+66 2 000 0000</b></span><span>{t.footerContact[1]} <b>+66 8 0000 0000</b></span><span>{t.footerContact[2]} <b>@AURELIA.CARS</b></span></div>
+            <div className="footer-contact-list"><span>{t.footerContact[0]} <b>+66 2 000 0000</b></span><span>{t.footerContact[1]} <b>+66 8 0000 0000</b></span><span>{t.footerContact[2]} <b>{language === "th" ? "รอยืนยันบัญชี" : language === "zh" ? "账号待确认" : "Account pending"}</b></span></div>
             <div className="social-row" aria-label="Social channels"><a href="#contact">IG</a><a href="#contact">WA</a><a href="#contact">LI</a></div>
           </div>
           <FooterColumn title={t.footerHeads[0]} items={t.footerRent} />
@@ -236,15 +236,16 @@ function TypewriterHeading({ language, lines }: { language: Language; lines: rea
   const segmenter = new Intl.Segmenter(language, { granularity: "grapheme" });
   const segments = lines.map((line) => [...segmenter.segment(line)].map(({ segment }) => segment));
   let offset = 0;
-  return <h1 id="hero-title" className={`hero-title hero-title-${language} typewriter-title`} aria-label={lines.join(" ")}>
+  return <p data-heading="h1" id="hero-title" className={`hero-title hero-title-${language} typewriter-title`} >
+    <span className="sr-only">{lines.join(" ")}</span>
     {segments.map((line, lineIndex) => {
       const start = offset;
       offset += line.length;
       return <span className={`typewriter-line${lineIndex ? " typewriter-line-accent" : ""}`} aria-hidden="true" key={lineIndex}>{line.map((glyph, index) => <span className="typewriter-glyph" key={index} style={{ animationDelay: `${220 + (start + index) * 65 + lineIndex * 180}ms` }}>{glyph}</span>)}</span>;
     })}
-  </h1>;
+  </p>;
 }
 
 function FooterColumn({ title, items }: { title: string; items: readonly string[] }) {
-  return <div className="footer-column"><h3>{title}</h3><nav>{items.map((item) => <a href="#contact" key={item}>{item}</a>)}</nav></div>;
+  return <div className="footer-column"><p data-heading="h3">{title}</p><nav>{items.map((item) => <a href="#contact" key={item}>{item}</a>)}</nav></div>;
 }

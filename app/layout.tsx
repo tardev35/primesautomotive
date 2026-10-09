@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Aurelia Private Motor Reserve",
+  title: "PROM DRIVE | Car Rental",
   description: "A private collection of performance and ultra-luxury cars, delivered across Bangkok.",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: "/prom-drive-logo.png",
+    shortcut: "/prom-drive-logo.png",
   },
 };
 
