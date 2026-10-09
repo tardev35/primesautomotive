@@ -29,12 +29,14 @@ export function AvailabilitySearch({ language, query, count, onSearch, onReset }
   const [service, setService] = useState("self-drive");
   const [error, setError] = useState<"dates" | "past" | null>(null);
   const [pickupDate, setPickupDate] = useState("");
+  const [pickupTime, setPickupTime] = useState("10:00");
+  const [returnTime, setReturnTime] = useState("10:00");
   const [dirty, setDirty] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (query) { resultsRef.current?.focus({ preventScroll: true }); return; }
-    formRef.current?.reset(); setLocation("bangkok"); setCategory("All"); setService("self-drive"); setPickupDate(""); setError(null); setDirty(false);
+    formRef.current?.reset(); setLocation("bangkok"); setCategory("All"); setService("self-drive"); setPickupDate(""); setPickupTime("10:00"); setReturnTime("10:00"); setError(null); setDirty(false);
   }, [query]);
   function markDirty() { setDirty(true); setError(null); }
   return <section id="availability" className="rental-search" aria-labelledby="rental-search-title">
@@ -42,25 +44,38 @@ export function AvailabilitySearch({ language, query, count, onSearch, onReset }
     <form ref={formRef} className="rental-search-form" onInput={markDirty} onSubmit={(event) => {
       event.preventDefault();
       const data = new FormData(event.currentTarget);
-      const next = { pickup: `${data.get("pickupDate")}T${data.get("pickupTime")}:00+07:00`, returnAt: `${data.get("returnDate")}T${data.get("returnTime")}:00+07:00`, location, category, service };
+      const next = { pickup: `${data.get("pickupDate")}T${pickupTime || "10:00"}:00+07:00`, returnAt: `${data.get("returnDate")}T${returnTime || "10:00"}:00+07:00`, location, category, service };
       const invalid = queryError(next);
       setError(invalid);
       if (invalid) return;
       setDirty(false); onSearch(next);
     }}>
-      <fieldset className="rental-field"><legend><CalendarDays size={16} />{w.pickup}</legend><div className="date-time-pair"><input aria-label={w.pickup} name="pickupDate" type="date" required onInput={(e) => setPickupDate(e.currentTarget.value)} aria-describedby={error ? "rental-error" : undefined} /><input aria-label={w.pickupTime} name="pickupTime" type="time" required defaultValue="10:00" /></div></fieldset>
-      <fieldset className="rental-field"><legend><CalendarDays size={16} />{w.returnAt}</legend><div className="date-time-pair"><input aria-label={w.returnAt} name="returnDate" type="date" required min={pickupDate || undefined} aria-invalid={!!error} aria-describedby={error ? "rental-error" : undefined} /><input aria-label={w.returnTime} name="returnTime" type="time" required defaultValue="10:00" /></div></fieldset>
+      <fieldset className="rental-field"><legend><CalendarDays size={16} />{w.pickup}</legend><div className="date-time-pair"><input aria-label={w.pickup} name="pickupDate" type="date" required onInput={(e) => setPickupDate(e.currentTarget.value)} aria-describedby={error ? "rental-error" : undefined} /><RentalTimeInput language={language} label={w.pickupTime} name="pickupTime" value={pickupTime} onChange={(v) => { setPickupTime(v); markDirty(); }} /></div></fieldset>
+      <fieldset className="rental-field"><legend><CalendarDays size={16} />{w.returnAt}</legend><div className="date-time-pair"><input aria-label={w.returnAt} name="returnDate" type="date" required min={pickupDate || undefined} aria-invalid={!!error} aria-describedby={error ? "rental-error" : undefined} /><RentalTimeInput language={language} label={w.returnTime} name="returnTime" value={returnTime} onChange={(v) => { setReturnTime(v); markDirty(); }} /></div></fieldset>
       <SearchSelect label={w.place} icon={<MapPin size={16} />} value={location} values={locations} labels={w.places} onChange={(v) => { setLocation(v); markDirty(); }} />
       <SearchSelect label={w.category} icon={<SlidersHorizontal size={16} />} value={category} values={categories} labels={w.categories} onChange={(v) => { setCategory(v); markDirty(); }} />
       <SearchSelect label={w.service} icon={<Users size={16} />} value={service} values={serviceValues} labels={w.services} onChange={(v) => { setService(v); markDirty(); }} />
       <div className="rental-search-action"><button className="btn-77" type="submit"><Search size={17} aria-hidden="true" />{w.search}</button><span><Clock3 size={13} aria-hidden="true" />{w.timeNote}</span></div>
     </form>
     {error && <p className="rental-error" id="rental-error" role="alert">{w[error]}</p>}
-    <p className="rental-demo-note"><Info size={16} aria-hidden="true" />{w.note}</p>
+  
     <div ref={resultsRef} id="rental-results" tabIndex={-1} aria-live="polite" className={query ? "rental-results" : "rental-results-hidden"}>
       {query && <><div><span className="result-eyebrow">{w.resultTitle}</span><strong>{count} {w.result}</strong><p>{formatQuery(query, language)} · {rentalDays(query)} {w.day}</p>{dirty && <p className="rental-dirty">{language === "th" ? "เปลี่ยนเงื่อนไขแล้ว กรุณากดเช็กรถอีกครั้งเพื่ออัปเดตผล" : language === "zh" ? "条件已更改，请重新查询以更新结果。" : "Criteria changed. Run the search again to update results."}</p>}</div><div className="rental-result-actions"><a href="#fleet" className="button button-outline">{w.viewResults}</a><button type="button" onClick={() => { onReset(); setDirty(false); }} className="rental-reset">{w.reset}</button></div></>}
     </div>
   </section>;
+}
+
+// Native time inputs follow the device's clock format, not reliably the page language.
+// Keep Thai controls explicitly 24-hour while submitting the same HH:mm API value.
+function RentalTimeInput({ language, label, name, value, onChange }: { language: Language; label: string; name: string; value: string; onChange: (value: string) => void }) {
+  if (language !== "th") return <input aria-label={label} name={name} type="time" required value={value} onChange={(e) => onChange(e.currentTarget.value)} />;
+  const [hour = "10", minute = "00"] = (value || "10:00").split(":");
+  return <div className="time24" role="group" aria-label={`${label} (24 ชั่วโมง)`}>
+    <Select value={hour} onValueChange={(h) => onChange(`${h}:${minute}`)}><SelectTrigger className="time24-select" aria-label={`${label} ชั่วโมง`}><SelectValue /></SelectTrigger><SelectContent className="booking-options" position="popper">{Array.from({ length: 24 }, (_, i) => String(i).padStart(2, "0")).map((h) => <SelectItem key={h} value={h}>{h}</SelectItem>)}</SelectContent></Select>
+    <span aria-hidden="true">:</span>
+    <Select value={minute} onValueChange={(m) => onChange(`${hour}:${m}`)}><SelectTrigger className="time24-select" aria-label={`${label} นาที`}><SelectValue /></SelectTrigger><SelectContent className="booking-options" position="popper">{Array.from({ length: 60 }, (_, i) => String(i).padStart(2, "0")).map((m) => <SelectItem key={m} value={m}>{m}</SelectItem>)}</SelectContent></Select>
+    <Clock3 size={15} aria-hidden="true" />
+  </div>;
 }
 
 function SearchSelect({ label, icon, value, values, labels, onChange }: { label: string; icon: React.ReactNode; value: string; values: readonly string[]; labels: readonly string[]; onChange: (value: string) => void }) {
@@ -68,7 +83,7 @@ function SearchSelect({ label, icon, value, values, labels, onChange }: { label:
 }
 
 export function formatQuery(query: RentalQuery, language: Language) {
-  const fmt = new Intl.DateTimeFormat(locale(language), { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", timeZone: "Asia/Bangkok" });
+  const fmt = new Intl.DateTimeFormat(locale(language), { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", ...(language === "th" ? { hourCycle: "h23" as const } : {}), timeZone: "Asia/Bangkok" });
   return `${fmt.format(new Date(query.pickup))} – ${fmt.format(new Date(query.returnAt))} · ${words[language].places[locations.indexOf(query.location as typeof locations[number])]}`;
 }
 
