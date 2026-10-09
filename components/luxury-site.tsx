@@ -9,6 +9,7 @@ import { CompanyPage } from "@/components/company-pages";
 import { companyLabels, pendingLabel, PhotoCredits, SocialLinks } from "@/components/site-branding";
 import { callLink, lineLink, defaultSiteContent, type SiteContent } from "@/lib/site-content";
 import { SiteContentProvider, useSiteContent } from "@/components/site-content-provider";
+import { Vehicle360Demo } from "@/components/vehicle-360-demo";
 
 type Language = "th" | "en" | "zh";
 
@@ -182,6 +183,8 @@ function LuxurySiteView({ page }: { page: "home" | "about" | "contact" }) {
             {filteredCars.map((car) => <VehicleCard car={car} language={language} query={rentalQuery} key={car.slug} />)}
           </div>
         </section>
+
+        <Vehicle360Demo language={language} />
 
         <section className="process-section section-pad" id="process">
           <div className="section-heading"><div><p className="eyebrow">{t.processEyebrow}</p><p data-heading="h2">{t.processTitle}</p></div><p>{t.processBody}</p></div>
