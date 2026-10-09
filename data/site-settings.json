@@ -1,0 +1,144 @@
+{
+  "brand_name": "PROM DRIVE",
+  "brand_tagline": "CAR RENTAL",
+  "logo_url": "/prom-drive-logo.png",
+  "phone": "",
+  "whatsapp": "",
+  "email": "",
+  "line_id": "",
+  "maps_url": "",
+  "social": {
+    "facebook": "",
+    "line": "",
+    "instagram": "",
+    "tiktok": ""
+  },
+  "social_visible": {
+    "facebook": true,
+    "line": true,
+    "instagram": true,
+    "tiktok": true
+  },
+  "text": {
+    "th": {
+      "address": "",
+      "hours": "ให้บริการทุกวัน · 08:00–24:00 น.",
+      "footerIntro": "บริการรถหรูและรถสมรรถนะสูงแบบส่วนตัว ดูแลโดยทีมคอนเซียร์จ ตั้งแต่เลือกคันจนถึงรับรถคืน",
+      "footerHeads": [
+        "คอลเลกชัน",
+        "บริการ",
+        "พื้นที่ให้บริการ"
+      ],
+      "footerRent": [
+        "ซูเปอร์คาร์",
+        "อัลตร้าลักชัวรี",
+        "รถสปอร์ต",
+        "ซีดานพร้อมคนขับ"
+      ],
+      "footerServices": [
+        "ขับเอง",
+        "พร้อมคนขับ",
+        "รับ–ส่งสนามบิน",
+        "งานแต่งและอีเวนต์"
+      ],
+      "footerPlaces": [
+        "กรุงเทพฯ",
+        "สุวรรณภูมิ",
+        "ภูเก็ต",
+        "เกาะสมุย",
+        "เชียงใหม่"
+      ],
+      "footerContact": [
+        "คอนเซียร์จ",
+        "WhatsApp",
+        "LINE"
+      ],
+      "footerLegal": [
+        "ข้อตกลง",
+        "ความเป็นส่วนตัว",
+        "นโยบายการเช่า"
+      ],
+      "footerCopyright": "© 2026 PROM DRIVE"
+    },
+    "en": {
+      "address": "",
+      "hours": "Available daily · 08:00–24:00 ICT",
+      "footerIntro": "Private access to luxury and performance cars, guided by one concierge from selection to return.",
+      "footerHeads": [
+        "Collection",
+        "Services",
+        "Service areas"
+      ],
+      "footerRent": [
+        "Supercars",
+        "Ultra-luxury",
+        "Sports cars",
+        "Chauffeured sedans"
+      ],
+      "footerServices": [
+        "Self-drive",
+        "With chauffeur",
+        "Airport delivery",
+        "Weddings & events"
+      ],
+      "footerPlaces": [
+        "Bangkok",
+        "Suvarnabhumi",
+        "Phuket",
+        "Koh Samui",
+        "Chiang Mai"
+      ],
+      "footerContact": [
+        "Concierge",
+        "WhatsApp",
+        "LINE"
+      ],
+      "footerLegal": [
+        "Terms",
+        "Privacy",
+        "Rental policy"
+      ],
+      "footerCopyright": "© 2026 PROM DRIVE · Design concept content"
+    },
+    "zh": {
+      "address": "",
+      "hours": "每日服务 · 08:00–24:00",
+      "footerIntro": "尊享豪华与高性能座驾，由专属礼宾从选车到还车全程为您安排。",
+      "footerHeads": [
+        "车队系列",
+        "服务项目",
+        "服务地区"
+      ],
+      "footerRent": [
+        "超级跑车",
+        "超豪华座驾",
+        "运动跑车",
+        "礼宾专车"
+      ],
+      "footerServices": [
+        "自驾服务",
+        "专属司机",
+        "机场交付",
+        "婚礼与活动"
+      ],
+      "footerPlaces": [
+        "曼谷",
+        "素万那普",
+        "普吉岛",
+        "苏梅岛",
+        "清迈"
+      ],
+      "footerContact": [
+        "专属礼宾",
+        "WhatsApp",
+        "LINE"
+      ],
+      "footerLegal": [
+        "服务条款",
+        "隐私政策",
+        "租赁政策"
+      ],
+      "footerCopyright": "© 2026 PROM DRIVE · 设计概念内容"
+    }
+  }
+}

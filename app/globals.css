@@ -546,7 +546,7 @@ p:where([data-heading="h1"]), p:where([data-heading="h2"]), p:where([data-headin
 .site-header .brand-logo { width: 88px; height: 88px; }
 .site-header .brand { gap: 10px; }
 .desktop-nav { gap: 22px; }
-.desktop-nav a { white-space: nowrap; font-size: 13px; letter-spacing: 0; }
+.desktop-nav a { white-space: nowrap; font-size: 15px; letter-spacing: 0; }
 .desktop-nav a[aria-current=page] { color: var(--gold-bright); }
 .header-call { display: flex; }
 .footer-brand .brand-logo { width: 112px; height: 112px; }

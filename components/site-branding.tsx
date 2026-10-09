@@ -2,19 +2,18 @@
 
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import photos from "@/data/cars.json";
-import contact from "@/data/site-contact.json";
+import { useSiteContent } from "@/components/site-content-provider";
+import type { SocialChannel } from "@/lib/site-content";
 import type { Language } from "@/lib/fleet";
 
-export const contactDetails: { phone: string | null; whatsapp: string | null; email: string | null; address: string | null; social: Record<string, string | null> } = contact;
 export const pendingLabel = { th: "รอยืนยันช่องทาง", en: "Details coming soon", zh: "联系方式待确认" };
 export const companyLabels = { th: { about: "เกี่ยวกับเรา", contact: "ติดต่อเรา" }, en: { about: "About us", contact: "Contact us" }, zh: { about: "关于我们", contact: "联系我们" } };
-export const callHref = contactDetails.phone ? `tel:${contactDetails.phone.replace(/[^+\d]/g, "")}` : "/contact#channels";
-export const lineHref = contactDetails.social.line || "/contact#channels";
-const socialChannels = [{ id: "facebook", name: "Facebook" }, { id: "line", name: "LINE" }, { id: "instagram", name: "Instagram" }, { id: "tiktok", name: "TikTok" }];
+const socialChannels: Array<{ id: SocialChannel; name: string }> = [{ id: "facebook", name: "Facebook" }, { id: "line", name: "LINE" }, { id: "instagram", name: "Instagram" }, { id: "tiktok", name: "TikTok" }];
 
 export function SocialLinks({ language, labels = false }: { language: Language; labels?: boolean }) {
+  const { settings: contactDetails } = useSiteContent();
   return <div className={`social-row${labels ? " social-row-labeled" : ""}`} aria-label={language === "th" ? "ช่องทางโซเชียล" : language === "zh" ? "社交平台" : "Social channels"}>
-    {socialChannels.map(({ id, name }) => {
+    {socialChannels.filter(({ id }) => contactDetails.social_visible[id]).map(({ id, name }) => {
       const url = contactDetails.social[id];
       return <a key={id} href={url || "/contact#channels"} target={url ? "_blank" : undefined} rel={url ? "noopener noreferrer" : undefined} aria-label={`${name}${url ? "" : ` — ${pendingLabel[language]}`}`} title={url ? name : `${name} · ${pendingLabel[language]}`}>
         <span className="social-icon" aria-hidden="true" style={{ maskImage: `url(/social/${id}.svg)`, WebkitMaskImage: `url(/social/${id}.svg)` }} />

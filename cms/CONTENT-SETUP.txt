@@ -1,0 +1,114 @@
+PROM DRIVE — WORDPRESS CONTENT + HEADLESS SEARCH
+
+สถานะ
+- เตรียมปลั๊กอิน CPT, ฟิลด์ ACF, draft seed, ตัวอ่าน REST ฝั่งเว็บไซต์ และ API ค้นหา 3 ตัวกรองแล้ว
+- ยังไม่มีการติดตั้งหรือเชื่อมต่อ WordPress จริง เพราะยังไม่ได้รับ URL CMS
+- เว็บไซต์ยังใช้ข้อมูลสำรองจากไฟล์ ข้อมูลรถ/ราคา/คิวค้นหายังเป็น DEMO
+- หน้าเว็บเดิมและระบบฟอนต์/ภาพ Hero ไม่เปลี่ยน
+
+โครงสร้างหลังบ้าน
+1) cars (ปลั๊กอิน aurelia-cars.php เดิม)
+   รถแต่ละรุ่น รูป สเปก ราคา เงื่อนไข category, service_modes, delivery_locations
+   ใช้ acf-vehicle-fields.json + car-seed.json เดิม ไม่สร้าง CPT cars ซ้ำ
+2) prom_drive_setting / REST base: prom-drive-settings
+   ใช้รายการเดียว slug = global
+   brand_name, brand_tagline, logo_url, phone, email, line_id, maps_url
+   social.facebook, social.line, social.instagram, social.tiktok
+   social_visible.* สวิตช์แสดง/ซ่อนไอคอนรายช่องทาง
+   text.th / text.en / text.zh: address, hours, footerIntro, footerCopyright,
+   footerHeads, footerRent, footerServices, footerPlaces, footerLegal
+   เบอร์ CALL และบัญชี LINE ใช้ร่วมกันใน Header, CTA, Footer, Contact
+   whatsapp เป็นช่องสำรอง ยังไม่ได้แสดงเป็นไอคอนในเว็บรุ่นนี้
+3) prom_drive_page / REST base: prom-drive-pages
+   3 รายการ slug = home, about, contact และ page_key ต้องตรงกับ slug
+   home.th/en/zh: ข้อความ Hero, ประสบการณ์, ขั้นตอน, CTA และป้ายเมนูเดิม
+   about.th/en/zh: เรื่องราวแบรนด์ คุณค่าแบรนด์ บริการ ข้อความปุ่ม
+   contact.th/en/zh: หัวเรื่อง คำแนะนำ รายการเตรียมสอบถาม ข้อความรอยืนยัน
+   ข้อมูล phone/social/address ไม่ใส่ซ้ำใน page ให้ใช้ global เท่านั้น
+
+ติดตั้ง
+1. ใช้ HTTPS สำหรับ WordPress และติดตั้ง Advanced Custom Fields (ACF 5.11+)
+   ฟิลด์เนื้อหา/ข้อมูลส่วนกลางชุดใหม่นี้ไม่ใช้ ACF Pro
+   แกลเลอรีรถจากชุดเดิมใช้ Gallery ซึ่งต้องใช้ ACF Pro
+2. อัปโหลด ZIP prom-drive-wordpress-content.zip จาก Plugins > Add New > Upload Plugin
+   หรือคัดลอกโฟลเดอร์ prom-drive-content ไป wp-content/plugins/ แล้ว Activate
+   ไฟล์ PHP, acf-content-fields.json, content-seed.json และ prom-drive-fleet-api.php
+   ต้องอยู่ในโฟลเดอร์เดียวกัน ปลั๊กอินโหลดฟิลด์ ACF ให้อัตโนมัติ ไม่ต้อง Import ซ้ำ
+3. เปิดเมนู PROM DRIVE · ข้อมูลเว็บไซต์ > นำเข้าร่างเริ่มต้น > สร้างร่างเริ่มต้น
+   ปุ่มนี้ใช้ได้เฉพาะ Administrator ตรวจ nonce และสร้างเป็น Draft เท่านั้น
+   พบ slug เดิมในสถานะใดก็ตามจะข้าม ไม่ทับข้อมูล รวมถึงรายการใน Trash
+   Seed ไม่ได้ทำงานอัตโนมัติเมื่อ Activate และไม่แตะข้อมูลรถ/คิวจอง
+4. กรอกข้อมูลจริงใน global จากนั้นตรวจ home/about/contact ทั้งสามภาษา
+   เนื้อหาเริ่มต้นเป็นตัวอย่าง ต้องตรวจคำกล่าวอ้างเกี่ยวกับบริษัท บริการ ราคาและพื้นที่
+   ลิงก์ social/maps ใช้ https:// เท่านั้น ห้ามใส่รหัสผ่าน/API key/ข้อมูลลูกค้า
+   URL โลโก้ใช้ไฟล์ที่อัปโหลดใน Media Library หรือ /prom-drive-logo.png สำหรับภาพเดิม
+5. ตรวจแล้วจึง Publish รายการที่ต้องการให้เว็บไซต์อ่าน
+   หากหน้าใดเป็น Draft เว็บไซต์จะคงข้อความสำรอง ไม่ใช่แสดง Draft สู่สาธารณะ
+   การเปิด show_in_rest ทำให้เนื้อหาที่ Publish อ่านได้โดยไม่ต้อง login
+   ไม่ใช่ระบบเก็บข้อมูลภายในหรือข้อมูลส่วนบุคคล
+6. เมื่อติดตั้งพร้อม ให้แจ้ง URL CMS เพื่อกำหนด WORDPRESS_API_BASE_URL ฝั่ง server
+   รูปแบบ: https://YOUR-CMS-HOST/wp-json/wp/v2
+   ตั้งค่าจริงผ่าน environment ของ hosting; ไม่ใส่บัญชี admin ลง browser หรือ Git
+   ยังไม่มีการตั้ง URL จริงในเว็บที่เผยแพร่ครั้งนี้
+
+การอ่านข้อมูลเว็บไซต์
+GET /wp-json/wp/v2/prom-drive-settings?slug=global&status=publish
+GET /wp-json/wp/v2/prom-drive-pages?slug=home,about,contact&status=publish
+- อ่านผ่าน server ก่อนส่งข้อมูลให้ UI ไม่เรียก WordPress จาก browser และไม่ใช้ admin credentials
+- ใช้ cache: no-store: การโหลดหน้าใหม่อ่านค่าที่ Publish ล่าสุด ไม่ต้อง rebuild เพื่อเปลี่ยนข้อความ
+- WordPress ล่ม/timeout/ข้อมูลบางช่องผิดรูปแบบ: ใช้ fallback ราย resource/field
+- ข้อมูลว่างในฟิลด์ข้อความใช้ล้างข้อความได้; ฟิลด์ที่ไม่มีใน response ใช้ค่าเดิม
+- ค่า URL ไม่ปลอดภัยจะไม่ถูกนำไปเป็นลิงก์
+- ถ้ายังไม่มีเบอร์/บัญชี ปุ่มจะแสดงรอยืนยันหรือพาไปหน้าติดต่อ ไม่โทรหาเลขปลอม
+- ข้อความเป็น plain text ไม่ประมวลผล HTML จาก CMS
+- รายการบางชุดเป็นตำแหน่งตายตัว เช่นหัวเรื่องสองบรรทัด/ขั้นตอนสามขั้น
+  จำนวนต้องตรงตามคำแนะนำฟิลด์ ถ้าผิดรูปแบบจะใช้ชุดสำรอง
+- รายการคอลเลกชัน/บริการ/พื้นที่ใน footer เพิ่ม–ลดบรรทัดได้
+- ป้าย Terms/Privacy/Rental policy ยังลิงก์ไปหน้าติดต่อ ไม่ใช่หน้านโยบายจริง
+- สี/ขนาด/animation และ SEO metadata ยังอยู่ในโค้ด ไม่ใช่ฟิลด์จัดการเนื้อหารุ่นนี้
+
+HEADLESS SEARCH — 3 FILTERS (AND)
+GET /wp-json/prom-drive/v1/vehicles
+ตัวอย่าง:
+/wp-json/prom-drive/v1/vehicles?location=bangkok&category=Supercar&service=self-drive&page=1&per_page=12
+
+พารามิเตอร์       ฟิลด์ในรถ             ค่าที่รองรับ
+location         delivery_locations    bangkok, bkk, dmk, hotel (ไม่ส่ง = ทุกพื้นที่)
+category         category              All, Sports, Supercar, Ultra-Luxury, SUV
+service          service_modes         self-drive, chauffeur, event (ไม่ส่ง = ทุกบริการ)
+page             pagination            เริ่ม 1
+per_page         pagination            1–100, ค่าเริ่มต้น 12
+
+- ทั้งสามเงื่อนไขต้องตรงพร้อมกัน ไม่ใช่ OR
+- checkbox ACF ของพื้นที่และบริการเก็บเป็น array ใช้การจับค่าทั้งคำใน serialized metadata
+- ส่งค่าที่ไม่อยู่ในรายการจะได้ REST validation error 400
+- ส่งเฉพาะรถ status=publish, fleet_status=active, data_status=verified และไม่ติดรหัสผ่าน
+- ส่งเฉพาะฟิลด์ catalogue ใน allowlist ไม่ส่งทะเบียน/เลขตัวถัง/ลูกค้า/คิวจอง
+- ผลลัพธ์มี items, filters, pagination และ availability_confirmed=false เสมอ
+- ไม่มีผลลัพธ์ = items:[], total:0; ห้ามตีความว่า API เสียหรือเติมรถ demo ปน
+- WordPress ยังไม่มี Cars/ACF = 503 ไม่คืนผลลัพธ์ว่างที่ดูเหมือนค้นหาได้จริง
+- ต้องเปิดปลั๊กอิน Cars เดิมและนำเข้าฟิลด์รถก่อนใช้ endpoint นี้
+
+วันเวลาและคิวรถจริง
+Endpoint ด้านบนเป็นการค้นหารุ่นรถตาม 3 ตัวกรอง ไม่ใช่การเช็คคิวจอง
+หากส่ง pickup/returnAt/return_at/pickup_date/return_date จะคืน 400
+พร้อมรหัส prom_drive_availability_not_connected ไม่เงียบแล้วแกล้งยืนยันว่ารถว่าง
+เมื่อพร้อมเชื่อมระบบจอง ให้แยก service ตรวจ unit จริง + ช่วง [pickup, return)
+และตรวจ/ล็อกคิวแบบ atomic ก่อนยืนยันตามแนวทางใน SETUP.txt เดิม
+ห้ามนำรายการ catalogue ที่ผ่าน filter ไปขึ้นข้อความ “รถว่างยืนยันแล้ว”
+ฟอร์มหน้าบ้านยังใช้ demo search เดิมจนกว่าจะเชื่อม Cars + reservations จริง
+
+แก้ไขต่อและตรวจสอบ
+- ข้อมูลสำรอง: data/site-settings.json, home-content.json, company-content.json
+- Contract: data/cms-contract.json
+- สร้างไฟล์ ACF/seed ใหม่: node cms/build-content-files.mjs
+- ตรวจ adapter/seed: node scripts/check-cms.mjs
+- ตรวจ PHP: php -l cms/prom-drive-content.php และ php -l cms/prom-drive-fleet-api.php
+- ตรวจ query 3 ตัวกรอง: php cms/check-fleet-api.php (stub test ไม่มี WordPress/network)
+- Runtime WordPress/ACF และ import UI ต้องตรวจบน CMS จริงหลังมี instance
+- ไฟล์ site-contact.json เดิมถูกรวมใน site-settings.json แล้ว ประวัติเดิมอยู่ใน Git
+
+เอกสารทางการ
+https://www.advancedcustomfields.com/resources/wp-rest-api-integration/
+https://developer.wordpress.org/rest-api/extending-the-rest-api/adding-rest-api-support-for-custom-content-types/
+https://developer.wordpress.org/reference/classes/wp_meta_query/

@@ -6,7 +6,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { AvailabilitySearch, FleetResultNote, VehicleCard } from "@/components/fleet-experience";
 import { fleet, matchesRental, type RentalQuery } from "@/lib/fleet";
 import { CompanyPage } from "@/components/company-pages";
-import { callHref, lineHref, companyLabels, contactDetails, pendingLabel, PhotoCredits, SocialLinks } from "@/components/site-branding";
+import { companyLabels, pendingLabel, PhotoCredits, SocialLinks } from "@/components/site-branding";
+import { callLink, lineLink, defaultSiteContent, type SiteContent } from "@/lib/site-content";
+import { SiteContentProvider, useSiteContent } from "@/components/site-content-provider";
 
 type Language = "th" | "en" | "zh";
 
@@ -16,45 +18,6 @@ const languages: Array<{ code: Language; label: string; name: string; flag: stri
   { code: "zh", label: "中文", name: "中文", flag: "/flags/cn.svg" },
 ];
 
-const copy = {
-  th: {
-    nav: ["รถทั้งหมด", "ประสบการณ์", "ขั้นตอน", "ติดต่อ"], concierge: "คอนเซียร์จ",
-    heroEyebrow: "คอลเลกชันส่วนตัว · กรุงเทพฯ", heroTitle: ["ที่สุดแห่ง", "การเดินทาง"],
-    heroBody: "ประสบการณ์รถระดับห้าดาว ตั้งแต่ข้อความแรกจนถึงวินาทีที่เรารับรถคืน",
-    check: "ตรวจสอบรถว่าง", explore: "ชมคอลเลกชัน", meta: ["รถของเราเอง 100%", "ยืนยันภายใน 15 นาที", "ส่งรถถึงคุณ"], scroll: "เลื่อนเพื่อชม",
-    live: "คอนเซียร์จพร้อมบริการ", find: "ค้นหารถสำหรับคุณ", pickup: "วันรับรถ", return: "วันคืนรถ", delivery: "สถานที่ส่งรถ", dates: ["12 ต.ค. 2026", "14 ต.ค. 2026"],
-    places: ["กรุงเทพฯ", "สนามบินสุวรรณภูมิ", "สนามบินดอนเมือง", "จัดส่งถึงโรงแรม"], viewAvailable: "ดูรถว่าง 12 คัน",
-    statementEyebrow: "เป็นเจ้าของเอง · คัดสรร · ดูแลอย่างพิถีพิถัน", statementTitle: ["ไม่ใช่แค่รถเช่า", "แต่คือการเดินทางที่ดูแลครบทุกด้าน"],
-    statementBody: "รถทุกคันในคอลเลกชันอยู่ภายใต้การดูแลของเราโดยตรง ไม่มีนายหน้า และไม่มีการส่งต่อประสบการณ์ให้บุคคลอื่น", stats: ["รถของเราเอง", "คอนเซียร์จส่วนตัว", "พื้นที่จัดส่ง"],
-    reserve: "คอลเลกชันของเรา", choose: "เลือกภาพลักษณ์ที่เป็นคุณ", chooseBody: "เลือกตามอารมณ์และรูปแบบการเดินทาง ไม่ใช่เพียงตามตราสัญลักษณ์", filters: ["ทั้งหมด", "สปอร์ต", "ซูเปอร์คาร์", "อัลตร้าลักชัวรี"],
-    available: "พร้อมให้บริการ", perDay: "/วัน", viewCar: "ดูรายละเอียดรถ", carNotes: ["ความสบายระดับสูงสำหรับทุกค่ำคืนที่สำคัญ", "แกรนด์ทัวเรอร์สมรรถนะสูงที่ขับได้อย่างมั่นใจ", "สมดุลระหว่างความเร้าใจกับการใช้งานในเมือง"],
-    processEyebrow: "เรียบง่ายในทุกขั้นตอน", processTitle: "สามขั้นตอนที่เราเตรียมไว้ให้", processBody: "ทุกขั้นตอนมีเจ้าหน้าที่ดูแล โดยไม่ต้องกรอกแบบฟอร์มยาว", processHeads: ["เลือก", "ยืนยัน", "รับรถ"], processNotes: ["เลือกคันที่เข้ากับโอกาสและรูปแบบการเดินทาง", "ยืนยันตัวตนกับคอนเซียร์จ โดยปกติภายใน 15 นาที", "รับรถที่บ้าน โรงแรม หรือสนามบินตามเวลานัดหมาย"],
-    contactEyebrow: "การเดินทางของคุณเริ่มตรงนี้", contactTitle: ["คุยเพียงครั้งเดียว", "เราจัดการทุกอย่างให้"], line: "คุยผ่าน LINE", call: "โทรตอนนี้", hours: "ให้บริการทุกวัน · 08:00–24:00 น.", demo: "รถและราคาในหน้านี้เป็นข้อมูลตัวอย่าง",
-    footerIntro: "บริการรถหรูและรถสมรรถนะสูงแบบส่วนตัว ดูแลโดยทีมคอนเซียร์จ ตั้งแต่เลือกคันจนถึงรับรถคืน", footerHeads: ["คอลเลกชัน", "บริการ", "พื้นที่ให้บริการ"], footerRent: ["ซูเปอร์คาร์", "อัลตร้าลักชัวรี", "รถสปอร์ต", "ซีดานพร้อมคนขับ"], footerServices: ["ขับเอง", "พร้อมคนขับ", "รับ–ส่งสนามบิน", "งานแต่งและอีเวนต์"], footerPlaces: ["กรุงเทพฯ", "สุวรรณภูมิ", "ภูเก็ต", "เกาะสมุย", "เชียงใหม่"], footerContact: ["คอนเซียร์จ", "WhatsApp", "LINE"], footerLegal: ["ข้อตกลง", "ความเป็นส่วนตัว", "นโยบายการเช่า"], footerCopyright: "© 2026 PROM DRIVE · ข้อมูลตัวอย่างสำหรับงานออกแบบ",
-  },
-  en: {
-    nav: ["Fleet", "Experience", "How it works", "Contact"], concierge: "Concierge",
-    heroEyebrow: "THE PRIVATE COLLECTION · BANGKOK", heroTitle: ["THE FINEST", "JOURNEY"], heroBody: "A five-star motoring experience, from your first message until the car is returned.",
-    check: "Check availability", explore: "Explore the collection", meta: ["100% owned fleet", "15-minute confirmation", "Delivered to you"], scroll: "Scroll to discover",
-    live: "Live concierge", find: "Find your car", pickup: "Pick-up date", return: "Return date", delivery: "Delivery location", dates: ["12 Oct 2026", "14 Oct 2026"], places: ["Bangkok", "Suvarnabhumi Airport", "Don Mueang Airport", "Hotel delivery"], viewAvailable: "View 12 available cars",
-    statementEyebrow: "OWNED · CURATED · IMPECCABLY KEPT", statementTitle: ["More than a rental", "A journey cared for from end to end"], statementBody: "Every vehicle is owned and cared for directly by us. No brokers, and no hand-off of your experience to another provider.", stats: ["Owned fleet", "Private concierge", "Delivery zones"],
-    reserve: "THE RESERVE", choose: "Choose your presence", chooseBody: "Choose for the occasion and the way you want to travel—not simply for the badge.", filters: ["All", "Sports", "Supercar", "Ultra-Luxury"], available: "Available", perDay: "/day", viewCar: "View this car", carNotes: [],
-    processEyebrow: "EFFORTLESS BY DESIGN", processTitle: "Three quiet steps", processBody: "A dedicated concierge guides every step—no long forms required.", processHeads: ["Select", "Verify", "Receive"], processNotes: ["Choose the car that suits your occasion and journey.", "Verify your identity with your concierge, usually within 15 minutes.", "Receive the car at your home, hotel or airport at the agreed time."],
-    contactEyebrow: "YOUR JOURNEY BEGINS HERE", contactTitle: ["One conversation", "Everything arranged"], line: "LINE Concierge", call: "Call now", hours: "Available daily · 08:00–24:00 ICT", demo: "Concept fleet and pricing shown for demonstration.",
-    footerIntro: "Private access to luxury and performance cars, guided by one concierge from selection to return.", footerHeads: ["Collection", "Services", "Service areas"], footerRent: ["Supercars", "Ultra-luxury", "Sports cars", "Chauffeured sedans"], footerServices: ["Self-drive", "With chauffeur", "Airport delivery", "Weddings & events"], footerPlaces: ["Bangkok", "Suvarnabhumi", "Phuket", "Koh Samui", "Chiang Mai"], footerContact: ["Concierge", "WhatsApp", "LINE"], footerLegal: ["Terms", "Privacy", "Rental policy"], footerCopyright: "© 2026 PROM DRIVE · Design concept content",
-  },
-  zh: {
-    nav: ["车队", "尊享体验", "服务流程", "联系我们"], concierge: "专属礼宾",
-    heroEyebrow: "私享车库 · 曼谷", heroTitle: ["臻致座驾", "非凡旅程"], heroBody: "五星级用车体验，从首次咨询到车辆归还，全程由专属礼宾团队照料。",
-    check: "查询可用车辆", explore: "浏览车队", meta: ["100% 自营车队", "15分钟确认", "专车送达"], scroll: "向下探索",
-    live: "在线礼宾服务", find: "寻找您的座驾", pickup: "取车日期", return: "还车日期", delivery: "交付地点", dates: ["2026年10月12日", "2026年10月14日"], places: ["曼谷", "素万那普机场", "廊曼机场", "送车至酒店"], viewAvailable: "查看12辆可用车辆",
-    statementEyebrow: "自营 · 精选 · 悉心养护", statementTitle: ["不止是租车", "更是全程无忧的旅程"], statementBody: "每一辆车均由我们直接拥有并悉心维护。没有中间商，也不会把您的服务体验转交给第三方。", stats: ["自营车队", "专属礼宾", "交付区域"],
-    reserve: "私享车库", choose: "选择属于您的风格", chooseBody: "根据场合与出行方式选择座驾，而不只是追随品牌标志。", filters: ["全部", "跑车", "超级跑车", "超豪华"], available: "可预订", perDay: "/天", viewCar: "查看车辆", carNotes: ["为重要夜晚准备的顶级后排舒适体验。", "从容易驾、性能澎湃的豪华旅行座驾。", "兼顾城市驾驶与动感体验的均衡之选。"],
-    processEyebrow: "从容简单的服务流程", processTitle: "三个步骤，轻松启程", processBody: "专属礼宾全程协助，无需填写冗长表格。", processHeads: ["选择", "核验", "交付"], processNotes: ["选择适合场合与行程的座驾。", "通过专属礼宾完成身份核验，通常仅需15分钟。", "按约定时间在家中、酒店或机场接收车辆。"],
-    contactEyebrow: "您的旅程，从这里开始", contactTitle: ["只需一次沟通", "其余交给我们"], line: "LINE 礼宾服务", call: "立即致电", hours: "每日服务 · 08:00–24:00", demo: "页面中的车辆与价格均为概念演示信息。",
-    footerIntro: "尊享豪华与高性能座驾，由专属礼宾从选车到还车全程为您安排。", footerHeads: ["车队系列", "服务项目", "服务地区"], footerRent: ["超级跑车", "超豪华座驾", "运动跑车", "礼宾专车"], footerServices: ["自驾服务", "专属司机", "机场交付", "婚礼与活动"], footerPlaces: ["曼谷", "素万那普", "普吉岛", "苏梅岛", "清迈"], footerContact: ["专属礼宾", "WhatsApp", "LINE"], footerLegal: ["服务条款", "隐私政策", "租赁政策"], footerCopyright: "© 2026 PROM DRIVE · 设计概念内容",
-  },
-} as const;
 
 const filterValues = ["All", "Sports", "Supercar", "Ultra-Luxury", "SUV"] as const;
 const fleetCopy = {
@@ -63,7 +26,14 @@ const fleetCopy = {
   zh: { filters: ["全部", "跑车", "超级跑车", "超豪华", "SUV"], browse: "浏览全部车型", count: "款精选车型", note: "此处为车型展示及示意照片，尚未接入租车公司的实时价格与车辆档期。", quote: "价格与档期请咨询", detail: "车型信息", close: "关闭", credit: "图片来源", dateError: "请选择晚于取车日期的还车日期。", dateSummary: "所选日期", dateNote: "所选日期仅用于准备咨询，不代表车辆档期已确认。" },
 } as const;
 
-export function LuxurySite({ page = "home" }: { page?: "home" | "about" | "contact" }) {
+export function LuxurySite({ page = "home", content = defaultSiteContent }: { page?: "home" | "about" | "contact"; content?: SiteContent }) {
+  return <SiteContentProvider value={content}><LuxurySiteView page={page} /></SiteContentProvider>;
+}
+
+function LuxurySiteView({ page }: { page: "home" | "about" | "contact" }) {
+  const { settings, home } = useSiteContent();
+  const callHref = callLink(settings);
+  const lineHref = lineLink(settings);
   const [menuOpen, setMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -71,7 +41,7 @@ export function LuxurySite({ page = "home" }: { page?: "home" | "about" | "conta
   const [language, setLanguage] = useState<Language>("th");
   const [languageReady, setLanguageReady] = useState(false);
   const [rentalQuery, setRentalQuery] = useState<RentalQuery | null>(null);
-  const t = copy[language];
+  const t = { ...home[language], ...settings.text[language] };
   const ft = fleetCopy[language];
   const matchingCars = useMemo(() => rentalQuery ? fleet.filter((car) => matchesRental(car, rentalQuery)) : fleet, [rentalQuery]);
   const filteredCars = useMemo(() => activeFilter === "All" ? matchingCars : matchingCars.filter((car) => car.category === activeFilter), [activeFilter, matchingCars]);
@@ -144,9 +114,9 @@ export function LuxurySite({ page = "home" }: { page?: "home" | "about" | "conta
     <div className="site-shell">
       <div className="film-grain" aria-hidden="true" />
       <header className="site-header" ref={headerRef}>
-        <a className="brand" href="/" aria-label="PROM DRIVE home">
-          <img className="brand-logo" src="/prom-drive-logo.png" alt="PROM DRIVE" width={56} height={56} />
-          <span className="brand-copy"><b>PROM DRIVE</b><small>CAR RENTAL</small></span>
+        <a className="brand" href="/" aria-label={`${settings.brand_name} home`}>
+          <img className="brand-logo" src={settings.logo_url} alt={settings.brand_name} width={56} height={56} />
+          <span className="brand-copy"><b>{settings.brand_name}</b><small>{settings.brand_tagline}</small></span>
         </a>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
@@ -232,9 +202,9 @@ export function LuxurySite({ page = "home" }: { page?: "home" | "about" | "conta
       <footer className="site-footer">
         <div className="footer-main">
           <div className="footer-about">
-            <a className="brand footer-brand" href="/"><img className="brand-logo" src="/prom-drive-logo.png" alt="PROM DRIVE" width={56} height={56} /><span className="brand-copy"><b>PROM DRIVE</b><small>CAR RENTAL</small></span></a>
+            <a className="brand footer-brand" href="/"><img className="brand-logo" src={settings.logo_url} alt={settings.brand_name} width={56} height={56} /><span className="brand-copy"><b>{settings.brand_name}</b><small>{settings.brand_tagline}</small></span></a>
             <p>{t.footerIntro}</p>
-            <div className="footer-contact-list"><a href={callHref}>CALL <b>{contactDetails.phone || pendingLabel[language]}</b></a><a href={lineHref}>LINE <b>{contactDetails.social.line ? companyLabels[language].contact : pendingLabel[language]}</b></a></div>
+            <div className="footer-contact-list"><a href={callHref}>CALL <b>{settings.phone || pendingLabel[language]}</b></a><a href={lineHref}>LINE <b>{settings.social.line ? (settings.line_id || companyLabels[language].contact) : pendingLabel[language]}</b></a></div>
             <SocialLinks language={language} />
           </div>
           <FooterColumn title={t.footerHeads[0]} items={t.footerRent} />

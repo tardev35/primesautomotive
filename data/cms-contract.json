@@ -1,0 +1,4 @@
+{
+  "fixedLists": ["nav", "heroTitle", "meta", "statementTitle", "stats", "processHeads", "processNotes", "contactTitle", "aboutTitle", "values", "valuesBody", "footerHeads", "footerLegal"],
+  "schemaVersion": 1
+}

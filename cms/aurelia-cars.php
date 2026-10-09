@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: Aurelia Cars
- * Description: Vehicle catalogue post type for the Aurelia headless frontend. Import the supplied ACF field group separately.
+ * Plugin Name: PROM DRIVE Cars
+ * Description: Vehicle catalogue post type for the PROM DRIVE headless frontend. Import the supplied ACF field group separately. File and post-type names retained for compatibility.
  * Version: 0.1.0
  */
 if (!defined('ABSPATH')) { exit; }

@@ -1,4 +1,8 @@
-AURELIA — HEADLESS WORDPRESS HANDOFF
+PROM DRIVE — HEADLESS WORDPRESS HANDOFF
+
+อัปเดต: ข้อมูลส่วนกลาง, About/Contact, Social และ API ค้นหา 3 ตัวกรอง
+อ่าน CONTENT-SETUP.txt เพิ่มเติม ชุดใหม่ใช้ปลั๊กอิน prom-drive-content.php
+ไฟล์นี้ยังคงอธิบายข้อมูลรถและคิว DEMO เดิม
 
 สถานะ: เตรียมฟิลด์และข้อมูลตัวอย่างแล้ว ยังไม่เชื่อม WordPress จริง
 เว็บไซต์ปัจจุบันอ่านไฟล์ data/vehicle-details.json ร่วมกับ data/cars.json
@@ -17,7 +21,7 @@ AURELIA — HEADLESS WORDPRESS HANDOFF
 5. อัปโหลดรูปของร้านใน Media Library แล้วเลือก cover_image และ gallery
    cover_image เป็น attachment ID; gallery เป็นรายการ attachment ID
    fallback_image_path อ้างถึงภาพ demo ในเว็บไซต์ปัจจุบัน ไม่ใช่ URL ของ WordPress
-   เครดิตภาพ demo ยังอยู่ในรายละเอียดรถ ต้องรักษา attribution ตามสัญญาอนุญาต
+   เครดิตภาพ demo รวมอยู่ในปุ่มเครดิตภาพท้ายเว็บ ต้องรักษา attribution ตามสัญญาอนุญาต
 6. ตรวจสอบรุ่นปี รุ่นย่อย เกียร์ จำนวนที่นั่ง สเปก (หน่วย PS ไม่ใช่ hp) และราคา
    ค่าที่ยังไม่ทราบใช้ null/ช่องว่าง ไม่ใช่ 0
    ตรวจเงื่อนไขประกันภัย ภาษี ค่าส่ง มัดจำ และการใช้รถก่อนเปลี่ยน data_status เป็น verified

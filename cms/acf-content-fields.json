@@ -1,0 +1,2774 @@
+[
+  {
+    "key": "group_pd_settings",
+    "title": "PROM DRIVE · ข้อมูลส่วนกลาง",
+    "active": true,
+    "show_in_rest": 1,
+    "location": [
+      [
+        {
+          "param": "post_type",
+          "operator": "==",
+          "value": "prom_drive_setting"
+        }
+      ]
+    ],
+    "position": "normal",
+    "style": "default",
+    "fields": [
+      {
+        "key": "field_pd_settings_brand_name",
+        "name": "brand_name",
+        "label": "ชื่อแบรนด์ / Brand name",
+        "required": 0,
+        "type": "text",
+        "new_lines": "",
+        "rows": 3,
+        "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+      },
+      {
+        "key": "field_pd_settings_brand_tagline",
+        "name": "brand_tagline",
+        "label": "คำใต้โลโก้ / Brand tagline",
+        "required": 0,
+        "type": "text",
+        "new_lines": "",
+        "rows": 3,
+        "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+      },
+      {
+        "key": "field_pd_settings_logo_url",
+        "name": "logo_url",
+        "label": "URL โลโก้ / Logo URL",
+        "required": 0,
+        "type": "text",
+        "new_lines": "",
+        "rows": 3,
+        "instructions": "HTTPS URL ของไฟล์ใน Media Library หรือ /prom-drive-logo.png สำหรับภาพเดิมใน frontend"
+      },
+      {
+        "key": "field_pd_settings_phone",
+        "name": "phone",
+        "label": "เบอร์ CALL",
+        "required": 0,
+        "type": "text",
+        "new_lines": "",
+        "rows": 3,
+        "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+      },
+      {
+        "key": "field_pd_settings_whatsapp",
+        "name": "whatsapp",
+        "label": "เบอร์ WhatsApp (เตรียมไว้ ยังไม่แสดงใน UI)",
+        "required": 0,
+        "type": "text",
+        "new_lines": "",
+        "rows": 3,
+        "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+      },
+      {
+        "key": "field_pd_settings_email",
+        "name": "email",
+        "label": "อีเมล / Email",
+        "required": 0,
+        "type": "email"
+      },
+      {
+        "key": "field_pd_settings_line_id",
+        "name": "line_id",
+        "label": "ชื่อบัญชี LINE",
+        "required": 0,
+        "type": "text",
+        "new_lines": "",
+        "rows": 3,
+        "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+      },
+      {
+        "key": "field_pd_settings_maps_url",
+        "name": "maps_url",
+        "label": "ลิงก์แผนที่ / Map URL",
+        "required": 0,
+        "type": "url",
+        "instructions": "ใช้ https:// เท่านั้น เว้นว่างเมื่อยังไม่มีลิงก์จริง / HTTPS only; leave blank if unconfirmed."
+      },
+      {
+        "key": "field_pd_settings_social",
+        "name": "social",
+        "label": "ลิงก์โซเชียล / Social URLs",
+        "required": 0,
+        "type": "group",
+        "layout": "block",
+        "sub_fields": [
+          {
+            "key": "field_pd_settings_social_facebook",
+            "name": "facebook",
+            "label": "Facebook",
+            "required": 0,
+            "type": "url",
+            "instructions": "ใช้ https:// เท่านั้น เว้นว่างเมื่อยังไม่มีลิงก์จริง / HTTPS only; leave blank if unconfirmed."
+          },
+          {
+            "key": "field_pd_settings_social_line",
+            "name": "line",
+            "label": "LINE",
+            "required": 0,
+            "type": "url",
+            "instructions": "ใช้ https:// เท่านั้น เว้นว่างเมื่อยังไม่มีลิงก์จริง / HTTPS only; leave blank if unconfirmed."
+          },
+          {
+            "key": "field_pd_settings_social_instagram",
+            "name": "instagram",
+            "label": "Instagram",
+            "required": 0,
+            "type": "url",
+            "instructions": "ใช้ https:// เท่านั้น เว้นว่างเมื่อยังไม่มีลิงก์จริง / HTTPS only; leave blank if unconfirmed."
+          },
+          {
+            "key": "field_pd_settings_social_tiktok",
+            "name": "tiktok",
+            "label": "TikTok",
+            "required": 0,
+            "type": "url",
+            "instructions": "ใช้ https:// เท่านั้น เว้นว่างเมื่อยังไม่มีลิงก์จริง / HTTPS only; leave blank if unconfirmed."
+          }
+        ]
+      },
+      {
+        "key": "field_pd_settings_social_visible",
+        "name": "social_visible",
+        "label": "แสดงไอคอน / Visible social icons",
+        "required": 0,
+        "type": "group",
+        "layout": "block",
+        "sub_fields": [
+          {
+            "key": "field_pd_settings_social_visible_facebook",
+            "name": "facebook",
+            "label": "Facebook",
+            "required": 0,
+            "type": "true_false",
+            "ui": 1,
+            "default_value": 1
+          },
+          {
+            "key": "field_pd_settings_social_visible_line",
+            "name": "line",
+            "label": "LINE",
+            "required": 0,
+            "type": "true_false",
+            "ui": 1,
+            "default_value": 1
+          },
+          {
+            "key": "field_pd_settings_social_visible_instagram",
+            "name": "instagram",
+            "label": "Instagram",
+            "required": 0,
+            "type": "true_false",
+            "ui": 1,
+            "default_value": 1
+          },
+          {
+            "key": "field_pd_settings_social_visible_tiktok",
+            "name": "tiktok",
+            "label": "TikTok",
+            "required": 0,
+            "type": "true_false",
+            "ui": 1,
+            "default_value": 1
+          }
+        ]
+      },
+      {
+        "key": "field_pd_settings_text",
+        "name": "text",
+        "label": "ข้อมูลส่วนกลาง 3 ภาษา",
+        "required": 0,
+        "type": "group",
+        "layout": "block",
+        "sub_fields": [
+          {
+            "key": "field_pd_settings_text_th",
+            "name": "th",
+            "label": "ไทย",
+            "required": 0,
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+              {
+                "key": "field_pd_settings_text_th_address",
+                "name": "address",
+                "label": "ที่อยู่หรือจุดนัดรับรถ / Address",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_settings_text_th_hours",
+                "name": "hours",
+                "label": "เวลาบริการ / Opening hours",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_settings_text_th_footerIntro",
+                "name": "footerIntro",
+                "label": "แนะนำแบรนด์ใน Footer",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_settings_text_th_footerHeads",
+                "name": "footerHeads",
+                "label": "หัวคอลัมน์ Footer",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_settings_text_th_footerRent",
+                "name": "footerRent",
+                "label": "รายการคอลเลกชัน Footer",
+                "required": 0,
+                "type": "textarea",
+                "rows": 4,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_settings_text_th_footerServices",
+                "name": "footerServices",
+                "label": "รายการบริการ Footer",
+                "required": 0,
+                "type": "textarea",
+                "rows": 4,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_settings_text_th_footerPlaces",
+                "name": "footerPlaces",
+                "label": "พื้นที่บริการ Footer",
+                "required": 0,
+                "type": "textarea",
+                "rows": 5,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_settings_text_th_footerContact",
+                "name": "footerContact",
+                "label": "ป้ายช่องทางติดต่อ (สำรอง)",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_settings_text_th_footerLegal",
+                "name": "footerLegal",
+                "label": "ป้ายลิงก์นโยบาย Footer",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_settings_text_th_footerCopyright",
+                "name": "footerCopyright",
+                "label": "ข้อความลิขสิทธิ์ท้ายเว็บ",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              }
+            ]
+          },
+          {
+            "key": "field_pd_settings_text_en",
+            "name": "en",
+            "label": "English",
+            "required": 0,
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+              {
+                "key": "field_pd_settings_text_en_address",
+                "name": "address",
+                "label": "ที่อยู่หรือจุดนัดรับรถ / Address",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_settings_text_en_hours",
+                "name": "hours",
+                "label": "เวลาบริการ / Opening hours",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_settings_text_en_footerIntro",
+                "name": "footerIntro",
+                "label": "แนะนำแบรนด์ใน Footer",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_settings_text_en_footerHeads",
+                "name": "footerHeads",
+                "label": "หัวคอลัมน์ Footer",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_settings_text_en_footerRent",
+                "name": "footerRent",
+                "label": "รายการคอลเลกชัน Footer",
+                "required": 0,
+                "type": "textarea",
+                "rows": 4,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_settings_text_en_footerServices",
+                "name": "footerServices",
+                "label": "รายการบริการ Footer",
+                "required": 0,
+                "type": "textarea",
+                "rows": 4,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_settings_text_en_footerPlaces",
+                "name": "footerPlaces",
+                "label": "พื้นที่บริการ Footer",
+                "required": 0,
+                "type": "textarea",
+                "rows": 5,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_settings_text_en_footerContact",
+                "name": "footerContact",
+                "label": "ป้ายช่องทางติดต่อ (สำรอง)",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_settings_text_en_footerLegal",
+                "name": "footerLegal",
+                "label": "ป้ายลิงก์นโยบาย Footer",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_settings_text_en_footerCopyright",
+                "name": "footerCopyright",
+                "label": "ข้อความลิขสิทธิ์ท้ายเว็บ",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              }
+            ]
+          },
+          {
+            "key": "field_pd_settings_text_zh",
+            "name": "zh",
+            "label": "中文",
+            "required": 0,
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+              {
+                "key": "field_pd_settings_text_zh_address",
+                "name": "address",
+                "label": "ที่อยู่หรือจุดนัดรับรถ / Address",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_settings_text_zh_hours",
+                "name": "hours",
+                "label": "เวลาบริการ / Opening hours",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_settings_text_zh_footerIntro",
+                "name": "footerIntro",
+                "label": "แนะนำแบรนด์ใน Footer",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_settings_text_zh_footerHeads",
+                "name": "footerHeads",
+                "label": "หัวคอลัมน์ Footer",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_settings_text_zh_footerRent",
+                "name": "footerRent",
+                "label": "รายการคอลเลกชัน Footer",
+                "required": 0,
+                "type": "textarea",
+                "rows": 4,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_settings_text_zh_footerServices",
+                "name": "footerServices",
+                "label": "รายการบริการ Footer",
+                "required": 0,
+                "type": "textarea",
+                "rows": 4,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_settings_text_zh_footerPlaces",
+                "name": "footerPlaces",
+                "label": "พื้นที่บริการ Footer",
+                "required": 0,
+                "type": "textarea",
+                "rows": 5,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_settings_text_zh_footerContact",
+                "name": "footerContact",
+                "label": "ป้ายช่องทางติดต่อ (สำรอง)",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_settings_text_zh_footerLegal",
+                "name": "footerLegal",
+                "label": "ป้ายลิงก์นโยบาย Footer",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_settings_text_zh_footerCopyright",
+                "name": "footerCopyright",
+                "label": "ข้อความลิขสิทธิ์ท้ายเว็บ",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "key": "group_pd_pages",
+    "title": "PROM DRIVE · เนื้อหาหน้าเว็บ 3 ภาษา",
+    "active": true,
+    "show_in_rest": 1,
+    "location": [
+      [
+        {
+          "param": "post_type",
+          "operator": "==",
+          "value": "prom_drive_page"
+        }
+      ]
+    ],
+    "position": "normal",
+    "style": "default",
+    "fields": [
+      {
+        "key": "field_pd_page_key",
+        "name": "page_key",
+        "label": "หน้าเว็บ / Page",
+        "type": "select",
+        "choices": {
+          "home": "หน้าแรก / Home",
+          "about": "เกี่ยวกับเรา / About us",
+          "contact": "ติดต่อเรา / Contact us"
+        },
+        "return_format": "value",
+        "required": 1,
+        "instructions": "Slug ของรายการต้องตรงกับค่านี้: home, about หรือ contact"
+      },
+      {
+        "key": "field_pd_page_home",
+        "name": "home",
+        "label": "home",
+        "required": 0,
+        "type": "group",
+        "layout": "block",
+        "sub_fields": [
+          {
+            "key": "field_pd_page_home_th",
+            "name": "th",
+            "label": "ไทย",
+            "required": 0,
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+              {
+                "key": "field_pd_page_home_th_nav",
+                "name": "nav",
+                "label": "nav",
+                "required": 0,
+                "type": "textarea",
+                "rows": 4,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 4 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 4 items."
+              },
+              {
+                "key": "field_pd_page_home_th_concierge",
+                "name": "concierge",
+                "label": "concierge",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_heroEyebrow",
+                "name": "heroEyebrow",
+                "label": "ข้อความเหนือ Hero",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_heroTitle",
+                "name": "heroTitle",
+                "label": "หัวเรื่อง Hero (2 บรรทัด)",
+                "required": 0,
+                "type": "textarea",
+                "rows": 2,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+              },
+              {
+                "key": "field_pd_page_home_th_heroBody",
+                "name": "heroBody",
+                "label": "คำอธิบาย Hero",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_check",
+                "name": "check",
+                "label": "check",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_explore",
+                "name": "explore",
+                "label": "explore",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_meta",
+                "name": "meta",
+                "label": "meta",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_page_home_th_scroll",
+                "name": "scroll",
+                "label": "scroll",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_live",
+                "name": "live",
+                "label": "live",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_find",
+                "name": "find",
+                "label": "find",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_pickup",
+                "name": "pickup",
+                "label": "pickup",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_return",
+                "name": "return",
+                "label": "return",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_delivery",
+                "name": "delivery",
+                "label": "delivery",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_dates",
+                "name": "dates",
+                "label": "dates",
+                "required": 0,
+                "type": "textarea",
+                "rows": 2,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_page_home_th_places",
+                "name": "places",
+                "label": "places",
+                "required": 0,
+                "type": "textarea",
+                "rows": 4,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_page_home_th_viewAvailable",
+                "name": "viewAvailable",
+                "label": "view Available",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_statementEyebrow",
+                "name": "statementEyebrow",
+                "label": "statement Eyebrow",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_statementTitle",
+                "name": "statementTitle",
+                "label": "statement Title",
+                "required": 0,
+                "type": "textarea",
+                "rows": 2,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+              },
+              {
+                "key": "field_pd_page_home_th_statementBody",
+                "name": "statementBody",
+                "label": "statement Body",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_stats",
+                "name": "stats",
+                "label": "stats",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_page_home_th_reserve",
+                "name": "reserve",
+                "label": "reserve",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_choose",
+                "name": "choose",
+                "label": "choose",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_chooseBody",
+                "name": "chooseBody",
+                "label": "choose Body",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_filters",
+                "name": "filters",
+                "label": "filters",
+                "required": 0,
+                "type": "textarea",
+                "rows": 4,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_page_home_th_available",
+                "name": "available",
+                "label": "available",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_perDay",
+                "name": "perDay",
+                "label": "per Day",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_viewCar",
+                "name": "viewCar",
+                "label": "view Car",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_carNotes",
+                "name": "carNotes",
+                "label": "car Notes",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_page_home_th_processEyebrow",
+                "name": "processEyebrow",
+                "label": "process Eyebrow",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_processTitle",
+                "name": "processTitle",
+                "label": "process Title",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_processBody",
+                "name": "processBody",
+                "label": "process Body",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_processHeads",
+                "name": "processHeads",
+                "label": "process Heads",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_page_home_th_processNotes",
+                "name": "processNotes",
+                "label": "process Notes",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_page_home_th_contactEyebrow",
+                "name": "contactEyebrow",
+                "label": "contact Eyebrow",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_contactTitle",
+                "name": "contactTitle",
+                "label": "หัวเรื่อง Contact us",
+                "required": 0,
+                "type": "textarea",
+                "rows": 2,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+              },
+              {
+                "key": "field_pd_page_home_th_line",
+                "name": "line",
+                "label": "LINE",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_call",
+                "name": "call",
+                "label": "call",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_th_demo",
+                "name": "demo",
+                "label": "demo",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              }
+            ]
+          },
+          {
+            "key": "field_pd_page_home_en",
+            "name": "en",
+            "label": "English",
+            "required": 0,
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+              {
+                "key": "field_pd_page_home_en_nav",
+                "name": "nav",
+                "label": "nav",
+                "required": 0,
+                "type": "textarea",
+                "rows": 4,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 4 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 4 items."
+              },
+              {
+                "key": "field_pd_page_home_en_concierge",
+                "name": "concierge",
+                "label": "concierge",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_heroEyebrow",
+                "name": "heroEyebrow",
+                "label": "ข้อความเหนือ Hero",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_heroTitle",
+                "name": "heroTitle",
+                "label": "หัวเรื่อง Hero (2 บรรทัด)",
+                "required": 0,
+                "type": "textarea",
+                "rows": 2,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+              },
+              {
+                "key": "field_pd_page_home_en_heroBody",
+                "name": "heroBody",
+                "label": "คำอธิบาย Hero",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_check",
+                "name": "check",
+                "label": "check",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_explore",
+                "name": "explore",
+                "label": "explore",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_meta",
+                "name": "meta",
+                "label": "meta",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_page_home_en_scroll",
+                "name": "scroll",
+                "label": "scroll",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_live",
+                "name": "live",
+                "label": "live",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_find",
+                "name": "find",
+                "label": "find",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_pickup",
+                "name": "pickup",
+                "label": "pickup",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_return",
+                "name": "return",
+                "label": "return",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_delivery",
+                "name": "delivery",
+                "label": "delivery",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_dates",
+                "name": "dates",
+                "label": "dates",
+                "required": 0,
+                "type": "textarea",
+                "rows": 2,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_page_home_en_places",
+                "name": "places",
+                "label": "places",
+                "required": 0,
+                "type": "textarea",
+                "rows": 4,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_page_home_en_viewAvailable",
+                "name": "viewAvailable",
+                "label": "view Available",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_statementEyebrow",
+                "name": "statementEyebrow",
+                "label": "statement Eyebrow",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_statementTitle",
+                "name": "statementTitle",
+                "label": "statement Title",
+                "required": 0,
+                "type": "textarea",
+                "rows": 2,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+              },
+              {
+                "key": "field_pd_page_home_en_statementBody",
+                "name": "statementBody",
+                "label": "statement Body",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_stats",
+                "name": "stats",
+                "label": "stats",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_page_home_en_reserve",
+                "name": "reserve",
+                "label": "reserve",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_choose",
+                "name": "choose",
+                "label": "choose",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_chooseBody",
+                "name": "chooseBody",
+                "label": "choose Body",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_filters",
+                "name": "filters",
+                "label": "filters",
+                "required": 0,
+                "type": "textarea",
+                "rows": 4,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_page_home_en_available",
+                "name": "available",
+                "label": "available",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_perDay",
+                "name": "perDay",
+                "label": "per Day",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_viewCar",
+                "name": "viewCar",
+                "label": "view Car",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_carNotes",
+                "name": "carNotes",
+                "label": "car Notes",
+                "required": 0,
+                "type": "textarea",
+                "rows": 2,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_page_home_en_processEyebrow",
+                "name": "processEyebrow",
+                "label": "process Eyebrow",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_processTitle",
+                "name": "processTitle",
+                "label": "process Title",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_processBody",
+                "name": "processBody",
+                "label": "process Body",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_processHeads",
+                "name": "processHeads",
+                "label": "process Heads",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_page_home_en_processNotes",
+                "name": "processNotes",
+                "label": "process Notes",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_page_home_en_contactEyebrow",
+                "name": "contactEyebrow",
+                "label": "contact Eyebrow",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_contactTitle",
+                "name": "contactTitle",
+                "label": "หัวเรื่อง Contact us",
+                "required": 0,
+                "type": "textarea",
+                "rows": 2,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+              },
+              {
+                "key": "field_pd_page_home_en_line",
+                "name": "line",
+                "label": "LINE",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_call",
+                "name": "call",
+                "label": "call",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_en_demo",
+                "name": "demo",
+                "label": "demo",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              }
+            ]
+          },
+          {
+            "key": "field_pd_page_home_zh",
+            "name": "zh",
+            "label": "中文",
+            "required": 0,
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+              {
+                "key": "field_pd_page_home_zh_nav",
+                "name": "nav",
+                "label": "nav",
+                "required": 0,
+                "type": "textarea",
+                "rows": 4,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 4 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 4 items."
+              },
+              {
+                "key": "field_pd_page_home_zh_concierge",
+                "name": "concierge",
+                "label": "concierge",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_heroEyebrow",
+                "name": "heroEyebrow",
+                "label": "ข้อความเหนือ Hero",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_heroTitle",
+                "name": "heroTitle",
+                "label": "หัวเรื่อง Hero (2 บรรทัด)",
+                "required": 0,
+                "type": "textarea",
+                "rows": 2,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+              },
+              {
+                "key": "field_pd_page_home_zh_heroBody",
+                "name": "heroBody",
+                "label": "คำอธิบาย Hero",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_check",
+                "name": "check",
+                "label": "check",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_explore",
+                "name": "explore",
+                "label": "explore",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_meta",
+                "name": "meta",
+                "label": "meta",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_page_home_zh_scroll",
+                "name": "scroll",
+                "label": "scroll",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_live",
+                "name": "live",
+                "label": "live",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_find",
+                "name": "find",
+                "label": "find",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_pickup",
+                "name": "pickup",
+                "label": "pickup",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_return",
+                "name": "return",
+                "label": "return",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_delivery",
+                "name": "delivery",
+                "label": "delivery",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_dates",
+                "name": "dates",
+                "label": "dates",
+                "required": 0,
+                "type": "textarea",
+                "rows": 2,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_page_home_zh_places",
+                "name": "places",
+                "label": "places",
+                "required": 0,
+                "type": "textarea",
+                "rows": 4,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_page_home_zh_viewAvailable",
+                "name": "viewAvailable",
+                "label": "view Available",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_statementEyebrow",
+                "name": "statementEyebrow",
+                "label": "statement Eyebrow",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_statementTitle",
+                "name": "statementTitle",
+                "label": "statement Title",
+                "required": 0,
+                "type": "textarea",
+                "rows": 2,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+              },
+              {
+                "key": "field_pd_page_home_zh_statementBody",
+                "name": "statementBody",
+                "label": "statement Body",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_stats",
+                "name": "stats",
+                "label": "stats",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_page_home_zh_reserve",
+                "name": "reserve",
+                "label": "reserve",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_choose",
+                "name": "choose",
+                "label": "choose",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_chooseBody",
+                "name": "chooseBody",
+                "label": "choose Body",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_filters",
+                "name": "filters",
+                "label": "filters",
+                "required": 0,
+                "type": "textarea",
+                "rows": 4,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_page_home_zh_available",
+                "name": "available",
+                "label": "available",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_perDay",
+                "name": "perDay",
+                "label": "per Day",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_viewCar",
+                "name": "viewCar",
+                "label": "view Car",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_carNotes",
+                "name": "carNotes",
+                "label": "car Notes",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_page_home_zh_processEyebrow",
+                "name": "processEyebrow",
+                "label": "process Eyebrow",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_processTitle",
+                "name": "processTitle",
+                "label": "process Title",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_processBody",
+                "name": "processBody",
+                "label": "process Body",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_processHeads",
+                "name": "processHeads",
+                "label": "process Heads",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_page_home_zh_processNotes",
+                "name": "processNotes",
+                "label": "process Notes",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_page_home_zh_contactEyebrow",
+                "name": "contactEyebrow",
+                "label": "contact Eyebrow",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_contactTitle",
+                "name": "contactTitle",
+                "label": "หัวเรื่อง Contact us",
+                "required": 0,
+                "type": "textarea",
+                "rows": 2,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+              },
+              {
+                "key": "field_pd_page_home_zh_line",
+                "name": "line",
+                "label": "LINE",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_call",
+                "name": "call",
+                "label": "call",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_home_zh_demo",
+                "name": "demo",
+                "label": "demo",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              }
+            ]
+          }
+        ],
+        "conditional_logic": [
+          [
+            {
+              "field": "field_pd_page_key",
+              "operator": "==",
+              "value": "home"
+            }
+          ]
+        ]
+      },
+      {
+        "key": "field_pd_page_about",
+        "name": "about",
+        "label": "about",
+        "required": 0,
+        "type": "group",
+        "layout": "block",
+        "sub_fields": [
+          {
+            "key": "field_pd_page_about_th",
+            "name": "th",
+            "label": "ไทย",
+            "required": 0,
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+              {
+                "key": "field_pd_page_about_th_home",
+                "name": "home",
+                "label": "home",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_th_aboutEyebrow",
+                "name": "aboutEyebrow",
+                "label": "about Eyebrow",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_th_aboutTitle",
+                "name": "aboutTitle",
+                "label": "หัวเรื่อง About us",
+                "required": 0,
+                "type": "textarea",
+                "rows": 2,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+              },
+              {
+                "key": "field_pd_page_about_th_aboutIntro",
+                "name": "aboutIntro",
+                "label": "บทนำ About us",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_th_storyTitle",
+                "name": "storyTitle",
+                "label": "หัวเรื่องแบรนด์",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_th_story",
+                "name": "story",
+                "label": "เรื่องราวแบรนด์",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_th_valuesTitle",
+                "name": "valuesTitle",
+                "label": "values Title",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_th_values",
+                "name": "values",
+                "label": "หัวข้อคุณค่าแบรนด์",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_page_about_th_valuesBody",
+                "name": "valuesBody",
+                "label": "รายละเอียดคุณค่าแบรนด์",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_page_about_th_servicesTitle",
+                "name": "servicesTitle",
+                "label": "services Title",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_th_services",
+                "name": "services",
+                "label": "services",
+                "required": 0,
+                "type": "textarea",
+                "rows": 4,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_page_about_th_serviceNote",
+                "name": "serviceNote",
+                "label": "service Note",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_th_explore",
+                "name": "explore",
+                "label": "explore",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_th_talk",
+                "name": "talk",
+                "label": "talk",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_th_draft",
+                "name": "draft",
+                "label": "หมายเหตุร่างเนื้อหา",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              }
+            ]
+          },
+          {
+            "key": "field_pd_page_about_en",
+            "name": "en",
+            "label": "English",
+            "required": 0,
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+              {
+                "key": "field_pd_page_about_en_home",
+                "name": "home",
+                "label": "home",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_en_aboutEyebrow",
+                "name": "aboutEyebrow",
+                "label": "about Eyebrow",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_en_aboutTitle",
+                "name": "aboutTitle",
+                "label": "หัวเรื่อง About us",
+                "required": 0,
+                "type": "textarea",
+                "rows": 2,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+              },
+              {
+                "key": "field_pd_page_about_en_aboutIntro",
+                "name": "aboutIntro",
+                "label": "บทนำ About us",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_en_storyTitle",
+                "name": "storyTitle",
+                "label": "หัวเรื่องแบรนด์",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_en_story",
+                "name": "story",
+                "label": "เรื่องราวแบรนด์",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_en_valuesTitle",
+                "name": "valuesTitle",
+                "label": "values Title",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_en_values",
+                "name": "values",
+                "label": "หัวข้อคุณค่าแบรนด์",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_page_about_en_valuesBody",
+                "name": "valuesBody",
+                "label": "รายละเอียดคุณค่าแบรนด์",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_page_about_en_servicesTitle",
+                "name": "servicesTitle",
+                "label": "services Title",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_en_services",
+                "name": "services",
+                "label": "services",
+                "required": 0,
+                "type": "textarea",
+                "rows": 4,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_page_about_en_serviceNote",
+                "name": "serviceNote",
+                "label": "service Note",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_en_explore",
+                "name": "explore",
+                "label": "explore",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_en_talk",
+                "name": "talk",
+                "label": "talk",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_en_draft",
+                "name": "draft",
+                "label": "หมายเหตุร่างเนื้อหา",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              }
+            ]
+          },
+          {
+            "key": "field_pd_page_about_zh",
+            "name": "zh",
+            "label": "中文",
+            "required": 0,
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+              {
+                "key": "field_pd_page_about_zh_home",
+                "name": "home",
+                "label": "home",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_zh_aboutEyebrow",
+                "name": "aboutEyebrow",
+                "label": "about Eyebrow",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_zh_aboutTitle",
+                "name": "aboutTitle",
+                "label": "หัวเรื่อง About us",
+                "required": 0,
+                "type": "textarea",
+                "rows": 2,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+              },
+              {
+                "key": "field_pd_page_about_zh_aboutIntro",
+                "name": "aboutIntro",
+                "label": "บทนำ About us",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_zh_storyTitle",
+                "name": "storyTitle",
+                "label": "หัวเรื่องแบรนด์",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_zh_story",
+                "name": "story",
+                "label": "เรื่องราวแบรนด์",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_zh_valuesTitle",
+                "name": "valuesTitle",
+                "label": "values Title",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_zh_values",
+                "name": "values",
+                "label": "หัวข้อคุณค่าแบรนด์",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_page_about_zh_valuesBody",
+                "name": "valuesBody",
+                "label": "รายละเอียดคุณค่าแบรนด์",
+                "required": 0,
+                "type": "textarea",
+                "rows": 3,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 3 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 3 items."
+              },
+              {
+                "key": "field_pd_page_about_zh_servicesTitle",
+                "name": "servicesTitle",
+                "label": "services Title",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_zh_services",
+                "name": "services",
+                "label": "services",
+                "required": 0,
+                "type": "textarea",
+                "rows": 4,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_page_about_zh_serviceNote",
+                "name": "serviceNote",
+                "label": "service Note",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_zh_explore",
+                "name": "explore",
+                "label": "explore",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_zh_talk",
+                "name": "talk",
+                "label": "talk",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_about_zh_draft",
+                "name": "draft",
+                "label": "หมายเหตุร่างเนื้อหา",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              }
+            ]
+          }
+        ],
+        "conditional_logic": [
+          [
+            {
+              "field": "field_pd_page_key",
+              "operator": "==",
+              "value": "about"
+            }
+          ]
+        ]
+      },
+      {
+        "key": "field_pd_page_contact",
+        "name": "contact",
+        "label": "contact",
+        "required": 0,
+        "type": "group",
+        "layout": "block",
+        "sub_fields": [
+          {
+            "key": "field_pd_page_contact_th",
+            "name": "th",
+            "label": "ไทย",
+            "required": 0,
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+              {
+                "key": "field_pd_page_contact_th_home",
+                "name": "home",
+                "label": "home",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_th_contactEyebrow",
+                "name": "contactEyebrow",
+                "label": "contact Eyebrow",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_th_contactTitle",
+                "name": "contactTitle",
+                "label": "หัวเรื่อง Contact us",
+                "required": 0,
+                "type": "textarea",
+                "rows": 2,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+              },
+              {
+                "key": "field_pd_page_contact_th_contactIntro",
+                "name": "contactIntro",
+                "label": "บทนำ Contact us",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_th_channelTitle",
+                "name": "channelTitle",
+                "label": "channel Title",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_th_channelIntro",
+                "name": "channelIntro",
+                "label": "ข้อความเมื่อยังไม่มีช่องทางติดต่อ",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_th_email",
+                "name": "email",
+                "label": "อีเมล / Email",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_th_address",
+                "name": "address",
+                "label": "ที่อยู่หรือจุดนัดรับรถ / Address",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_th_addressNote",
+                "name": "addressNote",
+                "label": "address Note",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_th_social",
+                "name": "social",
+                "label": "ลิงก์โซเชียล / Social URLs",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_th_socialNote",
+                "name": "socialNote",
+                "label": "ข้อความเมื่อยังไม่มีบัญชีโซเชียล",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_th_checklistTitle",
+                "name": "checklistTitle",
+                "label": "checklist Title",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_th_checklist",
+                "name": "checklist",
+                "label": "รายการเตรียมก่อนติดต่อ",
+                "required": 0,
+                "type": "textarea",
+                "rows": 4,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_page_contact_th_checklistNote",
+                "name": "checklistNote",
+                "label": "checklist Note",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_th_check",
+                "name": "check",
+                "label": "check",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              }
+            ]
+          },
+          {
+            "key": "field_pd_page_contact_en",
+            "name": "en",
+            "label": "English",
+            "required": 0,
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+              {
+                "key": "field_pd_page_contact_en_home",
+                "name": "home",
+                "label": "home",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_en_contactEyebrow",
+                "name": "contactEyebrow",
+                "label": "contact Eyebrow",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_en_contactTitle",
+                "name": "contactTitle",
+                "label": "หัวเรื่อง Contact us",
+                "required": 0,
+                "type": "textarea",
+                "rows": 2,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+              },
+              {
+                "key": "field_pd_page_contact_en_contactIntro",
+                "name": "contactIntro",
+                "label": "บทนำ Contact us",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_en_channelTitle",
+                "name": "channelTitle",
+                "label": "channel Title",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_en_channelIntro",
+                "name": "channelIntro",
+                "label": "ข้อความเมื่อยังไม่มีช่องทางติดต่อ",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_en_email",
+                "name": "email",
+                "label": "อีเมล / Email",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_en_address",
+                "name": "address",
+                "label": "ที่อยู่หรือจุดนัดรับรถ / Address",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_en_addressNote",
+                "name": "addressNote",
+                "label": "address Note",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_en_social",
+                "name": "social",
+                "label": "ลิงก์โซเชียล / Social URLs",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_en_socialNote",
+                "name": "socialNote",
+                "label": "ข้อความเมื่อยังไม่มีบัญชีโซเชียล",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_en_checklistTitle",
+                "name": "checklistTitle",
+                "label": "checklist Title",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_en_checklist",
+                "name": "checklist",
+                "label": "รายการเตรียมก่อนติดต่อ",
+                "required": 0,
+                "type": "textarea",
+                "rows": 4,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_page_contact_en_checklistNote",
+                "name": "checklistNote",
+                "label": "checklist Note",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_en_check",
+                "name": "check",
+                "label": "check",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              }
+            ]
+          },
+          {
+            "key": "field_pd_page_contact_zh",
+            "name": "zh",
+            "label": "中文",
+            "required": 0,
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+              {
+                "key": "field_pd_page_contact_zh_home",
+                "name": "home",
+                "label": "home",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_zh_contactEyebrow",
+                "name": "contactEyebrow",
+                "label": "contact Eyebrow",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_zh_contactTitle",
+                "name": "contactTitle",
+                "label": "หัวเรื่อง Contact us",
+                "required": 0,
+                "type": "textarea",
+                "rows": 2,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. ต้องมี 2 รายการเพื่อรักษาตำแหน่งในแบบเว็บ / Keep 2 items."
+              },
+              {
+                "key": "field_pd_page_contact_zh_contactIntro",
+                "name": "contactIntro",
+                "label": "บทนำ Contact us",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_zh_channelTitle",
+                "name": "channelTitle",
+                "label": "channel Title",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_zh_channelIntro",
+                "name": "channelIntro",
+                "label": "ข้อความเมื่อยังไม่มีช่องทางติดต่อ",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_zh_email",
+                "name": "email",
+                "label": "อีเมล / Email",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_zh_address",
+                "name": "address",
+                "label": "ที่อยู่หรือจุดนัดรับรถ / Address",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_zh_addressNote",
+                "name": "addressNote",
+                "label": "address Note",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_zh_social",
+                "name": "social",
+                "label": "ลิงก์โซเชียล / Social URLs",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_zh_socialNote",
+                "name": "socialNote",
+                "label": "ข้อความเมื่อยังไม่มีบัญชีโซเชียล",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_zh_checklistTitle",
+                "name": "checklistTitle",
+                "label": "checklist Title",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_zh_checklist",
+                "name": "checklist",
+                "label": "รายการเตรียมก่อนติดต่อ",
+                "required": 0,
+                "type": "textarea",
+                "rows": 4,
+                "new_lines": "",
+                "instructions": "หนึ่งรายการต่อบรรทัด / One item per line. เพิ่มหรือลบรายการได้ / Add or remove lines."
+              },
+              {
+                "key": "field_pd_page_contact_zh_checklistNote",
+                "name": "checklistNote",
+                "label": "checklist Note",
+                "required": 0,
+                "type": "textarea",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              },
+              {
+                "key": "field_pd_page_contact_zh_check",
+                "name": "check",
+                "label": "check",
+                "required": 0,
+                "type": "text",
+                "new_lines": "",
+                "rows": 3,
+                "instructions": "ข้อความธรรมดา ไม่ใส่ HTML / Plain text, no HTML."
+              }
+            ]
+          }
+        ],
+        "conditional_logic": [
+          [
+            {
+              "field": "field_pd_page_key",
+              "operator": "==",
+              "value": "contact"
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]
