@@ -1,0 +1,12 @@
+{
+  "phone": null,
+  "whatsapp": null,
+  "email": null,
+  "address": null,
+  "social": {
+    "facebook": null,
+    "line": null,
+    "instagram": null,
+    "tiktok": null
+  }
+}

@@ -5,6 +5,8 @@ import { ChevronDown, Clock3, MapPin, MessageCircle, Phone, ShieldCheck, Sparkle
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { AvailabilitySearch, FleetResultNote, VehicleCard } from "@/components/fleet-experience";
 import { fleet, matchesRental, type RentalQuery } from "@/lib/fleet";
+import { CompanyPage } from "@/components/company-pages";
+import { callHref, lineHref, companyLabels, contactDetails, pendingLabel, PhotoCredits, SocialLinks } from "@/components/site-branding";
 
 type Language = "th" | "en" | "zh";
 
@@ -61,22 +63,35 @@ const fleetCopy = {
   zh: { filters: ["全部", "跑车", "超级跑车", "超豪华", "SUV"], browse: "浏览全部车型", count: "款精选车型", note: "此处为车型展示及示意照片，尚未接入租车公司的实时价格与车辆档期。", quote: "价格与档期请咨询", detail: "车型信息", close: "关闭", credit: "图片来源", dateError: "请选择晚于取车日期的还车日期。", dateSummary: "所选日期", dateNote: "所选日期仅用于准备咨询，不代表车辆档期已确认。" },
 } as const;
 
-export function LuxurySite() {
+export function LuxurySite({ page = "home" }: { page?: "home" | "about" | "contact" }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const [activeFilter, setActiveFilter] = useState("All");
   const [language, setLanguage] = useState<Language>("th");
+  const [languageReady, setLanguageReady] = useState(false);
   const [rentalQuery, setRentalQuery] = useState<RentalQuery | null>(null);
   const t = copy[language];
   const ft = fleetCopy[language];
   const matchingCars = useMemo(() => rentalQuery ? fleet.filter((car) => matchesRental(car, rentalQuery)) : fleet, [rentalQuery]);
   const filteredCars = useMemo(() => activeFilter === "All" ? matchingCars : matchingCars.filter((car) => car.category === activeFilter), [activeFilter, matchingCars]);
   const resetSearch = () => { setRentalQuery(null); setActiveFilter("All"); };
+  const navItems = [{ href: "/#fleet", label: t.nav[0] }, { href: "/#experience", label: t.nav[1] }, { href: "/#process", label: t.nav[2] }, { href: "/about", label: companyLabels[language].about }, { href: "/contact", label: companyLabels[language].contact }];
 
   useEffect(() => {
+    try {
+      const saved = localStorage.getItem("prom-drive-language");
+      if (saved === "th" || saved === "en" || saved === "zh") setLanguage(saved);
+    } catch { /* Storage can be unavailable in privacy mode. */ }
+    setLanguageReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (languageReady) {
+      try { localStorage.setItem("prom-drive-language", language); } catch { /* Keep switching usable without storage. */ }
+    }
     document.documentElement.lang = language === "zh" ? "zh-Hans" : language;
-  }, [language]);
+  }, [language, languageReady]);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -86,7 +101,7 @@ export function LuxurySite() {
     const onOutside = (event: PointerEvent) => {
       if (event.target instanceof Node && !headerRef.current?.contains(event.target)) setMenuOpen(false);
     };
-    const desktop = window.matchMedia("(min-width: 901px)");
+    const desktop = window.matchMedia("(min-width: 1101px)");
     const onResize = () => { if (desktop.matches) setMenuOpen(false); };
     document.addEventListener("keydown", onKey);
     document.addEventListener("pointerdown", onOutside);
@@ -129,19 +144,19 @@ export function LuxurySite() {
     <div className="site-shell">
       <div className="film-grain" aria-hidden="true" />
       <header className="site-header" ref={headerRef}>
-        <a className="brand" href="#top" aria-label="PROM DRIVE home">
+        <a className="brand" href="/" aria-label="PROM DRIVE home">
           <img className="brand-logo" src="/prom-drive-logo.png" alt="PROM DRIVE" width={56} height={56} />
           <span className="brand-copy"><b>PROM DRIVE</b><small>CAR RENTAL</small></span>
         </a>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
-          <a href="#fleet">{t.nav[0]}</a><a href="#experience">{t.nav[1]}</a><a href="#process">{t.nav[2]}</a><a href="#contact">{t.nav[3]}</a>
+          {navItems.map((item) => <a href={item.href} key={item.href} aria-current={item.href === `/${page}` ? "page" : undefined}>{item.label}</a>)}
         </nav>
         <div className="header-actions">
           <div className="language-switch" aria-label="เลือกภาษา / Select language / 选择语言">
             {languages.map((item) => <button type="button" key={item.code} className={language === item.code ? "active" : ""} aria-label={item.name} lang={item.code} aria-pressed={language === item.code} onClick={() => setLanguage(item.code)}><img className="language-flag" src={item.flag} width={22} height={16} alt="" />{item.label}</button>)}
           </div>
-          <a className="header-call" href="tel:+6620000000"><Phone size={15} aria-hidden="true" /><span>{t.concierge}</span></a>
+          <a className="header-call" href={callHref}><Phone size={15} aria-hidden="true" /><span>CALL</span></a>
         </div>
         <div className="mobile-header-language">
           <Select value={language} onValueChange={(value) => setLanguage(value as Language)} onOpenChange={(open) => { if (open) setMenuOpen(false); }}>
@@ -155,16 +170,16 @@ export function LuxurySite() {
           <span className="hamburger-lines" aria-hidden="true"><span /><span /><span /></span>
         </button>
           <nav id="mobile-menu" className={`mobile-menu${menuOpen ? " is-open" : ""}`} aria-label="Mobile navigation" aria-hidden={!menuOpen} inert={!menuOpen}>
-            <a href="#fleet" onClick={() => setMenuOpen(false)}>{t.nav[0]}</a><a href="#experience" onClick={() => setMenuOpen(false)}>{t.nav[1]}</a><a href="#process" onClick={() => setMenuOpen(false)}>{t.nav[2]}</a><a href="#contact" onClick={() => setMenuOpen(false)}>{t.nav[3]}</a>
+            {navItems.map((item) => <a href={item.href} key={item.href} onClick={() => setMenuOpen(false)} aria-current={item.href === `/${page}` ? "page" : undefined}>{item.label}</a>)}<a href={callHref}><Phone size={15} aria-hidden="true" /> CALL</a>
           </nav>
       </header>
 
       <main id="top">
+        {page === "home" ? <>
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-image" role="img" aria-label="Unbranded pearl-silver luxury grand tourer revealed in a dark studio" />
           <div className="hero-overlay" aria-hidden="true" />
           <div className="hero-content">
-            <p className="eyebrow">{t.heroEyebrow}</p>
             <TypewriterHeading key={language} language={language} lines={t.heroTitle} />
             <p className="hero-thai">{t.heroBody}</p>
             <div className="hero-actions"><a className="button button-gold btn-77" href="#availability">{t.check}</a><a className="text-link" href="#fleet">{t.explore}</a></div>
@@ -209,23 +224,25 @@ export function LuxurySite() {
 
         <section className="concierge-section" id="contact">
           <div><p className="eyebrow">{t.contactEyebrow}</p><p data-heading="h2">{t.contactTitle[0]}<br />{t.contactTitle[1]}</p></div>
-          <div className="concierge-actions"><a className="button button-gold btn-77" href="https://line.me" target="_blank" rel="noreferrer"><MessageCircle size={17} />{t.line}</a><a className="button button-outline" href="tel:+6620000000"><Phone size={17} />{t.call}</a><p>{t.hours}</p></div>
+          <div className="concierge-actions"><a className="button button-gold btn-77" href={lineHref}><MessageCircle size={17} />{t.line}</a><a className="button button-outline" href={callHref}><Phone size={17} />CALL</a><p>{t.hours}</p></div>
         </section>
+        </> : <CompanyPage page={page} language={language} />}
       </main>
 
       <footer className="site-footer">
         <div className="footer-main">
           <div className="footer-about">
-            <a className="brand footer-brand" href="#top"><img className="brand-logo" src="/prom-drive-logo.png" alt="PROM DRIVE" width={56} height={56} /><span className="brand-copy"><b>PROM DRIVE</b><small>CAR RENTAL</small></span></a>
+            <a className="brand footer-brand" href="/"><img className="brand-logo" src="/prom-drive-logo.png" alt="PROM DRIVE" width={56} height={56} /><span className="brand-copy"><b>PROM DRIVE</b><small>CAR RENTAL</small></span></a>
             <p>{t.footerIntro}</p>
-            <div className="footer-contact-list"><span>{t.footerContact[0]} <b>+66 2 000 0000</b></span><span>{t.footerContact[1]} <b>+66 8 0000 0000</b></span><span>{t.footerContact[2]} <b>{language === "th" ? "รอยืนยันบัญชี" : language === "zh" ? "账号待确认" : "Account pending"}</b></span></div>
-            <div className="social-row" aria-label="Social channels"><a href="#contact">IG</a><a href="#contact">WA</a><a href="#contact">LI</a></div>
+            <div className="footer-contact-list"><a href={callHref}>CALL <b>{contactDetails.phone || pendingLabel[language]}</b></a><a href={lineHref}>LINE <b>{contactDetails.social.line ? companyLabels[language].contact : pendingLabel[language]}</b></a></div>
+            <SocialLinks language={language} />
           </div>
           <FooterColumn title={t.footerHeads[0]} items={t.footerRent} />
           <FooterColumn title={t.footerHeads[1]} items={t.footerServices} />
           <FooterColumn title={t.footerHeads[2]} items={t.footerPlaces} />
         </div>
-        <div className="footer-bottom"><p>{t.footerCopyright}</p><nav aria-label="Legal"><a href="#contact">{t.footerLegal[0]}</a><a href="#contact">{t.footerLegal[1]}</a><a href="#contact">{t.footerLegal[2]}</a></nav></div>
+        <nav className="footer-company-links" aria-label="PROM DRIVE"><a href="/about">{companyLabels[language].about}</a><a href="/contact">{companyLabels[language].contact}</a></nav>
+        <div className="footer-bottom"><p>{t.footerCopyright}</p><nav aria-label="Legal"><a href="/contact">{t.footerLegal[0]}</a><a href="/contact">{t.footerLegal[1]}</a><a href="/contact">{t.footerLegal[2]}</a><PhotoCredits language={language} /></nav></div>
       </footer>
     </div>
   );
@@ -247,5 +264,5 @@ function TypewriterHeading({ language, lines }: { language: Language; lines: rea
 }
 
 function FooterColumn({ title, items }: { title: string; items: readonly string[] }) {
-  return <div className="footer-column"><p data-heading="h3">{title}</p><nav>{items.map((item) => <a href="#contact" key={item}>{item}</a>)}</nav></div>;
+  return <div className="footer-column"><p data-heading="h3">{title}</p><nav>{items.map((item) => <a href="/contact" key={item}>{item}</a>)}</nav></div>;
 }
