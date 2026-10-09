@@ -714,3 +714,34 @@ body:has(.vehicle-detail-dialog) [data-slot="dialog-overlay"][data-state="closed
   .virtual360-start { gap: 18px; padding: 18px; }
   .virtual360-start .button { min-width: 0; max-width: 100%; }
 }
+
+/* Trip summary and enquiry actions inside the vehicle dialog. */
+.trip-summary { display: grid; gap: 14px; padding: 18px 20px; border: 1px solid #5a4a2c; border-radius: 12px; background: linear-gradient(135deg, #1b1810, #121110 70%); }
+.trip-summary-title { margin: 0; color: #e7ca87; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+.trip-summary-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 20px; margin: 0; }
+.trip-summary-grid dt { color: #bbb3a4; font-size: 13px; line-height: 1.6; }
+.trip-summary-grid dd { margin: 3px 0 0; color: #f3eee4; font-size: 15px; line-height: 1.6; }
+.trip-summary-empty { margin: 0; color: #c9c0af; font-size: 14px; line-height: 1.8; }
+.trip-summary-empty a { color: var(--gold-bright); text-decoration: underline; text-underline-offset: 4px; }
+.trip-summary-total { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; padding-top: 14px; border-top: 1px solid #3a3226; }
+.trip-summary-total > span { color: #bdb6a9; font-size: 13px; }
+.trip-summary-total strong { color: #eed18b; font-size: 26px; font-weight: 500; line-height: 1.4; }
+.trip-summary-total small { flex-basis: 100%; color: #a79e8f; font-size: 12px; line-height: 1.7; }
+.vehicle-actions { position: sticky; bottom: -28px; z-index: 1; display: grid; grid-template-columns: 1.5fr 1fr; gap: 10px; margin: 4px -28px -28px; padding: 18px 28px 22px; background: linear-gradient(180deg, rgba(20,20,20,0), #141414 24%); }
+.vehicle-actions .vehicle-contact { width: auto; min-height: 50px; }
+.vehicle-actions .vehicle-call { min-height: 50px; }
+.vehicle-actions small { grid-column: 1 / -1; color: #a79e8f; font-size: 12px; line-height: 1.7; text-align: center; }
+@media (max-width: 560px) {
+  .trip-summary { padding: 16px; }
+  .trip-summary-grid { grid-template-columns: 1fr; gap: 10px; }
+  .vehicle-actions { grid-template-columns: 1fr; }
+}
+
+/* Mobile quick-contact bar: LINE and CALL always reachable, never covering dialogs (z 60 < overlay 90). */
+.mobile-contact-bar { display: none; }
+@media (max-width: 900px) {
+  .mobile-contact-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: grid; grid-template-columns: 1.4fr 1fr; gap: 10px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(8,8,8,.9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid var(--line); }
+  .mobile-contact-bar .button, .mobile-contact-bar .btn-77 { min-height: 48px; padding-inline: 14px; font-size: 14px; white-space: nowrap; }
+  .site-footer { padding-bottom: calc(36px + 78px + env(safe-area-inset-bottom)); }
+  .car-dialog { max-height: 86svh; }
+}

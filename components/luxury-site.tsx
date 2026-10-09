@@ -202,6 +202,11 @@ function LuxurySiteView({ page }: { page: "home" | "about" | "contact" }) {
         </> : <CompanyPage page={page} language={language} />}
       </main>
 
+      <nav className="mobile-contact-bar" aria-label={language === "th" ? "ติดต่อด่วน" : language === "zh" ? "快速联系" : "Quick contact"}>
+        <a className="button button-gold btn-77" href={lineHref} target={settings.social.line ? "_blank" : undefined} rel={settings.social.line ? "noopener noreferrer" : undefined}><MessageCircle size={17} aria-hidden="true" />{t.line}</a>
+        <a className="button button-outline" href={callHref}><Phone size={17} aria-hidden="true" />{t.call}</a>
+      </nav>
+
       <footer className="site-footer" id="footer">
         <div className="footer-main">
           <div className="footer-about">
